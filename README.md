@@ -2,8 +2,6 @@
 
 ![Coverage](https://img.shields.io/badge/coverage-80-yellow) ![stable version](https://img.shields.io/badge/version-1.0-blue) ![Issues](https://img.shields.io/badge/issues-8-green) ![License](https://img.shields.io/badge/license-not_specified-pink) ![Status](https://img.shields.io/badge/status-develop-red)
 
-# Índice
-
 # Descripción del proyecto
 
 Mercado Libro es un proyecto en desarrollo, para la materia Programador Full Stack, de la carrera Técnico en Desarrollo Web y Aplicaciones Digitales, del Instituto Superior Politécnico de Córdoba.
