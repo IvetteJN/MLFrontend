@@ -7,7 +7,8 @@
 Mercado Libro es un proyecto en desarrollo, para la materia Programador Full Stack, de la carrera Técnico en Desarrollo Web y Aplicaciones Digitales, del Instituto Superior Politécnico de Córdoba.
 La finalidad del mismo es crear una página web navegable con código JavaScript para el frontend y Python para el backend. Se creó una base de datos en MySQL, pero por el momento se consumen los datos de un LocalStorage .json.
 La página web es capaz de mostrar el contenido a la venta con sus datos más relevantes y con la opción de consultar más información. 
-Además, ofrece la opción de registro de usuarios, con la finalidad de distribuir newsletters, permitir que el usuario haga una reseña de los libros que conoce o compró, y comprar en sí mismo.
+Además, ofrece la opción de registro de usuarios, con la finalidad de distribuir newsletters, permitir que el usuario haga una reseña de los libros que conoce o compró, y la acción de comprar en sí misma.
+2024: este proyecto seguirá en desarrollo este año, para la materia Programador Web del ISPC, donde se nos solicita migrar el código a los frameworks de los lenguajes más arriba listados (angular para el frontend y django para el backend), con el fin de tener ambos conectados. De la misma forma, la metodología de trabajo será scrum y con github como control de versiones.
 
 # Estado del proyecto
 
@@ -26,9 +27,14 @@ Funcionalidad 3: desde el backend, el usuario administrador puede modificar la b
 
 # 📁 Tecnologías
 
+* HTML
+* CSS
+* Bootstrap
 * JavaScript
 * Python
 * MySQL
+* Angular
+* Django
 
 # 👷‍♀️👷‍♂️ Contributors
 * Miguel Angel Gonzalez
