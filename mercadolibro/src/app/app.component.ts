@@ -12,5 +12,4 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 
 export class AppComponent {
   title = 'Mercado Libro';
-
 }
