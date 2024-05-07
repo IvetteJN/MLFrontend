@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { QuienesComponent } from './pages/quienes/quienes.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { NavComponent } from './shared/nav/nav.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,QuienesComponent,FooterComponent,NavComponent],
+  imports: [RouterOutlet,QuienesComponent,FooterComponent,],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
   
