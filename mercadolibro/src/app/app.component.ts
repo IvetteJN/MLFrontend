@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,5 +14,4 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 export class AppComponent {
   title = 'Mercado Libro';
-
 }
