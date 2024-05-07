@@ -9,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+horariosSemana: string;
+horarioSabado: string;
+
+constructor(){
+  this.horariosSemana = 'Lunes a viernes:9:00 hs a 19:00 hs';
+  this.horarioSabado = 'Sabados: De 9:00 hs a 14:00 hs';
 }
+
+}
+
+
