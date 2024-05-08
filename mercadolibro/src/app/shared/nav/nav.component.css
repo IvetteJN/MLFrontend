@@ -1,3 +1,7 @@
+header {
+  min-height: 5vh;
+}
+
 /* navbar */
 .navbar {
     background-color: #746b6b;
@@ -7,6 +11,28 @@
     align-items: center;
     padding: 10px 20px;
   }
+
+  
+/* Logo */
+.logo img {
+  width: 100px; /* Ajusta el tamaño de acuerdo a tu logo */
+  height: auto;
+}
+
+
+/* Menú hamburguesa (mobile first) */
+.menu-toggle {
+  display: none;
+}
+
+
+.menu-icon {
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+  margin-right: 5%; /* Ajusta el espacio a la derecha del icono */
+}
+
   /* Lista de navegación (oculta inicialmente) */
 .nav-list {
     list-style: none;
@@ -27,20 +53,7 @@
     transition: color 0.5s;
   }
   
-  
-  .frase-container {
-    color: white;
-  }
-  .container a {
-    text-decoration: none;
-    color: white;
-  }
-  
-  
-  .info-form a {
-    text-decoration: none;
-    color: white;
-  }
+ 
   
   /* Estilos hover y active para la lista del menú hamburguesa */
   .nav-list a:hover {
@@ -87,20 +100,6 @@
       display: none;
     }
   
-  
-    main p {
-      color: brown;
-      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    }
-  
-  
-    section h2 {
-      color: crimson;
-      font-family:Cambira, "Times New Roman", Times, serif;
-      font-weight: bold;
-    }
-  
-  
     .nav-list {
       display: flex;
       justify-content: flex-end;
@@ -120,37 +119,4 @@
     .menu-icon {
       display: none;
     }
-  }
-  /*version tablet*/
-  @media (min-width: 480px) and (max-width: 1023px) {
-    main p {
-      color: brown;
-      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    }
-  
-  
-    section h2 {
-      color: crimson;
-      font-family:Cambira, "Times New Roman", Times, serif;
-      font-weight: bold;
-    }
-  
-  
-  
-  
-  }
-  /*Version celular*/
-  @media (max-width: 479px) {
-    main p {
-      color: brown;
-      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    }
-  
-  
-    section h2 {
-      color: crimson;
-      font-family:Cambira, "Times New Roman", Times, serif;
-      font-weight: bold;
-    }
-  
   }
