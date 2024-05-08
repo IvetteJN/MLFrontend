@@ -1,4 +1,6 @@
-/* ESTILOS PÁGINA DE CONTACTO */
+* {
+    font-family: sans-serif;
+}
 
 .container-form {
     width: 100%;
@@ -7,52 +9,26 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 50px;
-    margin-top: 90px;
-}
-
-.container-form h2 {
-    margin-bottom: 15px;
-    font-size: 35px;
-}
-
-.container-form p {
-    font-size: 17px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-.container-form a {
-    font-size: 15px;
-    display: inline-block;
-    text-decoration: none;
-    width: 100%;
-    margin-bottom: 15px;
-    color: black;
-    font-weight: 700;
-}
-
-.container-form a i {
-    color: orange;
-    margin-right: 10px;
+    margin-top: 65px;
+    color: #746b6b;
 }
 
 .container-form form .campo,
-textarea {
+.container-form form textarea {
     display: flex;
     width: 100%;
     padding: 15px 10px;
-    font-size: 16px;
-    border: 1px solid #dbdbdb;
-    margin-bottom: 20px;
+    font-size: 14px;
+    border: 1px solid #746b6b;
+    margin-bottom: 10px;
     border-radius: 3px;
-    outline: 0px;
+    color: #746b6b;
 }
 
 .container-form form textarea {
     max-width: 530px;
     min-width: 530px;
-    min-height: 140px;
-    max-height: 150px;
+    min-height: 180px;
 }
 
 .container-form .btn-enviar {
@@ -61,7 +37,7 @@ textarea {
     font-size: 16px;
     border: none;
     outline: 0px;
-    background: orange;
+    background: #746b6b;
     color: white;
     border-radius: 3px;
     cursor: pointer;
@@ -69,73 +45,46 @@ textarea {
 }
 
 .container-form .btn-enviar:hover {
-    background: #e39403;
+    background: white;
+    color: #746b6b;
 }
 
-/*tablet*/
-@media (min-width: 480px) and (max-width: 1023px) {
+/* Tablet  */
+@media (min-width: 768) {
     .container-form {
-        width: 100%;
-        max-width: 800px;
-        margin: auto;
-        display: flex;
-        flex-direction: column-reverse;
-        margin-top: 90px;
-        overflow: hidden;
-        padding-left: 8px;
-    }
-
-    .container-form form .campo,
-    textarea {
-        width: 95%;
-        padding: 15px 10px;
-        font-size: 16px;
-        border: 1px solid #dbdbdb;
-        margin-bottom: 20px;
-        border-radius: 3px;
-        outline: 0px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px;
     }
 
     .container-form form textarea {
-        max-width: 485px;
-        min-width: 450px;
-        min-height: 110px;
-        max-height: 100px;
+        max-width: 100%;
+        min-width: 100%;
     }
 
-
+    .info-form {
+        margin: 10px;
+    }
 }
 
-/*celular*/
-@media (max-width: 479px) {
+/* Mobile (max-width: 425px) */
+@media (max-width: 425px) {
+
+    .container-form form {
+        margin: 0 auto;
+    }
+
     .container-form {
-        width: 100%;
-        max-width: 800px;
-        margin: auto;
-        display: flex;
-        flex-direction: column-reverse;
-        margin-top: 90px;
-        overflow: hidden;
-        padding-left: 8px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 5px;
     }
 
-    .container-form form .campo,
-    textarea {
-        width: 95%;
-        padding: 15px 10px;
-        font-size: 16px;
-        border: 1px solid #dbdbdb;
-        margin-bottom: 20px;
-        border-radius: 3px;
-        outline: 0px;
+    .container-form .btn-enviar {
+        font-size: 14px;
+        padding: 12px;
+        margin: 10px;
     }
 
-    .container-form form textarea {
-        max-width: 300px;
-        min-width: 250px;
-        min-height: 110px;
-        max-height: 100px;
+    .info-form {
+        margin: 10px;
     }
-
-
 }

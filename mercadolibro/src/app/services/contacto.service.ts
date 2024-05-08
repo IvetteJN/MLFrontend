@@ -4,21 +4,20 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ContactoService {
-  datosContacto:any;
+  datosContacto: any;
 
-  constructor(private ContactoService:ContactoService) { }
+  constructor() { }
 
-  getDatosContacto()
-{
-this.datosContacto = [
-{ telefono: 351456789 },
-{ ubicacion: "Cordoba, Argentina"},
-{ facebook: "Facebook"},
-{ instagram: "Instagram"},
-{ twitter: "Twitter"},
-{ linkedin: "Linkedin"},
-];
-return this.datosContacto;
-}
+  getDatosContacto() {
+    this.datosContacto = [
+      { telefono: 351456789 },
+      { ubicacion: "Cordoba, Argentina" },
+      { facebook: "Facebook" },
+      { instagram: "Instagram" },
+      { twitter: "Twitter" },
+      { linkedin: "Linkedin" },
+    ];
+    return this.datosContacto;
+  }
 
 }

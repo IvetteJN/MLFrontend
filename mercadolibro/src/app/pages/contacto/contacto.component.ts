@@ -12,12 +12,12 @@ import { ContactoService } from '../../services/contacto.service';
 
 export class ContactoComponent {
 
-  datosContacto:any;
+  datosContacto: any;
   form!: FormGroup;
-  
-  constructor(private formBuilder: FormBuilder, private ContactoService:ContactoService) {
 
-    this.datosContacto=ContactoService.getDatosContacto();
+  constructor(private formBuilder: FormBuilder, private ContactoService: ContactoService) {
+
+    this.datosContacto = ContactoService.getDatosContacto();
 
     this.form = this.formBuilder.group(
       {
