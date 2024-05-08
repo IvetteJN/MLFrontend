@@ -1,1 +1,70 @@
-/* You can add global styles to this file, and also import other style files */
+/*--Normalización*/
+* {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+main {
+    min-height: 71.2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg,
+            rgba(252, 219, 3, 1) 0%,
+            rgba(252, 219, 3, 1) 0%,
+            rgba(252, 219, 3, 1) 100%,
+            rgb(252, 219, 3, 1) 100%);
+
+}
+
+
+
+
+/*version tablet*/
+@media (min-width: 480px) and (max-width: 1023px) {
+    main p {
+        color: brown;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    }
+
+
+    section h2 {
+        color: crimson;
+        font-family: Cambira, "Times New Roman", Times, serif;
+        font-weight: bold;
+    }
+
+
+
+
+}
+
+/*Version celular*/
+@media (max-width: 479px) {
+    main p {
+        color: brown;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    }
+
+
+    section h2 {
+        color: crimson;
+        font-family: Cambira, "Times New Roman", Times, serif;
+        font-weight: bold;
+    }
+
+}
