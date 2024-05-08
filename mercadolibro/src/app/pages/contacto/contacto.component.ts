@@ -9,6 +9,14 @@ import { FormBuilder, FormControlName, FormGroup, ReactiveFormsModule, Validator
   styleUrls: ['./contacto.component.css']
 })
 export class ContactoComponent {
+
+  telefono: number = 351456789;
+  ubicacion: string = "Cordoba, Argentina";
+  facebook: string = "Facebook";
+  instagram: string = "Instagram";
+  twitter: string = "Twitter";
+  linkedin: string = "Linkedin";
+
   form!: FormGroup;
   constructor(private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group(
