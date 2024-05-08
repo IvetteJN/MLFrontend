@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { LandingComponent } from './pages/landing/landing.component';
 import { NavComponent } from './shared/nav/nav.component';
 
 
