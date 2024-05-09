@@ -12,7 +12,7 @@ import { NavComponent } from './shared/nav/nav.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ContactoComponent, FooterComponent, QuienesComponent, NavComponent],
+  imports: [RouterOutlet, ContactoComponent, FooterComponent, QuienesComponent, NavComponent, LandingComponent],
   styleUrl: './app.component.css',
   templateUrl: './app.component.html',
 })
