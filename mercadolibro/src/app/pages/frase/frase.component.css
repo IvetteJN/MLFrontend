@@ -1,23 +1,27 @@
 /*ESTILO DE PÁGINA INDEX*/
 .frase-container{
-    margin-bottom: 20px;
+    
   }
   
   .frase-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80px; /* Ajusta la altura según tus necesidades */
+    height: 35px; /* Ajusta la altura según tus necesidades */
     overflow: hidden;
+    margin-top: 60px ;
+    font-size: 23px;
+    color: rgb(151, 28, 28)
+    
   }
   
   .frase .frase-container {
     width: 100%;
-    height: auto;
+    height: 15vh;
     text-align: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    font-size: 20px;
+    font-size: 30px;
     color: rgb(151, 28, 28)
   }
   

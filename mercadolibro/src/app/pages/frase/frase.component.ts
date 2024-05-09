@@ -4,11 +4,12 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-frase',
   standalone: true,
   template: `
+    
     <div class="frase-container">
       <p class="frase">{{ frase }}</p>
     </div>
   `,
-  styleUrls: ['./frase.component.css']
+  styleUrls: ['./frase.component.scss']
 })
 export class FraseComponent implements OnInit {
   frases = [
