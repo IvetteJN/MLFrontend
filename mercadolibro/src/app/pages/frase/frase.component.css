@@ -1,9 +1,9 @@
 /*ESTILO DE PÁGINA INDEX*/
-.contenedor-index{
+.frase-container{
     margin-bottom: 20px;
   }
   
-  .carousel-container {
+  .frase-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@
     overflow: hidden;
   }
   
-  .carousel .frase-container {
+  .frase .frase-container {
     width: 100%;
     height: auto;
     text-align: center;
@@ -24,12 +24,12 @@
   
   /*version mobile*/
   @media (max-width: 479px) {
-    .carousel-container {
+    .frase-container {
   
       
       max-width: 300px;
       }
-      #carousel-container{
+      #frase-container{
         display: none;
       }
   
@@ -55,3 +55,4 @@
       transform: translateX(-100%);
     }
   }
+  
