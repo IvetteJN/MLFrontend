@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControlName, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ContactoService } from '../../services/contacto.service';
 
 @Component({
   selector: 'app-contacto',
@@ -8,9 +9,16 @@ import { FormBuilder, FormControlName, FormGroup, ReactiveFormsModule, Validator
   templateUrl: './contacto.component.html',
   styleUrls: ['./contacto.component.css']
 })
+
 export class ContactoComponent {
+
+  datosContacto: any;
   form!: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+
+  constructor(private formBuilder: FormBuilder, private ContactoService: ContactoService) {
+
+    this.datosContacto = ContactoService.getDatosContacto();
+
     this.form = this.formBuilder.group(
       {
         nombre: ['', [Validators.required], []],
