@@ -11,7 +11,7 @@ import { NavComponent } from './shared/nav/nav.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ContactoComponent, FooterComponent, NavComponent],
+  imports: [RouterOutlet, ContactoComponent, FooterComponent, NavComponent, LandingComponent],
   styleUrl: './app.component.css',
   templateUrl: './app.component.html',
 })
