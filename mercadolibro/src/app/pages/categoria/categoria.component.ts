@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-categoria',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './categoria.component.html',
   styleUrl: './categoria.component.css'
 })

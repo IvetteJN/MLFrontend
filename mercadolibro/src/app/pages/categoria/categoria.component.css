@@ -1,8 +1,6 @@
 /* ESTILOS DE PÁGINA DE PRODUCTO */
 
-.carousel-caption {
-    background-color: #b3b0b0;
-  }
+
   
   /* Línea de carrusel o slider */
   .linea {
@@ -183,3 +181,22 @@
     cursor: pointer;
   }
   
+
+.contenedor{
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.form-control{
+  display: block;
+  width: 900px;
+  margin-right: 10px;
+  
+}
+
+.btn{
+  margin-right: 10px;
+}
