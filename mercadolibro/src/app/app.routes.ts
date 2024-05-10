@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
-import { InicioComponent } from './pages/inicio/inicio.component';
+import { NuestraseleccionComponent } from './pages/nuestraseleccion/nuestraseleccion.component';
 
 export const routes: Routes = [
-    {path: 'inicio', title: 'Login', component:InicioComponent}];
+    {path: 'nuestraseleccion',component:NuestraseleccionComponent}
+];
