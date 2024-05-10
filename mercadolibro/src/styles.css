@@ -8,7 +8,7 @@
 }
 
 main {
-    min-height: 71.2vh;
+    min-height: 40.2vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
