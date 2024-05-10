@@ -13,6 +13,11 @@
         <div class="div__login-input">
           <input type="text" class="form__input form-control" id="usuario" name="usuario" required minlength="4"
             maxlength="10" placeholder="Usuario" formControlName="usuario">
+            @if (!Usuario?.value) {
+              <p>El usuario es requerido.</p>
+            }
+            
+
       
           <div class="invalid-feedback">
             El Usuario es requerido y debe contener letras y números.
@@ -25,15 +30,14 @@
         <div class="div__login-input">
           <input type="password" class="form__input form-control" id="contrasena" required minlength="4" maxlength="16"
             placeholder="Contraseña" formControlName="contrasenia">
-         
-          <div class="invalid-feedback" id="clave_requerida">
-            La Contraseña es requerida y debe ser de 4 dígitos o más.
-          </div>
+            @if (!Contrasenia?.value) {
+              <p>La contraseña es requerida.</p>
+            }
         </div>
 
 
         <div class="div-botones">
-          <button class="buton" type="submit">
+          <button class="buton" type="submit" [disabled]="!loginFormulario.valid">
             <span id="span1"></span>
             <span id="span2"></span>
             <span id="span3"></span>
@@ -94,7 +98,7 @@
               </div>
             </div>
             <div class="modal-footer bg-dark">
-              <input type="submit" class="btn btn-warning fw-semibold" value="REGISTRARSE" id="registroBoton">
+              <input type="submit" class="btn btn-warning fw-semibold" value="REGISTRARSE" id="registroBoton" [disabled]="!registroFormulario.valid">
 
 
               <div class="alert alert-success" id="alertaOk" role="alert" style="display: none;">
