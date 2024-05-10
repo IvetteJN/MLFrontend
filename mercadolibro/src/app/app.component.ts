@@ -5,6 +5,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { QuienesComponent } from './pages/quienes/quienes.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { NavComponent } from './shared/nav/nav.component';
+import { NuestraseleccionComponent } from './pages/nuestraseleccion/nuestraseleccion.component';
 
 
 
@@ -12,7 +13,7 @@ import { NavComponent } from './shared/nav/nav.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ContactoComponent, FooterComponent, QuienesComponent, NavComponent, LandingComponent],
+  imports: [RouterOutlet, ContactoComponent, FooterComponent, QuienesComponent, NavComponent,LandingComponent, NuestraseleccionComponent],
   styleUrl: './app.component.css',
   templateUrl: './app.component.html',
 })
