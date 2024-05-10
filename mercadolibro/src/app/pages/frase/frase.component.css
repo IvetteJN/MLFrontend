@@ -1,35 +1,42 @@
 /*ESTILO DE PÁGINA INDEX*/
-.contenedor-index{
-    margin-bottom: 20px;
+.frase-container{
+    text-align: center;
   }
   
-  .carousel-container {
+  .frase-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 80px; /* Ajusta la altura según tus necesidades */
     overflow: hidden;
+    margin-top: 60px ;
+    font-size: 21px;
+    color: rgb(151, 28, 28);
+    
+    
   }
   
-  .carousel .frase-container {
-    width: 100%;
-    height: auto;
+  .frase .frase-container {
+    width: 80%;
+    height: 15vh;
     text-align: center;
     opacity: 0;
     transition: opacity 1s ease-in-out;
-    font-size: 20px;
-    color: rgb(151, 28, 28)
+    font-size: 21px;
+    color: rgb(151, 28, 28);
+    justify-content: center;
+    align-items: center;
   }
   
   
   /*version mobile*/
   @media (max-width: 479px) {
-    .carousel-container {
+    .frase-container {
   
       
       max-width: 300px;
       }
-      #carousel-container{
+      #frase-container{
         display: none;
       }
   
@@ -55,3 +62,4 @@
       transform: translateX(-100%);
     }
   }
+  
