@@ -6,11 +6,12 @@
         <input type="checkbox" id="menu-toggle" class="menu-toggle">
         <label for="menu-toggle" class="menu-icon">&#9776;</label>
         <ul class="nav-list">
-          <li><a href="#" class="nav-link active">Home</a></li>
-          <li><a href="./Quienes.html">Quiénes Somos</a></li>
-          <li><a class="nav-link" routerLink ="/nuestraseleccion" >Nuestra Selección</a></li>
-          <li><a href="./Contact.html">Contacto</a></li>
-          <li><a href="./Login.html">Login</a></li>
+          <li><a routerLink="/landing" class="nav-link active">Home</a></li>
+          <li><a routerLink="/quienes">Quiénes Somos</a></li>
+          <li><a routerLink="/nuestraseleccion">Nuestra Selección</a></li>
+          <li><a routerLink="/contacto">Contacto</a></li>
+          <li><a routerLink="/Login">Login</a></li>
         </ul>
       </nav>
     </header>
+    <router-outlet></router-outlet>
