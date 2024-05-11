@@ -6,5 +6,5 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 export const routes: Routes = [
     {path: 'nuestraseleccion',component:NuestraseleccionComponent},
     {path: 'inicio', title: 'Login', component:InicioComponent}
-
+]
 
