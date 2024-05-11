@@ -5,8 +5,9 @@ import { QuienesComponent } from './pages/quienes/quienes.component';
 import { LandingComponent } from './pages/landing/landing.component';
 
 export const routes: Routes = [
-    {path: 'nuestraseleccion',component:NuestraseleccionComponent},
-    {path: 'contacto',component:ContactoComponent},
-    {path: 'quienes',component:QuienesComponent},
-    {path: 'landing',component:LandingComponent},
+    { path: 'nuestraseleccion', component: NuestraseleccionComponent },
+    { path: 'contacto', component: ContactoComponent },
+    { path: 'quienes', component: QuienesComponent },
+    { path: '', component: LandingComponent },
+    { path: 'landing', component: LandingComponent },
 ];
