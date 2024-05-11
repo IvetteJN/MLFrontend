@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { QuienesService } from '../../services/quienes.service';
 
@@ -23,3 +24,4 @@ export class QuienesComponent {
   parrafo_nuestra_pasion: string;
   parrafo_nuestro_compromiso: string;
 }
+
