@@ -5,6 +5,7 @@ import { QuienesComponent } from './pages/quienes/quienes.component';
 import { LandingComponent } from './pages/landing/landing.component';
 
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { CategoriaComponent } from './pages/categoria/categoria.component';
 
 export const routes: Routes = [
     {path: 'nuestraseleccion',component:NuestraseleccionComponent},
