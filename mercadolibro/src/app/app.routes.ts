@@ -6,10 +6,12 @@ import { LandingComponent } from './pages/landing/landing.component';
 
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { CategoriaComponent } from './pages/categoria/categoria.component';
+import { DescripcionComponent } from './pages/nuestraseleccion/descripcion/descripcion.component';
 
 export const routes: Routes = [
     {path: 'nuestraseleccion',component:NuestraseleccionComponent},
     {path: 'contacto',component:ContactoComponent},
     {path: 'quienes',component:QuienesComponent},
     {path: 'landing',component:LandingComponent},
+    {path: 'descricion', component:DescripcionComponent}
 ];
