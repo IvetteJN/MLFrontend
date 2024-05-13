@@ -6,9 +6,12 @@ import { LandingComponent } from './pages/landing/landing.component';
 
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { CategoriaComponent } from './pages/categoria/categoria.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
     { path: 'nuestraseleccion', component: NuestraseleccionComponent },
+    { path: 'inicio', title: 'Login', component: InicioComponent },
     { path: 'categoria', title: 'Categoria', component: CategoriaComponent },
-    { path: 'inicio', title: 'Inicio', component: InicioComponent }
-];
+    { path: 'dashboard', title: 'Mi perfil', component: DashboardComponent }
+]
+
