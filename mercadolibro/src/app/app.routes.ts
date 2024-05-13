@@ -7,6 +7,7 @@ import { CategoriaComponent } from './pages/categoria/categoria.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { DescripcionComponent } from './pages/nuestraseleccion/descripcion/descripcion.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ProductoComponent } from './pages/nuestraseleccion/producto/producto.component';
 
 export const routes: Routes = [
     { path: 'landing', title: 'Home', component: LandingComponent },
@@ -17,5 +18,6 @@ export const routes: Routes = [
     { path: 'inicio', title: 'Login', component: InicioComponent },
     { path: 'categoria', title: 'Categoria', component: CategoriaComponent },
     { path: 'descripcion', title: 'Descripcion', component: DescripcionComponent },
-    { path: 'dashboard', title: 'Mi perfil', component: DashboardComponent }
+    { path: 'dashboard', title: 'Mi perfil', component: DashboardComponent },
+    { path: 'producto', title: "Producto", component: ProductoComponent}
 ]
