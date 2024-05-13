@@ -4,19 +4,20 @@ header {
 
 /* navbar */
 .navbar {
-    background-color: #746b6b;
-    color: rgb(0, 0, 0);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    z-index: 20;
-  }
+  background-color: #746b6b;
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  z-index: 20;
+}
 
-  
+
 /* Logo */
 .logo img {
-  width: 100px; /* Ajusta el tamaño de acuerdo a tu logo */
+  width: 100px;
+  /* Ajusta el tamaño de acuerdo a tu logo */
   height: auto;
 }
 
@@ -31,93 +32,101 @@ header {
   color: white;
   font-size: 35px;
   cursor: pointer;
-  margin-right: 5%; /* Ajusta el espacio a la derecha del icono */
+  margin-right: 5%;
+  /* Ajusta el espacio a la derecha del icono */
 }
 
-  /* Lista de navegación (oculta inicialmente) */
+/* Lista de navegación (oculta inicialmente) */
 .nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: none; /* Oculta la lista por defecto en dispositivos móviles */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  /* Oculta la lista por defecto en dispositivos móviles */
+}
+
+
+.nav-list li {
+  margin-right: 20px;
+}
+
+
+.nav-list a {
+  text-decoration: none;
+  color: rgba(232, 227, 245, 0.74);
+  transition: color 0.5s;
+}
+
+/* Estilos hover y active para la lista del menú hamburguesa */
+.nav-list a:hover {
+  color: rgba(252, 219, 3, 1);
+}
+
+
+/* Mostrar la lista de navegación cuando el menú hamburguesa está activo */
+.menu-toggle:checked+.menu-icon+.nav-list {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 105px;
+  /* Ajusta la posición */
+  right: 0;
+  background-color: #746b6b;
+  width: 100%;
+  /* Ocupa todo el ancho */
+  text-align: center;
+  /* Centra el contenido */
+  padding: 10px;
+  /* Espacio interior para centrar los elementos */
+  z-index: 3;
+  /*posiciona por delante de cualquier elemento el menu*/
+}
+
+
+.menu-toggle:checked+.menu-icon+.nav-list li {
+  margin: 10px 0;
+
+
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    /* Inicialmente,  menú  completamente transparente */
   }
-  
-  
+
+  to {
+    opacity: 1;
+    /* Al final,  menú  completamente visible */
+  }
+}
+
+
+/* Mostrar la lista de navegación en dispositivos más grandes */
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+
   .nav-list li {
     margin-right: 20px;
   }
-  
-  
+
+
   .nav-list a {
-    text-decoration: none;
-    color: rgba(232, 227, 245, 0.74);
-    transition: color 0.5s;
+    font-size: 18px;
   }
-  
- 
-  
-  /* Estilos hover y active para la lista del menú hamburguesa */
-  .nav-list a:hover {
-    color: rgba(252, 219, 3, 1);
+
+
+  .menu-icon {
+    display: none;
   }
-  
-  
-  /* Mostrar la lista de navegación cuando el menú hamburguesa está activo */
-  .menu-toggle:checked + .menu-icon + .nav-list {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 105px; /* Ajusta la posición */
-    right: 0;
-    background-color: #746b6b;
-    width: 100%; /* Ocupa todo el ancho */
-    text-align: center; /* Centra el contenido */
-    padding: 10px; /* Espacio interior para centrar los elementos */
-    z-index: 3; /*posiciona por delante de cualquier elemento el menu*/
-  }
-  
-  
-  .menu-toggle:checked + .menu-icon + .nav-list li {
-    margin: 10px 0;
-  
-  
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0; /* Inicialmente,  menú  completamente transparente */
-    }
-    to {
-      opacity: 1; /* Al final,  menú  completamente visible */
-    }
-  }
-  
-  
-  /* Mostrar la lista de navegación en dispositivos más grandes */
-  @media (min-width: 768px) {
-    .menu-toggle {
-      display: none;
-    }
-  
-    .nav-list {
-      display: flex;
-      justify-content: flex-end;
-    }
-  
-  
-    .nav-list li {
-      margin-right: 20px;
-    }
-  
-  
-    .nav-list a {
-      font-size: 18px;
-    }
-  
-  
-    .menu-icon {
-      display: none;
-    }
-  }
+}
