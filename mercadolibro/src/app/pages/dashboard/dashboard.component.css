@@ -36,6 +36,7 @@ nav ul {
 	top: 0;
 	left: 0;
 	background-color: #191919;
+  z-index: 10;
   
 }
 nav ::-webkit-scrollbar {
@@ -44,6 +45,9 @@ nav ::-webkit-scrollbar {
 
 nav ul li {
 	list-style: none;
+}
+.nav-color{
+  background-color: #191919;
 }
 nav ul li a {
 	display: block;
@@ -230,9 +234,7 @@ tr:nth-child(odd) {
   background-color: #2d3277;
 }
 
-tr{
- 
-}
+
 td button {
   border: none;
   padding: 7px 7px;
