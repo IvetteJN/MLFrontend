@@ -8,5 +8,7 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { CategoriaComponent } from './pages/categoria/categoria.component';
 
 export const routes: Routes = [
-    { path: 'nuestraseleccion', component: NuestraseleccionComponent }
+    { path: 'nuestraseleccion', component: NuestraseleccionComponent },
+    { path: 'categoria', title: 'Categoria', component: CategoriaComponent },
+    { path: 'inicio', title: 'Inicio', component: InicioComponent }
 ];
