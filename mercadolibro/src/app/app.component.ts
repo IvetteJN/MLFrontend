@@ -5,7 +5,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { QuienesComponent } from './pages/quienes/quienes.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { NavComponent } from './shared/nav/nav.component';
-import { CategoriaComponent } from './pages/categoria/categoria.component';
+import { CategoriaComponent } from './pages/nuestraseleccion/categoria/categoria.component';
 
 
 

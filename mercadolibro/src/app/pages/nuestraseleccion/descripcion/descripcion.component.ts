@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-descripcion',
+  standalone: true,
   templateUrl: './descripcion.component.html',
   styleUrls: ['./descripcion.component.css']
 })
 export class DescripcionComponent {
-  constructor() {}
+  constructor() { }
 
   showBookDetails(book: {
     titulo: any;
