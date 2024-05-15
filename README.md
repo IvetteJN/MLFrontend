@@ -31,13 +31,19 @@ Funcionalidad 3: desde el backend, el usuario administrador puede modificar la b
 * JavaScript
 * Python
 * MySQL
+* Django
+* Angular
+* CSS
+* HTML
+* Bootstrap
 
 # 👷‍♀️👷‍♂️ Contributors
-* Marcelo Molina
-* Jorge Pegoraro
-* Elias Oro
-* Analía Pellicer
-* Pamela Ponce
-* Nahir Ñañez
-* Ivette Nobiltá
-* Leonardo Plaza
+* Gonzalez Miguel Angel	
+* Ñañez Nahir Nicolás
+* Pellicer Palcios Analia Anahí	
+* Orellana Franco Rafael	
+* Luna Dalla Lasta Marcelo Javier
+* Falconi Virginia Soledad	
+* Plaza Leonardo	
+* Nobiltá Ivette Jael
+
