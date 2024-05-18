@@ -4,9 +4,36 @@
 main {
 
 	font-family: "Poppins", sans-serif;
-
+ 
 
 }
+
+
+.nav-color{
+  display: flex;
+  flex-direction: column;
+  top: 0;
+	left: 0;
+  position:absolute;
+  z-index: 30;
+  max-height: 1000; 
+  opacity: 1;
+  
+  transition: max-height 0.5s ease-out;
+ 
+}
+img{
+  width: 80px;
+}
+
+.div-menu{
+  height: 40px;
+  width: 260px;
+
+  
+
+}
+
 
 svg{
   margin-top: -10px;
@@ -19,25 +46,38 @@ h1{
   margin-left: 40px;
 }
 h2{
-  margin-top: 24px;
+  margin-top: 2px;
   font-size: 17px;
   font-weight: 700;
   text-transform: uppercase;
   padding-left: 25px;
-  margin-bottom: 15px;
+  margin-bottom: 2px;
+  align-items: start;
+  justify-content: end;
+  height: 85px;
+  display: block;
+
+}
+
+nav{
+  display: flex;
+  flex-direction: column;
+
+ 
 }
 nav ul {
 	margin: 0;
 	padding: 0;
 	height: 100%;
 	width: 260px;
-	position: fixed;
+	position: relative;
   overflow:scroll;
 	top: 0;
 	left: 0;
-	background-color: #191919;
-  z-index: 10;
-  
+	background-color: rgba(25, 25, 25, 0); 
+  z-index: 30;
+  transition:  3s;
+ 
 }
 nav ::-webkit-scrollbar {
   display: none;
@@ -75,6 +115,7 @@ nav ul li a:before {
 	border-radius: 40px 0px 0px 40px;
 	z-index: -1;
 	transition: all 300ms ease-in-out;
+ 
 }
 nav ul li a:hover {
 	color: #000000;
@@ -135,126 +176,104 @@ nav ul li a:hover:before {
  
 }
 
-/*================ PRODUCTOS ===========*/
-.wrapper{
+/*================ boton dinamico ===========*/
 
-  width: 115%;
-}
-/*====== Botones styles ====*/
-button {
-  background: #fff;
-  border: none;
-  padding: 10px 20px;
-  display: inline-block;
-  font-size: 15px;
-  font-weight: 600;
-  width: 100px;
-  text-transform: uppercase;
-  cursor: pointer;
-  transform: skew(-21deg);
-  border: solid 2px #000000;
-}
-
-span {
-  display: inline-block;
-  transform: skew(21deg);
-}
-
-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 100%;
-  left: 0;
-  background: rgb(20, 20, 20);
-  opacity: 0;
-  z-index: -1;
-  transition: all 0.5s;
-}
-
-button:hover {
-  color: #fff;
-}
-
-button:hover::before {
-  left: 0;
-  right: 0;
-  opacity: 1;
-}
-
-.filtros {
-  display: flex;
-  flex-direction: row;
-
-  width: 800px;
-  justify-content: space-between;
-}
-/*tabla productos*/
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.header_fixed {
-  max-height: 100vh;
-  width: 100%;
-  overflow: auto;
-
-  color: #000000;
-}
-
-.header_fixed thead th {
-  position: sticky;
-  top: 0;
-  background-color: black;
-  color: black;
-  font-size: 15px;
-}
-
-th,
-td {
-  border-bottom: 1px solid #dddddd;
-  padding: 10px 20px;
-  font-size: 14px;
-}
-
-td img {
-  height: 60px;
-  width: 60px;
-  border-radius: 2%;
-  border: 5px solid #e6e7e8;
-}
-
-tr:nth-child(even) {
-  background-color: #2d3277;
-}
-
-tr:nth-child(odd) {
-  background-color: #2d3277;
-}
-
-
-td button {
-  border: none;
-  padding: 7px 7px;
-  border-radius: 20px;
-  background-color: black;
-  color: #e6e7e8;
-}
-
-.div-tabla{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  
-  width: 800px;
-  margin-top: 30px;
-}
-.filtros{
-  background-color: #dddddd;
+.lbl-menu {
+  width: 40px;
   height: 30px;
-  color: #000000;
-  width: 115%;
-  border-radius: 2%;
+  position: absolute;
+  cursor: pointer;
+  transform: scale(1.1);
+  display: flex;
+  left: 75%;
+  top: 5px;
+  justify-content: start;
+  text-align: start;
+  
+  z-index: 50;
+}
+.menu-admin {
+  margin-top: -100px;
+}
+
+.lbl-menu #spn1,
+#spn2,
+#spn3 {
+  position: absolute;
+  content: "";
+  background: white;
+  width: 40px;
+  height: 5px;
+  border-radius: 5px;
+  transition: all 400ms ease;
+}
+#spn2 {
+  top: 12px;
+}
+#spn3 {
+  top: 23px;
+}
+#btn-menu {
+  display: none;
+}
+#btn-menu:checked ~ .lbl-menu #spn1 {
+  transform: rotate(140deg);
+  top: 10px;
+}
+#btn-menu:checked ~ .lbl-menu #spn2 {
+  opacity: 0;
+}
+#btn-menu:checked ~ .lbl-menu #spn3 {
+  transform: rotate(-140deg);
+  top: 10px;
+}
+#btn-menu:checked ~ .div-menu {
+  background-color: yellow; /* Cambia el color de fondo de .div-menu */
+}
+#btn-menu:checked ~ nav ul {
+ 
+  opacity: 0;
+  max-height: 0;
+}
+
+
+
+@media (max-width: 768px) {
+  .nav-color {
+    width: 50%;
+    display: flex;
+    top: 0%;
+  }
+  img{
+    display: none;
+  }
+  nav ul {
+    width: 100%;
+  }
+
+  section {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin-left: 0;
+  }
+
+  .div-menu {
+    width: 100%;
+    height: auto;
+  }
+
+  .wrapper {
+    width: 100%;
+    flex-direction: column;
+    margin: 0;
+  }
+  .nav-color{
+    max-height: 100%;
+    overflow: scroll;
+  }
 }
