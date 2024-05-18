@@ -5,14 +5,14 @@
 
 
 
-    <form class="needs-validation" id="login" novalidate [formGroup]="loginFormulario" (ngSubmit)="enviarDatosLogin()">
+    <form class="needs-validation" id="login" novalidate [formGroup]="loginFormulario" (ngSubmit)="addUsuario()" (ngSubmit)="addContrasenia()">
 
 
 
 
       <div class="div__login-input">
-        <input type="text" class="form__input form-control" id="usuario" name="usuario" required minlength="4"
-          maxlength="10" placeholder="Usuario" formControlName="usuario">
+        <input type="text" class="form__input form-control" id="usuario" required minlength="4"
+          maxlength="10" placeholder="Usuario" formControlName="usuario" name="usuario" [(ngModel)]="usuarioNombre">
           @if (!Usuario?.value) {
             <p>El usuario es requerido.</p>
           }
@@ -29,11 +29,12 @@
 
       <div class="div__login-input">
         <input type="password" class="form__input form-control" id="contrasena" required minlength="4" maxlength="16"
-          placeholder="Contraseña" formControlName="contrasenia">
+          placeholder="Contraseña" formControlName="contrasenia" name="contrasenia" [(ngModel)]="usuarioContrasenia">
           @if (!Contrasenia?.value) {
             <p>La contraseña es requerida.</p>
           }
       </div>
+      
 
 
       <div class="div-botones">

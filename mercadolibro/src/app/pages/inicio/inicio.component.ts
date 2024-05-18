@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-inicio',
@@ -28,6 +29,24 @@ export class InicioComponent {
   get Contrasenia() {
     return this.loginFormulario.get('contrasenia');
   }
+
+  constructor(public loginService: LoginService){ }
+
+  usuarioNombre: string = '';
+  usuarioContrasenia: string = '';
+
+  addUsuario(){
+    this.loginService.add(this.usuarioNombre);
+  }
+
+  addContrasenia(){
+    this.loginService.addPass(this.usuarioContrasenia);
+  }
+
+
+
+
+
   //Elementos del registro
   registroFormulario = new FormGroup({
     usuarioRegistro: new FormControl('', Validators.required),
