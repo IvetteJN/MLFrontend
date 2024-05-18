@@ -37,12 +37,13 @@
 
 
       <div class="div-botones">
-        <button class="buton" type="submit" [disabled]="!loginFormulario.valid">
+        <!-- <button class="buton" type="submit" [disabled]="!loginFormulario.valid" routerLink="/dashboard"> -->
+          <button class="buton nav-link"  routerLink ="/dashboard" >ingresar
           <span id="span1"></span>
           <span id="span2"></span>
           <span id="span3"></span>
           <span id="span4"></span>
-          ingresar
+          
         </button>
         <a href="#" class="registarse btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">registrarse
         </a>
@@ -59,8 +60,8 @@
           <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">
             REGISTRO
           </h1>
-          <button type="button" class="btn-close text-white bg-white" data-bs-dismiss="modal"
-            aria-label="Close"></button>
+          <button type="button"   class="btn-close text-white bg-white nav-link" data-bs-dismiss="modal"
+            aria-label="Close" routerLink="/dashboard"></button>
         </div>
         <form class="needs-validation" id="registro" [formGroup]="registroFormulario" (ngSubmit)="enviarDatosRegistro()" novalidate>
           <div class="modal-body ">
