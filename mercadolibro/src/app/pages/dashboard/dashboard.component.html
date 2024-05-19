@@ -138,11 +138,28 @@
         </div>
     </section>
 
+    <h1>Todos los usuarios</h1>
+
     <div *ngFor="let usuario of usuarios$ | async">
-        <ul>
-            <li class="custom-text-color">{{ usuario.nombre }} - {{ usuario.email }} - {{ usuario.direccion }}</li>
-        </ul>
-    </div>
+            <ul>
+                <li class="custom-text-color">{{ usuario.id }} - {{ usuario.nombre }}  - {{ usuario.email }} - {{ usuario.direccion }}</li>
+            </ul>
+        </div>
     
+        <h1>Usuario por Id</h1>
+
+    <div class="custom-text-color" *ngIf="usuarioSeleccionado; else loading">
+        <h1>Detalles del Usuario</h1>
+        <p>ID:{{ usuarioSeleccionado.id }}</p>
+        <p>Nombre: {{ usuarioSeleccionado.nombre }}</p>
+        <p>Email: {{ usuarioSeleccionado.email }}</p>
+        <p>Dirección: {{ usuarioSeleccionado.direccion }}</p>
+       
+      </div>
+      <ng-template #loading>
+        <p>Cargando usuario...</p>
+      </ng-template>
+      
+
       
 </main>
