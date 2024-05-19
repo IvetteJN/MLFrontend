@@ -137,4 +137,12 @@
             </table> 
         </div>
     </section>
+
+    <div *ngFor="let usuario of usuarios$ | async">
+        <ul>
+            <li class="custom-text-color">{{ usuario.nombre }} - {{ usuario.email }} - {{ usuario.direccion }}</li>
+        </ul>
+    </div>
+    
+      
 </main>

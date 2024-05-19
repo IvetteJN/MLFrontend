@@ -258,3 +258,7 @@ td button {
   width: 115%;
   border-radius: 2%;
 }
+
+.custom-text-color {
+  color: blue; 
+}
