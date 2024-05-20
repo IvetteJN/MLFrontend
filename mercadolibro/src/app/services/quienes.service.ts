@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -46,10 +43,10 @@ export class QuienesService {
     en línea sin igual. Además, nos esforzamos por apoyar a autores emergentes y pequeñas editoriales para dar
     vida
     a nuevas voces literarios.`;
-  }
+  } 
 
-  guardarDatosQuienes(): void {
-    this.datosQuienes = [
+  guardarDatosQuienes(): any {
+    return this.datosQuienes = [
       this.getParrafoQuienesSomos(),
       this.getParrafoNuestraSeleccion(),
       this.getParrafoNuestraPasion(),
