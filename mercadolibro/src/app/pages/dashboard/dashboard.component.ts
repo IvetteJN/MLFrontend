@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../../services/cliente.service';
 import { CommonModule } from '@angular/common';
+import { HistorialComprasService } from '../../services/historial-compras.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,11 +14,11 @@ export class DashboardComponent implements OnInit {
   usuarios$ = this.usuariosSvc.getUsuarios();
   usuarioSeleccionado: any; // Detalles del usuario seleccionado
 
-  constructor(private usuariosSvc: ClienteService) {}
+  constructor(private usuariosSvc: ClienteService) { }
 
   ngOnInit(): void {
-    // Supongamos que obtienes el ID del usuario desde algún lugar (por ejemplo, una ruta)
-    const userId = 1; // ID de ejemplo
+
+    const userId = 1;
 
     // Obtén el usuario por su ID
     this.usuariosSvc.getUsuarioPorId(userId).subscribe(
@@ -28,6 +29,8 @@ export class DashboardComponent implements OnInit {
         console.error('Error al obtener el usuario:', error);
       }
     );
+
+ 
   }
 }
 
