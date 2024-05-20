@@ -4,7 +4,7 @@ import { Book } from '../../../models/book.model'; // Ajusta la ruta según tu e
 
 @Component({
   selector: 'app-carrito',
-  
+  standalone: true,
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.css']
 })
