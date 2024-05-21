@@ -66,7 +66,7 @@
         </div>
     
         <h1>Usuario por Id</h1>
-
+        
     <div class="custom-text-color" *ngIf="usuarioSeleccionado; else loading">
         <h1>Detalles del Usuario</h1>
         <p>ID:{{ usuarioSeleccionado.id }}</p>
@@ -75,6 +75,7 @@
         <p>Dirección: {{ usuarioSeleccionado.direccion }}</p>
        
       </div>
+      <app-datospersonales></app-datospersonales>
       <ng-template #loading>
         <p>Cargando usuario...</p>
       </ng-template>
