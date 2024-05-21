@@ -7,14 +7,31 @@ export class LoginService {
 
   constructor() { }
 
+
+
   obtenerUsuario: string = '';
   obtenerContrasenia: string = '';
 
-  add(usuario:string){
+  add(usuario:string, contrasenia:string){
     this.obtenerUsuario = usuario;
-  }
-
-  addPass(contrasenia:string){
     this.obtenerContrasenia = contrasenia;
   }
+
+  
+
+  //Registro
+
+  obtenerUsuarioRegistro: string = '';
+  obtenerEmail: string= '';
+  obtenerContraseniaRegistro: string = '';
+  obtenerRepetirContrasenia: string = '';
+
+  addNuevoRegistro(usuarioRegistro:string, emailRegistro: string, contraseniaRegistro: string, repetirContrasenia: string){
+    this.obtenerUsuarioRegistro = usuarioRegistro;
+    this.obtenerEmail = emailRegistro;
+    this.obtenerContraseniaRegistro = contraseniaRegistro;
+    this.obtenerRepetirContrasenia = repetirContrasenia;
+  }
+
+
 }

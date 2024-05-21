@@ -36,12 +36,11 @@ export class InicioComponent {
   usuarioContrasenia: string = '';
 
   addUsuario(){
-    this.loginService.add(this.usuarioNombre);
+    this.loginService.add(this.usuarioNombre, this.usuarioContrasenia);
+    
   }
 
-  addContrasenia(){
-    this.loginService.addPass(this.usuarioContrasenia);
-  }
+  //addContrasenia(){}
 
 
 
@@ -75,4 +74,15 @@ export class InicioComponent {
       return this.registroFormulario.get('repetirContrasenia');
     }
     */
+
+  usuarioNombreRegistro: string = '';
+  usuarioEmailRegistro: string = '';
+  usuarioContraseniaRegistro: string = '';
+  usuarioRepetirContrasenia: string = '';
+  
+
+  addRegistroUsuario(){
+    this.loginService.addNuevoRegistro(this.usuarioNombreRegistro, this.usuarioEmailRegistro,
+      this.usuarioContraseniaRegistro, this.usuarioRepetirContrasenia);
+  }
 }
