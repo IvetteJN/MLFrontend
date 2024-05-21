@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CarritoComponent } from '../app/pages/nuestraseleccion/carrito/carrito.component'; // Asegúrate de importar tu componente aquí
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { ShoppingModule } from './shopping.module'; // Ajusta la ruta según tu estructura de archivos
 
 @NgModule({
-  declarations: [CarritoComponent],
-  imports: [
-    CommonModule, // Asegúrate de incluir CommonModule aquí
-    // Otros módulos necesarios para esta área
+  declarations: [
+    
   ],
-  exports: [CarritoComponent] // Si deseas exportar CarritoComponent para su uso fuera de este módulo
+  imports: [
+    BrowserModule,
+    ShoppingModule,
+    AppComponent,
+  ],
+  providers: [],
+  bootstrap: []
 })
-export class ShoppingModule { }
+export class AppModule { }

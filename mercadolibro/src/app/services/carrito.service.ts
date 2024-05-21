@@ -28,35 +28,34 @@ export class CarritoService {
 
   searchBooks(searchTerm: string): Book[] {
     return this.allBooks.filter(book =>
-      book.titulo.toLowerCase().includes(searchTerm.toLowerCase())
+      book.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 
   agregarAlCarrito(bookTitle: string): void {
-    const book = this.allBooks.find(book => book.titulo === bookTitle);
-    if (book) {
-      if (book.stock > 0) {
-        this.carritoItems.push(book);
-        book.stock--;
-      } else {
-        alert('No hay stock disponible para este producto.');
-      }
+    const book = this.allBooks.find(book => book.title === bookTitle);
+    if (book && book.stock > 0) {
+      this.carritoItems.push({ ...book, stock: 1 });
+      book.stock--;
     }
   }
 
   eliminarDelCarrito(bookTitle: string): void {
-    const bookIndex = this.carritoItems.findIndex(book => book.titulo === bookTitle);
+    const bookIndex = this.carritoItems.findIndex(book => book.title === bookTitle);
     if (bookIndex !== -1) {
       const book = this.carritoItems[bookIndex];
       this.carritoItems.splice(bookIndex, 1);
-      book.stock++;
+      const originalBook = this.allBooks.find(b => b.title === book.title);
+      if (originalBook) {
+        originalBook.stock++;
+      }
     }
   }
 
   actualizarCarrito(): { items: Book[], total: number } {
     let total = 0;
     this.carritoItems.forEach(book => {
-      total += book.precio;
+      total += book.price;
     });
     return {
       items: this.carritoItems,

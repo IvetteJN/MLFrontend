@@ -1,24 +1,18 @@
-<!-- carrito.component.html -->
-<div>
-  <form (submit)="onSearch()">
-    <input [(ngModel)]="searchTerm" placeholder="Buscar libros" name="search-input">
-    <button type="submit">Buscar</button>
-  </form>
-
-  <div id="cardContainer">
-    <div *ngFor="let book of books" class="product-card">
-      <!-- Tu código HTML para mostrar libros -->
-    </div>
+<div class="card text-bg-dark mb-3 fixed-bottom" style="max-width: 18rem;" id="cartContainer">
+  <div class="card-header text-centered">
+    <h4>Mi selección</h4>
   </div>
-
-  <div id="carrito-lista">
-    <h3>Carrito de Compras</h3>
-    <ul>
+  <div class="card-body">
+    <ul id="carrito-lista" class="carrito-lista">
+      <!-- Aquí se mostrarán los elementos seleccionados en el carrito -->
       <li *ngFor="let item of carrito">
-        {{ item.titulo }}
-        <button (click)="eliminarDelCarrito(item.titulo)" class="btn btn-outline-danger">X</button>
+        <span>{{ item.title }}</span>
+        <span>${{ item.price }}</span>
+        <button (click)="eliminarDelCarrito(item.title)">-</button>
+        <span>{{ item.stock }}</span>
+        <button (click)="agregarAlCarrito(item.title)">+</button>
       </li>
     </ul>
-    <p>Total: $ {{ total }}</p>
+    <h5>Total: $<span id="carrito-total">{{ total }}</span></h5>
   </div>
 </div>

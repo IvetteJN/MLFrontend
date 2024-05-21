@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CarritoService } from '../../../services/carrito.service';
-import { Book } from '../../../models/book.model'; // Ajusta la ruta según tu estructura
+import { Book } from '../../../models/book.model';
+
+
 
 @Component({
   selector: 'app-carrito',
-  standalone: true,
   templateUrl: './carrito.component.html',
-  styleUrls: ['./carrito.component.css']
+  styleUrls: ['./carrito.component.scss']
 })
 export class CarritoComponent implements OnInit {
   books: Book[] = [];
@@ -14,18 +15,18 @@ export class CarritoComponent implements OnInit {
   total: number = 0;
   searchTerm: string = '';
 
-  constructor(private carritoService: CarritoService) {}
+  constructor(private carritoService: CarritoService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.books = this.carritoService.getBooks();
+    this.actualizarCarrito();
   }
 
-  onSearch(): void {
-    if (this.searchTerm.trim() === '') {
-      this.books = this.carritoService.getBooks();
-    } else {
-      this.books = this.carritoService.searchBooks(this.searchTerm);
-    }
+  actualizarCarrito(): void {
+    const carrito = this.carritoService.actualizarCarrito();
+    this.carrito = carrito.items;
+    this.total = carrito.total;
+    this.cdr.detectChanges();  // Forzar la detección de cambios
   }
 
   agregarAlCarrito(bookTitle: string): void {
@@ -38,9 +39,7 @@ export class CarritoComponent implements OnInit {
     this.actualizarCarrito();
   }
 
-  actualizarCarrito(): void {
-    const carritoData = this.carritoService.actualizarCarrito();
-    this.carrito = carritoData.items;
-    this.total = carritoData.total;
+  buscarLibros(): void {
+    this.books = this.carritoService.searchBooks(this.searchTerm);
   }
 }
