@@ -1,0 +1,41 @@
+<body>
+  <div *ngIf="usuario">
+    <div class="formulario">
+      <h2>Modificar Datos Personales</h2>
+      <form (submit)="onSubmit()">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input id="nombre" (input)="handleInputChange('nombre', $event)" name="nombre" type="text" class="form-control" required />
+          <div *ngIf="!usuario.nombre && usuario.nombre !== undefined" class="text-danger">
+            El nombre es obligatorio.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input id="email" (input)="handleInputChange('email', $event)" name="email" type="email" class="form-control" required />
+          <div *ngIf="!usuario.email && usuario.email !== undefined" class="text-danger">
+            Introduce un email válido.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="direccion">Dirección:</label>
+          <input id="direccion" (input)="handleInputChange('direccion', $event)" name="direccion" type="text" class="form-control" required />
+          <div *ngIf="!usuario.direccion && usuario.direccion !== undefined" class="text-danger">
+            La dirección es obligatoria.
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </form>
+
+      <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+      </div>
+      <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    </div>
+  </div>
+</body>
