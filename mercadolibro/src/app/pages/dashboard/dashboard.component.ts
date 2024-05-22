@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { HistorialComprasService } from '../../services/historial-compras.service';
 import { DatospersonalesComponent } from './datospersonales/datospersonales.component';
 import { RouterLink } from '@angular/router';
+import { OrderStatusComponent } from './status/status.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DatospersonalesComponent, RouterLink, CommonModule],
+  imports: [DatospersonalesComponent, RouterLink, CommonModule,OrderStatusComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
