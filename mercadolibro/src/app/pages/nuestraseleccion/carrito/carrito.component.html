@@ -1,12 +1,18 @@
-<!--carrito de compras-->
 <div class="card text-bg-dark mb-3 fixed-bottom" style="max-width: 18rem;" id="cartContainer">
-    <div class="card-header text-centered">
-      <h4>Mi selección</h4>
-    </div>
-    <div class="card-body">
-      <ul id="carrito-lista" class="carrito-lista">
-        <!-- Aquí se mostrarán los elementos seleccionados en el carrito -->
-      </ul>
-      <h5>Total: $<span id="carrito-total">0.00</span></h5>
-    </div>
+  <div class="card-header text-centered">
+    <h4>Mi selección</h4>
   </div>
+  <div class="card-body">
+    <ul id="carrito-lista" class="carrito-lista">
+      <!-- Aquí se mostrarán los elementos seleccionados en el carrito -->
+      <li *ngFor="let item of carrito">
+        <span>{{ item.title }}</span>
+        <span>${{ item.price }}</span>
+        <button (click)="eliminarDelCarrito(item.title)">-</button>
+        <span>{{ item.stock }}</span>
+        <button (click)="agregarAlCarrito(item.title)">+</button>
+      </li>
+    </ul>
+    <h5>Total: $<span id="carrito-total">{{ total }}</span></h5>
+  </div>
+</div>

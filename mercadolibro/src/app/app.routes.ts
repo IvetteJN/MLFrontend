@@ -8,9 +8,22 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { DescripcionComponent } from './pages/nuestraseleccion/descripcion/descripcion.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductoComponent } from './pages/nuestraseleccion/producto/producto.component';
+import { DatospersonalesComponent } from './pages/dashboard/datospersonales/datospersonales.component';
 
 export const routes: Routes = [
-    {path: 'nuestraseleccion',component:NuestraseleccionComponent},
-    {path: 'inicio', title: 'Login', component:InicioComponent}
-
+    { path: 'landing', title: 'Home', component: LandingComponent },
+    { path: '', title: 'Home', component: LandingComponent },
+    { path: 'quienes', title: 'Quienes Somos', component: QuienesComponent },
+    { path: 'nuestraseleccion', title: 'Nuestra Selección', component: NuestraseleccionComponent },
+    { path: 'contacto', title: 'Contacto', component: ContactoComponent },
+    { path: 'inicio', title: 'Login', component: InicioComponent },
+    { path: 'categoria', title: 'Categoria', component: CategoriaComponent },
+    { path: 'descripcion', title: 'Descripcion', component: DescripcionComponent },
+    {
+        path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,
+        children: [
+            { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
+        ]
+    },
+    { path: 'producto', title: "Producto", component: ProductoComponent }
 ]
