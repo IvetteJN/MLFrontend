@@ -13,8 +13,8 @@ import { RouterLink } from '@angular/router';
 })
 export class DatospersonalesComponent {
 usuario: any;
-successMessage: any;
-errorMessage: any;
+successMessage: string ='Datos Guardados' ;
+errorMessage: string = 'Hubo Un Problema';
 onSubmit() {
 throw new Error('Method not implemented.');
 }
