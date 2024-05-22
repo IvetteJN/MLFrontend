@@ -19,8 +19,11 @@ export const routes: Routes = [
     { path: 'inicio', title: 'Login', component: InicioComponent },
     { path: 'categoria', title: 'Categoria', component: CategoriaComponent },
     { path: 'descripcion', title: 'Descripcion', component: DescripcionComponent },
-    { path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,
-        children:[{ path: 'editar', component: DatospersonalesComponent, title: 'Editar' }]
-     },
+    {
+        path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,
+        children: [
+            { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
+        ]
+    },
     { path: 'producto', title: "Producto", component: ProductoComponent }
 ]
