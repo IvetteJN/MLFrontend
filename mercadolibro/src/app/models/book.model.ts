@@ -1,9 +1,7 @@
 export interface Book {
-    titulo: string;
-    autor?: string;
-    categoria?: string;
-    precio: number;
-    stock: number;
-    portada: string;
-  }
-  
+  id: number;
+  title: string;
+  price: number;
+  stock: number; // Añade la propiedad stock
+  imgUrl: string;
+}
