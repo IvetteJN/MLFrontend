@@ -11,7 +11,7 @@ import { ProductoComponent } from './pages/nuestraseleccion/producto/producto.co
 import { DatospersonalesComponent } from './pages/dashboard/datospersonales/datospersonales.component';
 
 import { HistorialComprasComponent } from './pages/dashboard/historial-compras/historial-compras.component';
-import { OrderStatusComponent } from './pages/dashboard/status/status.component';
+import { StatusComponent } from './pages/dashboard/status/status.component';
 import { CalificacionesComponent } from './pages/dashboard/calificaciones/calificaciones.component';
 
 
@@ -30,7 +30,7 @@ export const routes: Routes = [
             { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
 
             { path: 'historialcompras', component: HistorialComprasComponent, title: 'Mis Compras' },
-            { path: 'statusC', component: OrderStatusComponent, title: 'Estado de mi compra' },
+            { path: 'statusC', component: StatusComponent, title: 'Estado de mi compra' },
             { path: 'calificacion', component: CalificacionesComponent, title: 'Calificacion de Productos' },
 
         ]
