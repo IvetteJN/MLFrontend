@@ -14,7 +14,7 @@ import { CalificacionesComponent } from './calificaciones/calificaciones.compone
   selector: 'app-dashboard',
   standalone: true,
 
-  imports: [DatospersonalesComponent, RouterLink, CommonModule, SidebarComponent, OrderStatusComponent, CalificacionesComponent],
+  imports: [DatospersonalesComponent, RouterLink, CommonModule, SidebarComponent, StatusComponent, CalificacionesComponent],
 
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
