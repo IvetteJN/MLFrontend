@@ -5,7 +5,6 @@ import { HistorialComprasComponent } from './historial-compras/historial-compras
 import { HistorialComprasService } from '../../services/historial-compras.service';
 import { DatospersonalesComponent } from './datospersonales/datospersonales.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
-
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { StatusComponent } from './status/status.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';

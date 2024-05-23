@@ -9,8 +9,8 @@ import { DescripcionComponent } from './pages/nuestraseleccion/descripcion/descr
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductoComponent } from './pages/nuestraseleccion/producto/producto.component';
 import { DatospersonalesComponent } from './pages/dashboard/datospersonales/datospersonales.component';
-
 import { HistorialComprasComponent } from './pages/dashboard/historial-compras/historial-compras.component';
+import { DashboardlandingComponent } from './pages/dashboard/dashboardlanding/dashboardlanding.component';
 import { StatusComponent } from './pages/dashboard/status/status.component';
 import { CalificacionesComponent } from './pages/dashboard/calificaciones/calificaciones.component';
 
@@ -27,8 +27,9 @@ export const routes: Routes = [
     {
         path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,
         children: [
+            { path: '',component: DashboardlandingComponent},
+            { path: 'dashboardlanding',component: DashboardlandingComponent},
             { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
-
             { path: 'historialcompras', component: HistorialComprasComponent, title: 'Mis Compras' },
             { path: 'statusC', component: StatusComponent, title: 'Estado de mi compra' },
             { path: 'calificacion', component: CalificacionesComponent, title: 'Calificacion de Productos' },
