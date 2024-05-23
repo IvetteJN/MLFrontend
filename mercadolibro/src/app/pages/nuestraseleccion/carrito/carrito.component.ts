@@ -6,6 +6,7 @@ import { Book } from '../../../models/book.model';
 
 @Component({
   selector: 'app-carrito',
+  standalone: true,
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.scss']
 })
@@ -15,7 +16,7 @@ export class CarritoComponent implements OnInit {
   total: number = 0;
   searchTerm: string = '';
 
-  constructor(private carritoService: CarritoService, private cdr: ChangeDetectorRef) {}
+  constructor(private carritoService: CarritoService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.books = this.carritoService.getBooks();

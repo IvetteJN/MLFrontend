@@ -11,16 +11,16 @@
 
 
       <div class="div__login-input">
-        <input type="text" class="form__input form-control" id="nombre" name="usuario" required minlength="4"
-          maxlength="10" placeholder="Nombre" formControlName="nombre">
-        @if (!Nombre?.value) {
-        <p>El nombre es requerido.</p>
+        <input type="text" class="form__input form-control" id="email" name="email" required minlength="4"
+          maxlength="20" placeholder="Email" formControlName="email">
+        @if (!Email?.value) {
+        <p>El email es requerido.</p>
         }
 
 
 
         <div class="invalid-feedback">
-          El nombre es requerido y debe contener letras y números.
+          El email es requerido.
         </div>
 
 
@@ -37,8 +37,7 @@
 
 
       <div class="div-botones">
-        <!-- <button class="buton" type="submit" [disabled]="!loginFormulario.valid" routerLink="/dashboard"> -->
-        <button class="buton nav-link" routerLink="/dashboard">ingresar
+        <button class="buton nav-link">ingresar
           <span id="span1"></span>
           <span id="span2"></span>
           <span id="span3"></span>
@@ -61,7 +60,7 @@
             REGISTRO
           </h1>
           <button type="button" class="btn-close text-white bg-white nav-link" data-bs-dismiss="modal"
-            aria-label="Close" routerLink="/dashboard"></button>
+            aria-label="Close"></button>
         </div>
         <form class="needs-validation" id="registro" [formGroup]="registroFormulario" (ngSubmit)="enviarDatosRegistro()"
           novalidate>
@@ -83,7 +82,7 @@
               <input class="form-control" type="email" id="registroCorreo" formControlName="email"
                 [(ngModel)]="usuarioEmailRegistro" required>
               <div class="invalid-feedback">
-                Debe tener formato de correo valido.
+                Debe tener formato de email valido.
               </div>
             </div><br>
 

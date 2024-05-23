@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FraseComponent } from '../frase/frase.component';
+import { FraseComponent } from './frase/frase.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
