@@ -7,13 +7,15 @@ import { DatospersonalesComponent } from './datospersonales/datospersonales.comp
 import { RouterLink } from '@angular/router';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { OrderStatusComponent } from './status/status.component';
+import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
 
-  imports: [DatospersonalesComponent, RouterLink, CommonModule,SidebarComponent],
+  imports: [DatospersonalesComponent, RouterLink, CommonModule,SidebarComponent, OrderStatusComponent, CalificacionesComponent],
 
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
