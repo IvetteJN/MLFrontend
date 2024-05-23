@@ -6,7 +6,7 @@ import { QuienesComponent } from './pages/quienes/quienes.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { CategoriaComponent } from './pages/nuestraseleccion/categoria/categoria.component';
-import { OrderStatusComponent } from './pages/dashboard/status/status.component';
+import { StatusComponent } from './pages/dashboard/status/status.component';
 
 
 
@@ -14,7 +14,7 @@ import { OrderStatusComponent } from './pages/dashboard/status/status.component'
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ContactoComponent, FooterComponent, QuienesComponent, NavComponent, LandingComponent, CategoriaComponent, RouterLink, OrderStatusComponent],
+  imports: [RouterOutlet, ContactoComponent, FooterComponent, QuienesComponent, NavComponent, LandingComponent, CategoriaComponent, RouterLink, StatusComponent],
   styleUrl: './app.component.css',
   templateUrl: './app.component.html',
 })

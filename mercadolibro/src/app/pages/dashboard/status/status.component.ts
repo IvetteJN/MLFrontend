@@ -1,26 +1,17 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
-interface Order {
-  orderId: number;
-  orderDate: Date;
-  status: string;
-}
+import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-order-status',
+  selector: 'app-status',
   standalone: true,
-  imports:[CommonModule, RouterLink],
-  template:`
-    <div *ngIf="order">
-      Order ID: {{ order.orderId }}<br>
-      Order Date: {{ order.orderDate | date: 'short' }}<br>
-      Status: {{ order.status }}
-    </div>
-  `,
+  imports: [RouterLink, RouterOutlet, CommonModule],
+  templateUrl: './status.component.html',
   styleUrls: ['./status.component.css']
 })
-export class OrderStatusComponent {
-  @Input() order: Order | undefined;
+export class StatusComponent {
+  order = {
+    orderId: 12345,
+    status: 'En proceso'
+  };
 }
