@@ -9,7 +9,9 @@ import { DescripcionComponent } from './pages/nuestraseleccion/descripcion/descr
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductoComponent } from './pages/nuestraseleccion/producto/producto.component';
 import { DatospersonalesComponent } from './pages/dashboard/datospersonales/datospersonales.component';
+
 import { HistorialComprasComponent } from './pages/dashboard/historial-compras/historial-compras.component';
+
 
 export const routes: Routes = [
     { path: 'landing', title: 'Home', component: LandingComponent },
@@ -24,7 +26,9 @@ export const routes: Routes = [
         path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,
         children: [
             { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
+
             { path: 'historialcompras', component: HistorialComprasComponent, title: 'Mis Compras' },
+
         ]
     },
     { path: 'producto', title: "Producto", component: ProductoComponent }
