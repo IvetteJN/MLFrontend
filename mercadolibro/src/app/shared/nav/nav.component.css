@@ -2,7 +2,7 @@ header {
   min-height: 5vh;
 }
 
-/* navbar */
+
 .navbar {
   background-color: #746b6b;
   color: rgb(0, 0, 0);
@@ -12,7 +12,6 @@ header {
   padding: 10px 20px;
   z-index: 20;
 }
-
 
 /* Logo */
 .logo img {
