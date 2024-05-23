@@ -15,4 +15,4 @@ import { CarritoComponent } from './carrito/carrito.component';
   templateUrl: './nuestraseleccion.component.html',
   styleUrls: ['./nuestraseleccion.component.css']
 })
-export class NuestraseleccionComponent {}
+export class NuestraseleccionComponent { }

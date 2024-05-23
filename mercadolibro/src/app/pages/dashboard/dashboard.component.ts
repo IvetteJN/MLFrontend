@@ -3,11 +3,12 @@ import { ClienteService } from '../../services/cliente.service';
 import { CommonModule } from '@angular/common';
 import { HistorialComprasService } from '../../services/historial-compras.service';
 import { DatospersonalesComponent } from './datospersonales/datospersonales.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, DatospersonalesComponent],
+  imports: [CommonModule, DatospersonalesComponent, RouterLink, RouterOutlet],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -31,7 +32,7 @@ export class DashboardComponent implements OnInit {
       }
     );
 
- 
+
   }
 }
 

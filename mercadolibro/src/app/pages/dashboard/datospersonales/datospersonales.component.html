@@ -1,39 +1,37 @@
-<body>
-  <div class="formulario" *ngIf="usuario">
-      <h2>Modificar Datos Personales</h2>
-      <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-              <label for="nombre">Nombre:</label>
-              <input id="nombre" formControlName="nombre" type="text" class="form-control" />
-              <div *ngIf="userForm.get('nombre').invalid && userForm.get('nombre').touched" class="text-danger">
-                  El nombre es obligatorio.
-              </div>
-          </div>
+<div class="formulario" *ngIf="usuario">
+    <h2>Modificar Datos Personales</h2>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" formControlName="nombre" type="text" class="form-control" />
+            <div *ngIf="userForm.get('nombre').invalid && userForm.get('nombre').touched" class="text-danger">
+                El nombre es obligatorio.
+            </div>
+        </div>
 
-          <div class="form-group">
-              <label for="email">Email:</label>
-              <input id="email" formControlName="email" type="email" class="form-control" />
-              <div *ngIf="userForm.get('email').invalid && userForm.get('email').touched" class="text-danger">
-                  Introduce un email válido.
-              </div>
-          </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input id="email" formControlName="email" type="email" class="form-control" />
+            <div *ngIf="userForm.get('email').invalid && userForm.get('email').touched" class="text-danger">
+                Introduce un email válido.
+            </div>
+        </div>
 
-          <div class="form-group">
-              <label for="direccion">Dirección:</label>
-              <input id="direccion" formControlName="direccion" type="text" class="form-control" />
-              <div *ngIf="userForm.get('direccion').invalid && userForm.get('direccion').touched" class="text-danger">
-                  La dirección es obligatoria.
-              </div>
-          </div>
+        <div class="form-group">
+            <label for="direccion">Dirección:</label>
+            <input id="direccion" formControlName="direccion" type="text" class="form-control" />
+            <div *ngIf="userForm.get('direccion').invalid && userForm.get('direccion').touched" class="text-danger">
+                La dirección es obligatoria.
+            </div>
+        </div>
 
-          <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Guardar Cambios</button>
-      </form>
+        <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Guardar Cambios</button>
+    </form>
 
-      <div *ngIf="successMessage" class="alert alert-success">
-          {{ successMessage }}
-      </div>
-      <div *ngIf="errorMessage" class="alert alert-danger">
-          {{ errorMessage }}
-      </div>
-  </div>
-</body>
+    <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+    </div>
+</div>

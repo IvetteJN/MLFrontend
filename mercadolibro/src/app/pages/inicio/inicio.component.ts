@@ -13,7 +13,7 @@ export class InicioComponent {
 
   //Elementos del login
   loginFormulario = new FormGroup({
-    usuario: new FormControl('', Validators.required),
+    nombre: new FormControl('', Validators.required),
     contrasenia: new FormControl('', Validators.required),
   })
 
@@ -21,8 +21,8 @@ export class InicioComponent {
     console.log(this.loginFormulario.value);
   }
 
-  get Usuario() {
-    return this.loginFormulario.get('usuario');
+  get Nombre() {
+    return this.loginFormulario.get('nombre');
   }
 
   get Contrasenia() {
@@ -30,7 +30,7 @@ export class InicioComponent {
   }
   //Elementos del registro
   registroFormulario = new FormGroup({
-    usuarioRegistro: new FormControl('', Validators.required),
+    nombreRegistro: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     contraseniaRegistro: new FormControl('', Validators.required),
     repetirContrasenia: new FormControl('', Validators.required),
@@ -40,8 +40,8 @@ export class InicioComponent {
     console.log(this.registroFormulario.value);
   }
   /*
-    get UsuarioRegistro(){
-      return this.registroFormulario.get('usuarioRegistro');
+    get NombreRegistro(){
+      return this.registroFormulario.get('nombreRegistro');
     }
   
     get Email(){
