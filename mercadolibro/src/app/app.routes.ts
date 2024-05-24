@@ -13,6 +13,7 @@ import { DatospersonalesComponent } from './pages/dashboard/datospersonales/dato
 import { HistorialComprasComponent } from './pages/dashboard/historial-compras/historial-compras.component';
 import { StatusComponent } from './pages/dashboard/status/status.component';
 import { CalificacionesComponent } from './pages/dashboard/calificaciones/calificaciones.component';
+import { PromocionesComponent } from './pages/dashboard/promociones/promociones.component';
 
 
 export const routes: Routes = [
@@ -32,6 +33,7 @@ export const routes: Routes = [
             { path: 'historialcompras', component: HistorialComprasComponent, title: 'Mis Compras' },
             { path: 'statusC', component: StatusComponent, title: 'Estado de mi compra' },
             { path: 'calificacion', component: CalificacionesComponent, title: 'Calificacion de Productos' },
+            {path: 'promociones', component: PromocionesComponent, title: 'Descuentos y cupones'}
 
         ]
     },
