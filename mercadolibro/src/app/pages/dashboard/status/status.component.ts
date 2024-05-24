@@ -12,6 +12,7 @@ import { RouterLink } from '@angular/router';
 export class StatusComponent {
   order = {
     orderId: 12345,
+    fecha: "20/05/2024",
     status: 'En proceso'
   };
 }
