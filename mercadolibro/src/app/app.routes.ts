@@ -11,6 +11,7 @@ import { HistorialComprasComponent } from './pages/dashboard/historial-compras/h
 import { DashboardlandingComponent } from './pages/dashboard/dashboardlanding/dashboardlanding.component';
 import { StatusComponent } from './pages/dashboard/status/status.component';
 import { CalificacionesComponent } from './pages/dashboard/calificaciones/calificaciones.component';
+import { ReviewsComponent } from './pages/dashboard/calificaciones2/calificaciones2.component';
 
 export const routes: Routes = [
     { path: 'landing', title: 'Home', component: LandingComponent },
@@ -32,7 +33,7 @@ export const routes: Routes = [
             { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
             { path: 'historialcompras', component: HistorialComprasComponent, title: 'Mis Compras' },
             { path: 'statusC', component: StatusComponent, title: 'Estado de mi compra' },
-            { path: 'calificacion', component: CalificacionesComponent, title: 'Calificacion de Productos' },
+            { path: 'calificacion', component: ReviewsComponent, title: 'Calificacion de Productos' },
         ]
     }
 ];
