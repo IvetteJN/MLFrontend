@@ -1,48 +1,36 @@
+import { Location, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { Libro } from "../../../services/producto"
+import { ActivatedRoute } from '@angular/router';
+import { ProductoService } from '../../../services/producto.service';
 
 @Component({
   selector: 'app-descripcion',
   standalone: true,
+  imports: [NgIf],
   templateUrl: './descripcion.component.html',
   styleUrls: ['./descripcion.component.css']
 })
 export class DescripcionComponent {
 
-  @Input() id!: String;
-  constructor() { }
+  @Input() libro?: Libro;
 
-  showBookDetails(book: {
-    titulo: any;
-    autor: any;
-    categoria: any;
-    descripcion: any;
-    precio: any;
-    stock: any;
-  }) {
-    const bookContainer = document.getElementById('book-container');
+  constructor(
+    private route: ActivatedRoute,
+    private productoService: ProductoService,
+    private location: Location) { }
 
-    const bookContent = `
-      <div class="mb-3" style="max-width: 760px;">
-        <div class="row g-0">
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="title">${book.titulo}</h5>
-              <p class="card-text">Autor: ${book.autor || 'Desconocido'}</p>
-              <p class="card-text">Categoría: ${book.categoria || 'Desconocida'}</p>
-              <p class="animado">Sinopsis: ${book.descripcion}</p>
-              <p class="card-text2">Precio: $ ${book.precio}</p>
-              <p class="card-text">Stock Disponible: ${book.stock} Unidades</p>
-              <a class="btn btn-dark" href="Productos.html">Volver</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
+  ngOnInit(): void {
+    this.getLibro();
+  }
 
-    if (bookContainer) {
-      bookContainer.innerHTML = bookContent;
-    } else {
-      console.error('El elemento con ID "book-container" no se encontró.');
-    }
+  getLibro(): void {
+    const titulo = String(this.route.snapshot.paramMap.get('titulo'));
+    this.productoService.getLibro(titulo)
+      .subscribe(libro => this.libro = libro);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }
