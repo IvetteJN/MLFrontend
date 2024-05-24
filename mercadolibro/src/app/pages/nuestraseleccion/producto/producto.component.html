@@ -1,1 +1,20 @@
-<div id="cardContainer"></div>
+<div id="cardContainer" *ngFor="let libro of libros">
+    <div class="card text-bg-secondary mb-1" style="max-width: 700px;">
+        <div class="d-flex align-items-center">
+            <div class="col-4">
+                <img src={{libro.portada}} alt="" class="card-img-top">
+            </div>
+            <div class="col-8">
+                <div class="card-body">
+                    <p id="title"><b>Título:</b> {{ libro.titulo }}</p>
+                    <p><b>Autor:</b> {{ libro.autor }}</p>
+                    <p><b>Categoría:</b> {{ libro.categoria }}</p>
+                    <p><b>Precio:</b> $ {{ libro.precio }} </p>
+                    <p class="stock"><b>Stock:</b> {{ libro.stock }} </p>
+                    <button class="btn btn-dark m-3">COMPRAR</button>
+                    <button routerLink="/descripcion/{{ libro.titulo }}" class="btn btn-light">SINOPSIS</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
