@@ -1,0 +1,35 @@
+<div class="reviews-container">
+  <h2>Opiniones de Clientes</h2>
+  <p class="subtitle">La felicitaciones de nuestros clientes Plasmada.</p>
+  
+  <div class="review-card" *ngFor="let review of reviews">
+    <div class="photo-container">
+      <img [src]="review.photo" alt="{{review.name}}" class="photo">
+    </div>
+    <div class="review-content">
+      <h3>{{review.name}}, {{review.location}}</h3>
+      <p class="review-date">Opinión recibida el {{review.date | date: 'fullDate'}}</p>
+      <p>{{review.content}}</p>
+    </div>
+  </div>
+
+
+  NO ENTENDI SI NECESITABA TENER PARA AGREGAR O SOLO MOSTRAR LO EXISTENTE
+  <!-- <form class="review-form">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+      <label for="location">Ubicación:</label>
+      <input type="text" id="location" name="location" required>
+    </div>
+    <div class="form-group">
+      <label for="content">Opinión:</label>
+      <textarea id="content" name="content" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Enviar Opinión</button>
+  </form> -->
+
+  
+</div>

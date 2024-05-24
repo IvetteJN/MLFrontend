@@ -1,6 +1,7 @@
 
 .dashboard {
     display: flex;
+    
   }
   app-sidebar {
     width: 250px; 

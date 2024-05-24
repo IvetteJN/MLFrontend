@@ -2,10 +2,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 60vh;
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
     margin: 0;
+    margin-left: -400px;
+    margin-top: 83px;
 }
 
 .formulario {
@@ -15,7 +17,7 @@ body {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 350px; /* Centrado horizontal */
+    margin-left: 250px; /* Centrado horizontal */
     margin-top: -200px;
     box-sizing: border-box; /* Asegura que el padding no rompa el ancho máximo */
 }
