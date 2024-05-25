@@ -210,7 +210,7 @@ textarea {
 .rating {
   display: flex;
   justify-content:flex-end;
-  direction: ltr; /* Add this to fix the order */
+  direction: ltr; 
 }
 
 .rating input {
@@ -231,5 +231,5 @@ textarea {
 }
 
 .rating {
-  direction: rtl; /* Add this to reset direction */
+  direction: rtl; 
 }
