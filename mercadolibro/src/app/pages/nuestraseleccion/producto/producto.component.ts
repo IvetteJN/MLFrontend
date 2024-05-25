@@ -30,7 +30,12 @@ export class ProductoComponent implements OnInit {
   }
 
   anadirAlCarrito(libro: Libro): void {
-    this.agregarAlCarrito.emit({ titulo: libro.titulo, precio: libro.precio });
+    if (libro.stock > 0) {
+      this.agregarAlCarrito.emit({ titulo: libro.titulo, precio: libro.precio });
+      libro.stock--;
+    } else {
+      alert('El libro seleccionado no tiene stock disponible.');
+    }
   }
 
   buscarLibros(params: { termino: string, categoria: string }): void {

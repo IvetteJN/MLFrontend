@@ -1,5 +1,6 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
+import { CarritoService } from '../../../services/carrito.service';
 
 interface CarritoItem {
   titulo: string;
@@ -18,6 +19,8 @@ export class CarritoComponent {
   carrito: CarritoItem[] = [];
   total: number = 0;
 
+  constructor(private carritoService: CarritoService) { }
+
   agregarAlCarrito(item: CarritoItem): void {
     const existingItem = this.carrito.find(ci => ci.titulo === item.titulo);
     if (existingItem) {
@@ -26,6 +29,7 @@ export class CarritoComponent {
       this.carrito.push({ ...item, cantidad: 1 });
     }
     this.calcularTotal();
+    this.actualizarCantidadProductos();
   }
 
   eliminarDelCarrito(titulo: string): void {
@@ -37,9 +41,16 @@ export class CarritoComponent {
       }
     }
     this.calcularTotal();
+    this.actualizarCantidadProductos();
   }
 
   calcularTotal(): void {
     this.total = this.carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
   }
+
+  private actualizarCantidadProductos(): void {
+    const cantidad = this.carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    this.carritoService.actualizarCantidadProductos(cantidad);
+  }
+
 }
