@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-
+import { CarritoService } from '../../services/carrito.service';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
   templateUrl: './nav.component.html',
-  styleUrl: './nav.component.css'
+  styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
+  cantidadProductosCarrito: number = 0;
 
+  constructor(private carritoService: CarritoService) {
+    this.carritoService.cantidadProductos.subscribe(cantidad => {
+      this.cantidadProductosCarrito = cantidad;
+    });
+  }
 }

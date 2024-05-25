@@ -1,3 +1,10 @@
+<app-categoria (buscar)="buscarLibros($event)"></app-categoria>
+<div *ngIf="libros.length === 0" class="card text-center">
+    <div class="card-body">
+        No se encontraron resultados. Prueba otra vez.
+    </div>
+</div>
+
 <div id="cardContainer" *ngFor="let libro of libros">
     <div class="card text-bg-secondary mb-1" style="max-width: 700px;">
         <div class="d-flex align-items-center">
@@ -16,12 +23,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-<app-categoria (buscar)="buscarLibros($event)"></app-categoria>
-<div *ngIf="libros.length === 0" class="card text-center">
-    <div class="card-body">
-        No se encontraron resultados. Prueba otra vez.
     </div>
 </div>
