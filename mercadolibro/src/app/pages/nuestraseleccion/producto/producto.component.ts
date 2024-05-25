@@ -28,6 +28,10 @@ export class ProductoComponent implements OnInit {
   }
 
   buscarLibros(params: { termino: string, categoria: string }): void {
-    this.productoService.searchLibros(params.termino, params.categoria).subscribe(libros => this.libros = libros);
+    if (!params.termino && !params.categoria) {
+      this.getLibros();
+    } else {
+      this.productoService.searchLibros(params.termino, params.categoria).subscribe(libros => this.libros = libros);
+    }
   }
 }

@@ -1,6 +1,7 @@
 <div class="contenedor">
     <label for="categoriaSelector">Elige una categoría:</label>
     <select id="categoriaSelector" [(ngModel)]="opcionSeleccionada" (change)="buscarLibros()" name="categoria">
+        <option value="">-- Todas las categorías --</option>
         <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
     </select>
 
