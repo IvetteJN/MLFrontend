@@ -19,4 +19,17 @@ export class ProductoService {
     const libro = LIBROS.find(h => h.titulo === titulo)!;
     return of(libro);
   }
+
+  getCategorias(): Observable<string[]> {
+    const categorias = [...new Set(LIBROS.map(libro => libro.categoria))];
+    return of(categorias);
+  }
+
+  searchLibros(termino: string, categoria: string): Observable<Libro[]> {
+    let resultados = LIBROS.filter(libro => libro.titulo.toLowerCase().includes(termino.toLowerCase()));
+    if (categoria && categoria !== '') {
+      resultados = resultados.filter(libro => libro.categoria === categoria);
+    }
+    return of(resultados);
+  }
 }
