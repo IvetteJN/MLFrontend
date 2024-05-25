@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { NgFor, NgIf } from "@angular/common";
 import { Libro } from "../../../services/producto";
 import { ProductoService } from "../../../services/producto.service";
@@ -17,6 +17,8 @@ export class ProductoComponent implements OnInit {
 
   libros: Libro[] = [];
 
+  @Output() agregarAlCarrito = new EventEmitter<{ titulo: string, precio: number }>();
+
   constructor(private productoService: ProductoService) { }
 
   ngOnInit(): void {
@@ -27,7 +29,15 @@ export class ProductoComponent implements OnInit {
     this.productoService.getLibros().subscribe(libros => this.libros = libros);
   }
 
+  anadirAlCarrito(libro: Libro): void {
+    this.agregarAlCarrito.emit({ titulo: libro.titulo, precio: libro.precio });
+  }
+
   buscarLibros(params: { termino: string, categoria: string }): void {
-    this.productoService.searchLibros(params.termino, params.categoria).subscribe(libros => this.libros = libros);
+    if (!params.termino && !params.categoria) {
+      this.getLibros();
+    } else {
+      this.productoService.searchLibros(params.termino, params.categoria).subscribe(libros => this.libros = libros);
+    }
   }
 }

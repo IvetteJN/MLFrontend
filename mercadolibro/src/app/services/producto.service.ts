@@ -26,10 +26,17 @@ export class ProductoService {
   }
 
   searchLibros(termino: string, categoria: string): Observable<Libro[]> {
-    let resultados = LIBROS.filter(libro => libro.titulo.toLowerCase().includes(termino.toLowerCase()));
-    if (categoria && categoria !== '') {
-      resultados = resultados.filter(libro => libro.categoria === categoria);
+    let libros = LIBROS;
+
+    if (termino) {
+      termino = termino.toLowerCase();
+      libros = libros.filter(libro => libro.titulo.toLowerCase().includes(termino) || libro.autor.toLowerCase().includes(termino));
     }
-    return of(resultados);
+
+    if (categoria) {
+      libros = libros.filter(libro => libro.categoria === categoria);
+    }
+
+    return of(libros);
   }
 }
