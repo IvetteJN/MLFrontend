@@ -9,6 +9,7 @@ import { DescripcionComponent } from './pages/nuestraseleccion/descripcion/descr
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductoComponent } from './pages/nuestraseleccion/producto/producto.component';
 import { DatospersonalesComponent } from './pages/dashboard/datospersonales/datospersonales.component';
+import { AuthGuard} from './guard/auth.guard';
 
 export const routes: Routes = [
     { path: 'landing', title: 'Home', component: LandingComponent },
@@ -20,10 +21,11 @@ export const routes: Routes = [
     { path: 'categoria', title: 'Categoria', component: CategoriaComponent },
     { path: 'descripcion', title: 'Descripcion', component: DescripcionComponent },
     {
-        path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,
+        path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,canActivate:[AuthGuard],
         children: [
             { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
-        ]
+        ],
     },
     { path: 'producto', title: "Producto", component: ProductoComponent }
 ]
+
