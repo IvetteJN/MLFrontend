@@ -7,6 +7,7 @@ import { DescripcionComponent } from './pages/nuestraseleccion/descripcion/descr
 
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
+import { Pagina404Component } from './pages/pagina404/pagina404.component';
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DatospersonalesComponent } from './pages/dashboard/datospersonales/datospersonales.component';
@@ -34,5 +35,6 @@ export const routes: Routes = [
             { path: 'statusC', component: StatusComponent, title: 'Estado de mi compra' },
             { path: 'calificacion', component: ReviewsComponent, title: 'Calificacion de Productos' },
         ]
-    }
+    },
+    { path: '**', component: Pagina404Component }
 ];
