@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ClienteService } from '../../services/cliente.service';
 import { CommonModule } from '@angular/common';
 import { HistorialComprasComponent } from './historial-compras/historial-compras.component';
 import { HistorialComprasService } from '../../services/historial-compras.service';
@@ -9,7 +8,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { StatusComponent } from './status/status.component';
 import { CalificacionesComponent } from './calificaciones/calificaciones.component';
 import { ReviewsComponent } from './calificaciones2/calificaciones2.component';
-
+import { usuario } from '../../models/usuario.model';
 
 @Component({
   selector: 'app-dashboard',
