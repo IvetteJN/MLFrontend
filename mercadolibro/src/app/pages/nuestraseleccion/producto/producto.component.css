@@ -3,20 +3,13 @@
    color: white;
  }
 
-
-
  .card {
    max-width: 450px;
 
  }
 
-
-
  /*version mobile*/
  @media (max-width: 560px) {
-   .product-card {
-     max-width: 300px;
-   }
 
    #carouselExampleCaptions {
      display: none;
@@ -29,9 +22,6 @@
      max-width: 310px;
    }
 
-   #cardContainer {
-     margin-left: 35px;
-   }
  }
 
  /*dispositivos más grandes*/

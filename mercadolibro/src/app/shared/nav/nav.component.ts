@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { CarritoService } from '../../services/carrito.service';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
+  imports: [RouterLinkActive, RouterLink],
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })

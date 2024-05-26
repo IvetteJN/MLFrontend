@@ -8,10 +8,11 @@
   border: 1px solid #ccc;
   background-color: #ccc;
   border-radius: 5px;
+  gap: 10px;
 }
 
 .contenedor>* {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 input {
@@ -26,7 +27,7 @@ input {
 }
 
 label {
-  color: rgb(241, 238, 238);
+  color: rgb(44, 42, 42);
   font-weight: bold;
   font-size: 20px;
   text-shadow: black;
@@ -35,6 +36,42 @@ label {
 select {
   border-radius: 3px;
   background-color: white;
-  size: 20px;
   border-color: white;
+}
+
+/*tablet*/
+@media (max-width: 1023px) {
+  .contenedor {
+    flex-direction: row;
+  }
+}
+
+/*celular*/
+@media (max-width: 767px) {
+  .contenedor {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contenedor label,
+  .contenedor select,
+  .contenedor form {
+    width: 100%;
+  }
+
+  .contenedor form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    margin-left: 0;
+  }
 }
