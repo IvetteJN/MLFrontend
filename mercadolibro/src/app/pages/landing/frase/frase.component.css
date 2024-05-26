@@ -1,65 +1,65 @@
-/*ESTILO DE PÁGINA INDEX*/
-.frase-container{
-    text-align: center;
-  }
-  
+.frase-container {
+  text-align: center;
+}
+
+.frase-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+  overflow: hidden;
+  margin-top: 60px;
+  font-size: 21px;
+  color: rgb(151, 28, 28);
+}
+
+.frase .frase-container {
+  width: 80%;
+  height: 12vh;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  font-size: 21px;
+  color: rgb(151, 28, 28);
+  justify-content: center;
+  align-items: center;
+}
+
+
+/*version mobile*/
+@media (max-width: 425px) {
+
   .frase-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80px; /* Ajusta la altura según tus necesidades */
-    overflow: hidden;
-    margin-top: 60px ;
-    font-size: 21px;
-    color: rgb(151, 28, 28);
-    
-    
+    display: none;
   }
-  
-  .frase .frase-container {
-    width: 80%;
-    height: 15vh;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    font-size: 21px;
-    color: rgb(151, 28, 28);
-    justify-content: center;
-    align-items: center;
+
+}
+
+/*version tablet*/
+@media (max-width: 1023px) {
+  .frase-container {
+    font-size: 16px;
   }
-  
-  
-  /*version mobile*/
-  @media (max-width: 479px) {
-    .frase-container {
-  
-      
-      max-width: 300px;
-      }
-      #frase-container{
-        display: none;
-      }
-  
-      .product-card {
-        max-width: 100%; /* Asegura que las tarjetas ocupen el 100% del ancho en pantallas pequeñas */
-    }
-    
+
+}
+
+/*******************************/
+@keyframes carouselAnimation {
+
+  0%,
+  100% {
+    transform: translateX(0);
   }
-  
-  
-  @keyframes carouselAnimation {
-    0%,
-    100% {
-      transform: translateX(0);
-    }
-    25% {
-      transform: translateX(0);
-    }
-    50% {
-      transform: translateX(-100%);
-    }
-    75% {
-      transform: translateX(-100%);
-    }
+
+  25% {
+    transform: translateX(0);
   }
-  
+
+  50% {
+    transform: translateX(-100%);
+  }
+
+  75% {
+    transform: translateX(-100%);
+  }
+}
