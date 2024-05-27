@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
@@ -7,7 +7,7 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgIf],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css']
 })
@@ -15,6 +15,7 @@ export class InicioComponent {
   loginFormulario: FormGroup;
   registroFormulario: FormGroup;
 
+  //corroborar que las contraseñas inseridas sean iguales.
   matchingPasswordsValidator(password: string, confirmPassword: string): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const passwordControl = control.get(password);
@@ -67,6 +68,7 @@ export class InicioComponent {
     return this.registroFormulario.get('repetirContrasenia');
   }
 
+  //Login
   onEnviar(event: Event) {
     event.preventDefault();
     if (this.loginFormulario.valid) {
@@ -85,6 +87,7 @@ export class InicioComponent {
     }
   }
 
+  //Registro
   enviarDatosRegistro(event: Event) {
     event.preventDefault();
     if (this.registroFormulario.valid) {
@@ -93,7 +96,7 @@ export class InicioComponent {
       const contraseniaRegistro = this.registroFormulario.value.contraseniaRegistro;
       this.loginService.registrarUsuario(nombreRegistro, emailRegistro, contraseniaRegistro).subscribe(
         response => {
-          console.log("Respuesta del servidor:", response); // Agrega este registro para depurar
+          console.log("Respuesta del servidor:", response);
           alert("Registro exitoso");
         },
         error => {

@@ -76,38 +76,59 @@
           <div class="modal-body">
             <div class="col">
               <label class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="registroUsuario" minlength="3" maxlength="24"
-                formControlName="nombreRegistro" required>
-              <div class="form-text" id="basic-addon4">Solo letras entre 3 y 24 dígitos.</div>
-              <div *ngIf="NombreRegistro?.errors && NombreRegistro?.touched" class="invalid-feedback">
-                Debe respetar el formato.
-              </div>
+              @if(NombreRegistro?.errors && NombreRegistro?.touched)
+              {
+              @if(NombreRegistro?.hasError('required'))
+              {
+              <p class="text-danger">
+                El nombre es requerido.
+              </p>
+              }}
+              <input type="text" class="form-control" id="registroUsuario" formControlName="nombreRegistro" required>
+
               <br>
             </div>
 
             <div class="col">
               <label class="form-label">Email</label>
+              @if(EmailRegistro?.errors && EmailRegistro?.touched)
+              {
+              @if(EmailRegistro?.hasError('required'))
+              {
+              <p class="text-danger">
+                El email es requerido.
+              </p>
+              }}
               <input class="form-control" type="email" id="registroCorreo" formControlName="emailRegistro" required>
-              <div *ngIf="EmailRegistro?.errors && EmailRegistro?.touched" class="invalid-feedback">
-                Debe tener formato de email válido.
-              </div>
+
             </div><br>
 
             <div class="col">
               <label class="form-label">Contraseña</label>
+              @if(ContraseniaRegistro?.errors && ContraseniaRegistro?.touched)
+              {
+              @if(ContraseniaRegistro?.hasError('required'))
+              {
+              <p class="text-danger">
+                La contraseña es requerida. Debe contener al menos 8 caracteres.
+              </p>
+              }}
               <input type="password" class="form-control" id="registroContrasena" minlength="8"
                 formControlName="contraseniaRegistro" required>
-              <div *ngIf="ContraseniaRegistro?.errors && ContraseniaRegistro?.touched" class="invalid-feedback">
-                La contraseña debe tener al menos 8 caracteres.
-              </div>
+
               <br>
 
               <label class="form-label">Repite contraseña</label>
+              @if(RepetirContrasenia?.errors && RepetirContrasenia?.touched)
+              {
+              @if(RepetirContrasenia?.hasError('required'))
+              {
+              <p class="text-danger">
+                Las contraseñas deben coincidir.
+              </p>
+              }}
               <input type="password" class="form-control" id="registroContrasenaRepetir" minlength="8"
                 formControlName="repetirContrasenia" required>
-              <div *ngIf="RepetirContrasenia?.errors && RepetirContrasenia?.touched" class="invalid-feedback">
-                Las contraseñas deben coincidir.
-              </div>
             </div>
           </div>
           <div class="modal-footer bg-dark">
