@@ -1,30 +1,24 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  constructor() { }
+  private apiUrl = 'http://127.0.0.1:8000/api';
 
-  // Registro
-  private usuarios: { [key: string]: { email: string, password: string } } = {};
+  constructor(private http: HttpClient) { }
 
-  addNuevoRegistro(usuarioRegistro: string, emailRegistro: string, contraseniaRegistro: string) {
-    if (!this.usuarios[emailRegistro]) {
-      this.usuarios[emailRegistro] = { email: emailRegistro, password: contraseniaRegistro };
-      localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
-      return true;
-    }
-    return false;
+  registrarUsuario(nombre: string, email: string, password: string): Observable<any> {
+    const url = `${this.apiUrl}/registro/`;
+    const body = { nombre, email, contrasena: password };
+    return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 
-  // Login
-  autenticarUsuario(email: string, contrasenia: string): boolean {
-    const storedUsuarios = JSON.parse(localStorage.getItem('usuarios') || '{}');
-    const usuario = storedUsuarios[email];
-    if (usuario && usuario.password === contrasenia) {
-      return true;
-    }
-    return false;
+  autenticarUsuario(email: string, password: string): Observable<any> {
+    const url = `${this.apiUrl}/login/`;
+    const body = { email, contrasena: password };
+    return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 }

@@ -72,11 +72,14 @@ export class InicioComponent {
     if (this.loginFormulario.valid) {
       const email = this.loginFormulario.value.email;
       const contrasenia = this.loginFormulario.value.contrasenia;
-      if (this.loginService.autenticarUsuario(email, contrasenia)) {
-        alert("Login exitoso");
-      } else {
-        alert("Credenciales incorrectas");
-      }
+      this.loginService.autenticarUsuario(email, contrasenia).subscribe(
+        response => {
+          alert("Login exitoso");
+        },
+        error => {
+          alert("Credenciales incorrectas");
+        }
+      );
     } else {
       this.loginFormulario.markAllAsTouched();
     }
@@ -88,11 +91,16 @@ export class InicioComponent {
       const nombreRegistro = this.registroFormulario.value.nombreRegistro;
       const emailRegistro = this.registroFormulario.value.emailRegistro;
       const contraseniaRegistro = this.registroFormulario.value.contraseniaRegistro;
-      if (this.loginService.addNuevoRegistro(nombreRegistro, emailRegistro, contraseniaRegistro)) {
-        alert("Registro exitoso");
-      } else {
-        alert("El usuario ya está registrado");
-      }
+      this.loginService.registrarUsuario(nombreRegistro, emailRegistro, contraseniaRegistro).subscribe(
+        response => {
+          console.log("Respuesta del servidor:", response); // Agrega este registro para depurar
+          alert("Registro exitoso");
+        },
+        error => {
+          console.error("Error en el registro: ", error);
+          alert("El usuario ya está registrado");
+        }
+      );
     } else {
       this.registroFormulario.markAllAsTouched();
     }
