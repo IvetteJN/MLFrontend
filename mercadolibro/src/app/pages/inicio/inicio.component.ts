@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -31,7 +30,7 @@ export class InicioComponent {
     };
   }
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService) {
     this.loginFormulario = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       contrasenia: ['', [Validators.required, Validators.minLength(8)]]
@@ -78,7 +77,6 @@ export class InicioComponent {
       this.loginService.autenticarUsuario(email, contrasenia).subscribe(
         response => {
           alert("Login exitoso");
-          this.router.navigate(['/dashboard/dashboardlanding']);
         },
         error => {
           alert("Credenciales incorrectas");

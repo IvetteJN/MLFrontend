@@ -10,22 +10,16 @@ interface CarritoItem {
 
 @Component({
   selector: 'app-carrito',
-  standalone: true,
   imports: [NgFor],
   templateUrl: './carrito.component.html',
   styleUrls: ['./carrito.component.scss'],
+  standalone: true
 })
 export class CarritoComponent {
   carrito: CarritoItem[] = [];
   total: number = 0;
 
-  constructor(private carritoService: CarritoService) {
-
-    this.carritoService.carrito.subscribe(carrito => {
-      this.carrito = carrito;
-      this.calcularTotal();
-    });
-  }
+  constructor(private carritoService: CarritoService) { }
 
   agregarAlCarrito(item: CarritoItem): void {
     const existingItem = this.carrito.find(ci => ci.titulo === item.titulo);
@@ -34,7 +28,8 @@ export class CarritoComponent {
     } else {
       this.carrito.push({ ...item, cantidad: 1 });
     }
-    this.actualizarCarrito();
+    this.calcularTotal();
+    this.actualizarCantidadProductos();
   }
 
   eliminarDelCarrito(titulo: string): void {
@@ -45,14 +40,17 @@ export class CarritoComponent {
         this.carrito.splice(index, 1);
       }
     }
-    this.actualizarCarrito();
+    this.calcularTotal();
+    this.actualizarCantidadProductos();
   }
 
   calcularTotal(): void {
     this.total = this.carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
   }
 
-  private actualizarCarrito(): void {
-    this.carritoService.actualizarCarrito(this.carrito);
+  private actualizarCantidadProductos(): void {
+    const cantidad = this.carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    this.carritoService.actualizarCantidadProductos(cantidad);
   }
+
 }
