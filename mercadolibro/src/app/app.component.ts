@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { ContactoComponent } from './pages/contacto/contacto.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { QuienesComponent } from './pages/quienes/quienes.component';
+import { LandingComponent } from './pages/landing/landing.component';
 import { NavComponent } from './shared/nav/nav.component';
+import { CategoriaComponent } from './pages/nuestraseleccion/categoria/categoria.component';
+import { StatusComponent } from './pages/dashboard/status/status.component';
 
 
 
@@ -9,7 +14,7 @@ import { NavComponent } from './shared/nav/nav.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, NavComponent, FooterComponent],
+  imports: [RouterOutlet, ContactoComponent, FooterComponent, QuienesComponent, NavComponent, LandingComponent, CategoriaComponent, RouterLink, StatusComponent],
   styleUrl: './app.component.css',
   templateUrl: './app.component.html',
 })
@@ -21,4 +26,3 @@ export class AppComponent {
     date: new Date()
   };
 }
-

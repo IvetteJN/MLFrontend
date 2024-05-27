@@ -1,113 +1,88 @@
-import { CommonModule, NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgIf],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.css']
+  styleUrl: './inicio.component.css'
 })
 export class InicioComponent {
-  loginFormulario: FormGroup;
-  registroFormulario: FormGroup;
 
-  //corroborar que las contraseñas inseridas sean iguales.
-  matchingPasswordsValidator(password: string, confirmPassword: string): ValidatorFn {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const passwordControl = control.get(password);
-      const confirmPasswordControl = control.get(confirmPassword);
+  //Elementos del login
+  loginFormulario = new FormGroup({
+    usuario: new FormControl('', Validators.required),
+    contrasenia: new FormControl('', Validators.required),
+  })
 
-      if (!passwordControl || !confirmPasswordControl) {
-        return null;
-      }
-
-      const isMatching = passwordControl.value === confirmPasswordControl.value;
-      return isMatching ? null : { notMatching: true };
-    };
+  enviarDatosLogin(): void {
+    console.log(this.loginFormulario.value);
   }
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
-    this.loginFormulario = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      contrasenia: ['', [Validators.required, Validators.minLength(8)]]
-    });
-
-    this.registroFormulario = this.formBuilder.group({
-      nombreRegistro: ['', Validators.required],
-      emailRegistro: ['', [Validators.required, Validators.email]],
-      contraseniaRegistro: ['', [Validators.required, Validators.minLength(8)]],
-      repetirContrasenia: ['', [Validators.required, Validators.minLength(8)]]
-    }, { validators: this.matchingPasswordsValidator('contraseniaRegistro', 'repetirContrasenia') });
-  }
-
-  get Email() {
-    return this.loginFormulario.get('email');
+  get Usuario() {
+    return this.loginFormulario.get('usuario');
   }
 
   get Contrasenia() {
     return this.loginFormulario.get('contrasenia');
   }
 
-  get NombreRegistro() {
-    return this.registroFormulario.get('nombreRegistro');
+  constructor(public loginService: LoginService){ }
+
+  usuarioNombre: string = '';
+  usuarioContrasenia: string = '';
+
+  addUsuario(){
+    this.loginService.add(this.usuarioNombre, this.usuarioContrasenia);
+    
   }
 
-  get EmailRegistro() {
-    return this.registroFormulario.get('emailRegistro');
-  }
+  //addContrasenia(){}
 
-  get ContraseniaRegistro() {
-    return this.registroFormulario.get('contraseniaRegistro');
-  }
 
-  get RepetirContrasenia() {
-    return this.registroFormulario.get('repetirContrasenia');
-  }
 
-  //Login
-  onEnviar(event: Event) {
-    event.preventDefault();
-    if (this.loginFormulario.valid) {
-      const email = this.loginFormulario.value.email;
-      const contrasenia = this.loginFormulario.value.contrasenia;
-      this.loginService.autenticarUsuario(email, contrasenia).subscribe(
-        response => {
-          alert("Login exitoso");
-          this.router.navigate(['/dashboard/dashboardlanding']);
-        },
-        error => {
-          alert("Credenciales incorrectas");
-        }
-      );
-    } else {
-      this.loginFormulario.markAllAsTouched();
+
+
+  //Elementos del registro
+  registroFormulario = new FormGroup({
+    usuarioRegistro: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    contraseniaRegistro: new FormControl('', Validators.required),
+    repetirContrasenia: new FormControl('', Validators.required),
+  })
+
+  enviarDatosRegistro(): void {
+    console.log(this.registroFormulario.value);
+  }
+  /*
+    get UsuarioRegistro(){
+      return this.registroFormulario.get('usuarioRegistro');
     }
-  }
-
-  //Registro
-  enviarDatosRegistro(event: Event) {
-    event.preventDefault();
-    if (this.registroFormulario.valid) {
-      const nombreRegistro = this.registroFormulario.value.nombreRegistro;
-      const emailRegistro = this.registroFormulario.value.emailRegistro;
-      const contraseniaRegistro = this.registroFormulario.value.contraseniaRegistro;
-      this.loginService.registrarUsuario(nombreRegistro, emailRegistro, contraseniaRegistro).subscribe(
-        response => {
-          console.log("Respuesta del servidor:", response);
-          alert("Registro exitoso");
-        },
-        error => {
-          console.error("Error en el registro: ", error);
-          alert("El usuario ya está registrado");
-        }
-      );
-    } else {
-      this.registroFormulario.markAllAsTouched();
+  
+    get Email(){
+      return this.registroFormulario.get('email');
     }
+  
+    get ContraseniaUsuario(){
+      return this.registroFormulario.get('contraseniaRegistro');
+    }
+  
+    get RepetirContrasenia(){
+      return this.registroFormulario.get('repetirContrasenia');
+    }
+    */
+
+  usuarioNombreRegistro: string = '';
+  usuarioEmailRegistro: string = '';
+  usuarioContraseniaRegistro: string = '';
+  usuarioRepetirContrasenia: string = '';
+  
+
+  addRegistroUsuario(){
+    this.loginService.addNuevoRegistro(this.usuarioNombreRegistro, this.usuarioEmailRegistro,
+      this.usuarioContraseniaRegistro, this.usuarioRepetirContrasenia);
   }
 }
