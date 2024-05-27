@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
-import { NuestraseleccionCarruselComponent } from './nuestraseleccion-carrusel/nuestraseleccion-carrusel.component';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { CategoriaComponent } from './categoria/categoria.component';
+import { RouterModule } from '@angular/router';
+import { NuestraseleccionCarruselComponent } from './nuestraseleccion-carrusel/nuestraseleccion-carrusel.component';
 import { ProductoComponent } from './producto/producto.component';
-import { ShoppingModule } from '../../shopping.module';
 import { CarritoComponent } from './carrito/carrito.component';
-
 
 @Component({
   selector: 'app-nuestraseleccion',
-  standalone: true,
-  imports: [CommonModule, NuestraseleccionCarruselComponent, ShoppingModule, CategoriaComponent, ProductoComponent],
+  imports: [CommonModule, RouterModule, NuestraseleccionCarruselComponent, ProductoComponent, CarritoComponent],
   templateUrl: './nuestraseleccion.component.html',
-  styleUrls: ['./nuestraseleccion.component.css']
+  styleUrls: ['./nuestraseleccion.component.css'],
+  standalone: true,
 })
-export class NuestraseleccionComponent {}
+export class NuestraseleccionComponent {
+  @ViewChild(CarritoComponent) carritoComponent!: CarritoComponent;
+
+  handleAgregarAlCarrito(event: { titulo: string, precio: number }): void {
+    this.carritoComponent.agregarAlCarrito({ ...event, cantidad: 1 });
+  }
+}
