@@ -4,34 +4,27 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService {
-
   constructor() { }
 
+  // Registro
+  private usuarios: { [key: string]: { email: string, password: string } } = {};
 
-
-  obtenerUsuario: string = '';
-  obtenerContrasenia: string = '';
-
-  add(usuario:string, contrasenia:string){
-    this.obtenerUsuario = usuario;
-    this.obtenerContrasenia = contrasenia;
+  addNuevoRegistro(usuarioRegistro: string, emailRegistro: string, contraseniaRegistro: string) {
+    if (!this.usuarios[emailRegistro]) {
+      this.usuarios[emailRegistro] = { email: emailRegistro, password: contraseniaRegistro };
+      localStorage.setItem('usuarios', JSON.stringify(this.usuarios));
+      return true;
+    }
+    return false;
   }
 
-  
-
-  //Registro
-
-  obtenerUsuarioRegistro: string = '';
-  obtenerEmail: string= '';
-  obtenerContraseniaRegistro: string = '';
-  obtenerRepetirContrasenia: string = '';
-
-  addNuevoRegistro(usuarioRegistro:string, emailRegistro: string, contraseniaRegistro: string, repetirContrasenia: string){
-    this.obtenerUsuarioRegistro = usuarioRegistro;
-    this.obtenerEmail = emailRegistro;
-    this.obtenerContraseniaRegistro = contraseniaRegistro;
-    this.obtenerRepetirContrasenia = repetirContrasenia;
+  // Login
+  autenticarUsuario(email: string, contrasenia: string): boolean {
+    const storedUsuarios = JSON.parse(localStorage.getItem('usuarios') || '{}');
+    const usuario = storedUsuarios[email];
+    if (usuario && usuario.password === contrasenia) {
+      return true;
+    }
+    return false;
   }
-
-
 }
