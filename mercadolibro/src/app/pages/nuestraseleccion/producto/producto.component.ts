@@ -1,42 +1,47 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Libro } from "../../../services/producto";
+import { ProductoService } from "../../../services/producto.service";
+import { DescripcionComponent } from "../descripcion/descripcion.component";
+import { RouterLink } from "@angular/router";
+import { CategoriaComponent } from "../categoria/categoria.component";
 
 @Component({
-  selector: 'app-producto',
+  selector: 'app-product',
   standalone: true,
-  imports: [],
   templateUrl: './producto.component.html',
-  styleUrl: './producto.component.css'
+  styleUrls: ['./producto.component.css'],
+  imports: [DescripcionComponent, RouterLink, CategoriaComponent]
 })
-export class ProductoComponent {
+export class ProductoComponent implements OnInit {
 
-  books: any[] = [];
-  allBooks: any[] = [];
-  showScrollButton: boolean = false;
+  libros: Libro[] = [];
 
-  constructor(private http: HttpClient) { }
+  @Output() agregarAlCarrito = new EventEmitter<{ titulo: string, precio: number }>();
+
+  constructor(private productoService: ProductoService) { }
 
   ngOnInit(): void {
-    this.fetchBooks();
-    window.addEventListener('scroll', this.scrollListener.bind(this));
+    this.getLibros();
   }
 
-  ngOnDestroy(): void {
-    window.removeEventListener('scroll', this.scrollListener.bind(this));
+  getLibros(): void {
+    this.productoService.getLibros().subscribe(libros => this.libros = libros);
   }
 
-  fetchBooks(): void {
-
-    this.http.get<any>('../../').subscribe(data => {
-      this.allBooks = data;
-      this.books = data;
-    });
+  anadirAlCarrito(libro: Libro): void {
+    if (libro.stock > 0) {
+      this.agregarAlCarrito.emit({ titulo: libro.titulo, precio: libro.precio });
+      libro.stock--;
+    } else {
+      alert('El libro seleccionado no tiene stock disponible.');
+    }
   }
 
-  private scrollListener(): void {
-    // Lógica de desplazamiento aquí
-
-  
-
+  buscarLibros(params: { termino: string, categoria: string }): void {
+    if (!params.termino && !params.categoria) {
+      this.getLibros();
+    } else {
+      this.productoService.searchLibros(params.termino, params.categoria).subscribe(libros => this.libros = libros);
+    }
   }
-  }
+}
