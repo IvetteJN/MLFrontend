@@ -16,6 +16,7 @@ import { DashboardlandingComponent } from './pages/dashboard/dashboardlanding/da
 import { StatusComponent } from './pages/dashboard/status/status.component';
 import { CalificacionesComponent } from './pages/dashboard/calificaciones/calificaciones.component';
 import { ReviewsComponent } from './pages/dashboard/calificaciones2/calificaciones2.component';
+import { ResumenCompraComponent } from './pages/dashboard/resumen-compra/resumen-compra.component';
 
 export const routes: Routes = [
     { path: 'landing', title: 'Home', component: LandingComponent },
@@ -30,6 +31,7 @@ export const routes: Routes = [
         children: [
             { path: '', redirectTo: 'dashboardlanding', pathMatch: 'full' },
             { path: 'dashboardlanding', component: DashboardlandingComponent },
+            { path: 'resumenCompra', component: ResumenCompraComponent, title: 'Finalizar compra' },
             { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
             { path: 'historialcompras', component: HistorialComprasComponent, title: 'Mis Compras' },
             { path: 'statusC', component: StatusComponent, title: 'Estado de mi compra' },
