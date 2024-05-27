@@ -1,0 +1,22 @@
+<div class="overview-status-card">
+    <h3>Finalizar compra</h3>
+    <div class="overview-info">
+        <div class="overview-field" *ngFor="let item of carrito">
+            <span class="overview-label">Libro:</span>
+            <span class="overview-value">{{ item.titulo }}</span>
+        </div>
+        <div class="overview-field" *ngFor="let item of carrito">
+            <span class="overview-label">Cantidad:</span>
+            <span class="overview-value">{{ item.cantidad }}</span>
+        </div>
+        <div class="overview-field" *ngFor="let item of carrito">
+            <span class="overview-label">Precio Unitario:</span>
+            <span class="overview-value">${{ item.precio }}</span>
+        </div>
+        <div class="overview-field">
+            <span class="overview-label">Precio Total:</span>
+            <span class="overview-value">${{ total }}</span>
+        </div>
+    </div>
+    <button class="btn btn-primary">Proceder al Pago</button>
+</div>

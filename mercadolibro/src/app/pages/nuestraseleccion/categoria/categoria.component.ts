@@ -1,18 +1,29 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductoService } from "../../../services/producto.service";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-categoria',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './categoria.component.html',
-  styleUrl: './categoria.component.css'
+  styleUrls: ['./categoria.component.css']
 })
-export class CategoriaComponent {
- consulta: string = "";
+export class CategoriaComponent implements OnInit {
+  categorias: string[] = [];
+  opcionSeleccionada: string = '';
+  terminoBusqueda: string = '';
 
- enviarConsulta(){
-  console.log(this.consulta)
- }
+  @Output() buscar = new EventEmitter<{ termino: string, categoria: string }>();
+
+  constructor(private productoService: ProductoService) { }
+
+  ngOnInit(): void {
+    this.productoService.getCategorias().subscribe(categorias => this.categorias = categorias);
+  }
+
+  buscarLibros(): void {
+    this.buscar.emit({ termino: this.terminoBusqueda, categoria: this.opcionSeleccionada });
+  }
 }
