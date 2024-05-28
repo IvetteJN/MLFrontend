@@ -78,6 +78,7 @@ export class InicioComponent {
       this.loginService.autenticarUsuario(email, contrasenia).subscribe(
         response => {
           alert("Login exitoso");
+          this.router.navigate(['/dashboard/dashboardlanding']);
         },
         error => {
           alert("Credenciales incorrectas");

@@ -12,7 +12,11 @@
         <div class="d-flex align-items-center">
           <button class="btn btn-link text-danger" (click)="eliminarDelCarrito(item.titulo)">-</button>
           <span class="badge bg-light" style="color:black">{{ item.cantidad }}</span>
-          <button class="btn btn-link text-success" (click)="agregarAlCarrito(item)">+</button>
+          <button 
+            class="btn btn-link text-success" 
+            (click)="agregarAlCarrito(item)"
+            [disabled]="item.cantidad >= item.stock"
+          >+</button>
         </div>
       </li>
     </ul>
