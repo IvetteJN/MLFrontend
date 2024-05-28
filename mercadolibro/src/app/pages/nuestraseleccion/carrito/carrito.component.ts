@@ -1,45 +1,62 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { Component } from '@angular/core';
 import { CarritoService } from '../../../services/carrito.service';
-import { Book } from '../../../models/book.model';
+import { ProductoService } from '../../../services/producto.service';
 
-
+interface CarritoItem {
+  titulo: string;
+  precio: number;
+  cantidad: number;
+  stock: number;
+}
 
 @Component({
   selector: 'app-carrito',
+  standalone: true,
+  imports: [NgFor],
   templateUrl: './carrito.component.html',
-  styleUrls: ['./carrito.component.scss']
+  styleUrls: ['./carrito.component.css'],
 })
-export class CarritoComponent implements OnInit {
-  books: Book[] = [];
-  carrito: Book[] = [];
+export class CarritoComponent {
+  carrito: CarritoItem[] = [];
   total: number = 0;
-  searchTerm: string = '';
 
-  constructor(private carritoService: CarritoService, private cdr: ChangeDetectorRef) {}
-
-  ngOnInit(): void {
-    this.books = this.carritoService.getBooks();
-    this.actualizarCarrito();
+  constructor(private carritoService: CarritoService, private productoService: ProductoService) {
+    this.carritoService.carrito.subscribe(carrito => {
+      this.carrito = carrito;
+      this.calcularTotal();
+    });
   }
 
-  actualizarCarrito(): void {
-    const carrito = this.carritoService.actualizarCarrito();
-    this.carrito = carrito.items;
-    this.total = carrito.total;
-    this.cdr.detectChanges();  // Forzar la detección de cambios
+  agregarAlCarrito(item: CarritoItem): void {
+    const existingItem = this.carrito.find(ci => ci.titulo === item.titulo);
+    if (existingItem && existingItem.stock > existingItem.cantidad) {
+      existingItem.cantidad++;
+      this.actualizarCarrito();
+    } else if (!existingItem && item.stock > 0) {
+      this.carrito.push({ ...item, cantidad: 1 });
+      this.actualizarCarrito();
+    } else {
+      alert('No hay suficiente stock disponible.');
+    }
   }
 
-  agregarAlCarrito(bookTitle: string): void {
-    this.carritoService.agregarAlCarrito(bookTitle);
-    this.actualizarCarrito();
+  eliminarDelCarrito(titulo: string): void {
+    const index = this.carrito.findIndex(ci => ci.titulo === titulo);
+    if (index > -1) {
+      this.carrito[index].cantidad--;
+      if (this.carrito[index].cantidad === 0) {
+        this.carrito.splice(index, 1);
+      }
+      this.actualizarCarrito();
+    }
   }
 
-  eliminarDelCarrito(bookTitle: string): void {
-    this.carritoService.eliminarDelCarrito(bookTitle);
-    this.actualizarCarrito();
+  calcularTotal(): void {
+    this.total = this.carrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
   }
 
-  buscarLibros(): void {
-    this.books = this.carritoService.searchBooks(this.searchTerm);
+  private actualizarCarrito(): void {
+    this.carritoService.actualizarCarrito(this.carrito);
   }
 }
