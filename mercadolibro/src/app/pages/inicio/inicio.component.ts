@@ -100,6 +100,7 @@ export class InicioComponent {
         response => {
           console.log("Respuesta del servidor:", response);
           alert("Registro exitoso");
+          this.router.navigate(['/dashboard/dashboardlanding']);
         },
         error => {
           console.error("Error en el registro: ", error);

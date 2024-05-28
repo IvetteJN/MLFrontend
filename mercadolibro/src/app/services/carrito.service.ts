@@ -5,6 +5,7 @@ interface CarritoItem {
   titulo: string;
   precio: number;
   cantidad: number;
+  stock: number;
 }
 
 @Injectable({

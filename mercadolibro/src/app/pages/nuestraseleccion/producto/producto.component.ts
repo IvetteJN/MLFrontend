@@ -16,7 +16,7 @@ export class ProductoComponent implements OnInit {
 
   libros: Libro[] = [];
 
-  @Output() agregarAlCarrito = new EventEmitter<{ titulo: string, precio: number }>();
+  @Output() agregarAlCarrito = new EventEmitter<{ titulo: string, precio: number, stock: number }>();
 
   constructor(private productoService: ProductoService) { }
 
@@ -30,7 +30,7 @@ export class ProductoComponent implements OnInit {
 
   anadirAlCarrito(libro: Libro): void {
     if (libro.stock > 0) {
-      this.agregarAlCarrito.emit({ titulo: libro.titulo, precio: libro.precio });
+      this.agregarAlCarrito.emit({ titulo: libro.titulo, precio: libro.precio, stock: libro.stock });
       libro.stock--;
     } else {
       alert('El libro seleccionado no tiene stock disponible.');

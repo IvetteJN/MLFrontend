@@ -1,0 +1,9 @@
+los archivos corregidos:
+categoria.component.css
+nuestraseleccion.component.html
+nuestraseleccion.component.ts
+
+
+el componente categoria tiene que ir adentro de la carpeta nuestraseleccion, ya que es un componente del "supercomponente", como 
+explicamos por whatsapp con Marcelo.
+
