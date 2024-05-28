@@ -14,7 +14,7 @@ body {
 }
 
 main {
-    min-height: 40.2vh;
+    min-height: 55vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
