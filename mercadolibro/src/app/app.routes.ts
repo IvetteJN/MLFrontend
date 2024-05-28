@@ -35,7 +35,7 @@ export const routes: Routes = [
             { path: 'historialcompras', component: HistorialComprasComponent, title: 'Mis Compras' },
             { path: 'statusC', component: StatusComponent, title: 'Estado de mi compra' },
             { path: 'calificacion', component: CalificacionesComponent, title: 'Calificacion de Productos' },
-            {path: 'promociones', component: PromocionesComponent, title: 'Descuentos y cupones'}
+            { path: 'promociones', component: PromocionesComponent, title: 'Descuentos y cupones' },
             { path: 'calificacion', component: ReviewsComponent, title: 'Calificacion de Productos' },
 
         ]
