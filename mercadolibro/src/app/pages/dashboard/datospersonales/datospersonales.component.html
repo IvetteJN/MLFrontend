@@ -5,8 +5,7 @@
       <form (submit)="onSubmit()">
         <div class="form-group">
           <label for="nombre">Nombre:</label>
-          <input id="nombre" (input)="handleInputChange('nombre', $event)" name="nombre" type="text"
-            class="form-control" required />
+          <input id="nombre" (input)="handleInputChange('nombre', $event)" name="nombre" type="text" class="form-control" required />
           <div *ngIf="!usuario.nombre && usuario.nombre !== undefined" class="text-danger">
             El nombre es obligatorio.
           </div>
@@ -14,8 +13,7 @@
 
         <div class="form-group">
           <label for="email">Email:</label>
-          <input id="email" (input)="handleInputChange('email', $event)" name="email" type="email" class="form-control"
-            required />
+          <input id="email" (input)="handleInputChange('email', $event)" name="email" type="email" class="form-control" required />
           <div *ngIf="!usuario.email && usuario.email !== undefined" class="text-danger">
             Introduce un email válido.
           </div>
@@ -23,8 +21,7 @@
 
         <div class="form-group">
           <label for="direccion">Dirección:</label>
-          <input id="direccion" (input)="handleInputChange('direccion', $event)" name="direccion" type="text"
-            class="form-control" required />
+          <input id="direccion" (input)="handleInputChange('direccion', $event)" name="direccion" type="text" class="form-control" required />
           <div *ngIf="!usuario.direccion && usuario.direccion !== undefined" class="text-danger">
             La dirección es obligatoria.
           </div>

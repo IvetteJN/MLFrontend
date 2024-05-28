@@ -2,12 +2,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    height: 100vh;
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
     margin: 0;
-    margin-left: -400px;
-    margin-top: 83px;
 }
 
 .formulario {
@@ -17,11 +15,9 @@ body {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 250px;
-    /* Centrado horizontal */
+    margin-left: 350px; /* Centrado horizontal */
     margin-top: -200px;
-    box-sizing: border-box;
-    /* Asegura que el padding no rompa el ancho máximo */
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho máximo */
 }
 
 h2 {
@@ -100,10 +96,9 @@ button.btn.btn-primary:hover {
 }
 
 /* Media query para dispositivos más pequeños */
-@media (max-width: 560px) {
+@media (max-width: 600px) {
     .formulario {
         padding: 1rem;
-        min-width: 300px;
-        /* Ancho mínimo para mantener la estética */
+        min-width: 300px; /* Ancho mínimo para mantener la estética */
     }
 }
