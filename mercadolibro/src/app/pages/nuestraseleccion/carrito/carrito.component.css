@@ -1,4 +1,4 @@
-/* #cartContainer {
+#cartContainer {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -52,6 +52,10 @@
   span {
     color: crimson;
     text-align: left;
+    font-weight: bold;
+    
   }
   
-   */
+  .tm {
+    color: crimson;
+  }
