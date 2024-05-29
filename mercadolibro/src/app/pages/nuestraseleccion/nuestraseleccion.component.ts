@@ -15,7 +15,7 @@ import { CarritoComponent } from './carrito/carrito.component';
 export class NuestraseleccionComponent {
   @ViewChild(CarritoComponent) carritoComponent!: CarritoComponent;
 
-  agregarAlCarrito(event: { titulo: string, precio: number, stock: number }): void {
+  handleAgregarAlCarrito(event: { titulo: string, precio: number }): void {
     this.carritoComponent.agregarAlCarrito({ ...event, cantidad: 1 });
   }
 }
