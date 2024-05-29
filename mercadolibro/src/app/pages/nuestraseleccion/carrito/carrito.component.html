@@ -7,7 +7,7 @@
       <li *ngFor="let item of carrito" class="list-group-item d-flex justify-content-between align-items-center">
         <div class="d-flex flex-column">
           <span>{{ item.titulo }}</span>
-          <span class="text-muted">Precio: ${{ item.precio }}</span>
+          <span class="tm">Precio: ${{ item.precio }}</span>
         </div>
         <div class="d-flex align-items-center">
           <button class="btn btn-link text-danger" (click)="eliminarDelCarrito(item.titulo)">-</button>
