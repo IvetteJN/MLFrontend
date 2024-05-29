@@ -1,13 +1,11 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { CarritoService } from '../../../services/carrito.service';
-import { ProductoService } from '../../../services/producto.service';
 
 interface CarritoItem {
   titulo: string;
   precio: number;
   cantidad: number;
-  stock: number;
 }
 
 @Component({
@@ -15,13 +13,14 @@ interface CarritoItem {
   standalone: true,
   imports: [NgFor],
   templateUrl: './carrito.component.html',
-  styleUrls: ['./carrito.component.css'],
+  styleUrls: ['./carrito.component.scss'],
 })
 export class CarritoComponent {
   carrito: CarritoItem[] = [];
   total: number = 0;
 
-  constructor(private carritoService: CarritoService, private productoService: ProductoService) {
+  constructor(private carritoService: CarritoService) {
+
     this.carritoService.carrito.subscribe(carrito => {
       this.carrito = carrito;
       this.calcularTotal();
@@ -30,15 +29,12 @@ export class CarritoComponent {
 
   agregarAlCarrito(item: CarritoItem): void {
     const existingItem = this.carrito.find(ci => ci.titulo === item.titulo);
-    if (existingItem && existingItem.stock > existingItem.cantidad) {
+    if (existingItem) {
       existingItem.cantidad++;
-      this.actualizarCarrito();
-    } else if (!existingItem && item.stock > 0) {
-      this.carrito.push({ ...item, cantidad: 1 });
-      this.actualizarCarrito();
     } else {
-      alert('No hay suficiente stock disponible.');
+      this.carrito.push({ ...item, cantidad: 1 });
     }
+    this.actualizarCarrito();
   }
 
   eliminarDelCarrito(titulo: string): void {
@@ -48,8 +44,8 @@ export class CarritoComponent {
       if (this.carrito[index].cantidad === 0) {
         this.carrito.splice(index, 1);
       }
-      this.actualizarCarrito();
     }
+    this.actualizarCarrito();
   }
 
   calcularTotal(): void {
