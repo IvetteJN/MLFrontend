@@ -1,7 +1,7 @@
 
 .dashboard {
     display: flex;
-    height: 72vh;
+    height: 78vh;
   }
   app-sidebar {
     width: 250px; 
@@ -10,4 +10,5 @@
     flex: 1;
     padding: 20px;
   }
+  
   
