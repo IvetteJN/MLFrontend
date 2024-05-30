@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { usuario } from '../../../models/usuario.model';
 import { UsuarioService } from '../../../services/usuario.service';
+import { LoginService } from '../../../services/login.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboardlanding',
@@ -8,19 +10,12 @@ import { UsuarioService } from '../../../services/usuario.service';
   styleUrls: ['./dashboardlanding.component.css']
 })
 export class DashboardlandingComponent implements OnInit {
-  usuario: usuario = { id: 0, nombre: '', email: '', password: '' };
+  clienteLogueado: any;
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.usuarioService.getUsuarioById(1).subscribe(
-      (data: usuario) => {
-        this.usuario = data;
-      },
-      (error) => {
-        console.log('Error al obtener usuario:', error);
-      }
-    );
+    this.clienteLogueado = this.loginService.obtenerClienteLogueado();
   }
 }
 
