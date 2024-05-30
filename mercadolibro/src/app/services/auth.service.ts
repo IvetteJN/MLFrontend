@@ -1,57 +1,22 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { tap, catchError } from 'rxjs/operators';
+// import { Injectable } from '@angular/core';
+// import { Router } from '@angular/router';
+// import { HttpClient } from '@angular/common/http';
+// import { firstValueFrom } from 'rxjs';
 
-interface TokenResponse {
-  token: string;
-}
 
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthService {
-  private readonly TOKEN_KEY = 'token';
-  private readonly API_URL = 'https://localhost:4200/dashboard'; 
 
-  constructor(private http: HttpClient, private router: Router) { }
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class AuthService {
 
-  isAuthenticated(): boolean {
-    return !!this.getToken();
-  }
+//   private apiurl = 'http://localhost:3000/dashboard'; 
 
-  login(credentials: { username: string, password: string }): void {
-    this.http.post<TokenResponse>(`${this.API_URL}/inicio`, credentials, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    })
-    .pipe(
-      tap(response => {
-        this.setToken(response.token);
-        this.router.navigate(['/']);
-      }),
-      catchError(error => {
-        console.error('Error durante carga login', error);
-        return (error);
-      })
-    ).subscribe();
-  }
+//   constructor(private http: HttpClient) { }
 
-  logout(): void {
-    this.removeToken();
-    this.router.navigate(['/inicio']);
-  }
+//   guardarToken(token: string): Promise<any> {
+//     return firstValueFrom(this.http.post(this.apiurl, { token }));
+// }
+  
+// }
 
-  private getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
-  }
-
-  private setToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token);
-  }
-
-  private removeToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
-  }
-}

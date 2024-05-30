@@ -78,7 +78,7 @@ export class InicioComponent {
       this.loginService.autenticarUsuario(email, contrasenia).subscribe(
         response => {
           alert("Login exitoso");
-          this.router.navigate(['/dashboard/dashboardlanding']);
+          this.router.navigate(['/dashboard/dashboardlanding']); 
         },
         error => {
           alert("Credenciales incorrectas");
@@ -100,11 +100,10 @@ export class InicioComponent {
         response => {
           console.log("Respuesta del servidor:", response);
           alert("Registro exitoso");
-          this.router.navigate(['/dashboard/dashboardlanding']);
         },
         error => {
           console.error("Error en el registro: ", error);
-          alert("El usuario ya está registrado");
+          alert("El usuario ya está registrado"); 
         }
       );
     } else {
