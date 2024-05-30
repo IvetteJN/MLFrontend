@@ -77,6 +77,8 @@ export class InicioComponent {
       const contrasenia = this.loginFormulario.value.contrasenia;
       this.loginService.autenticarUsuario(email, contrasenia).subscribe(
         response => {
+          // Después de la autenticación, guarda el email en SessionStorage
+          sessionStorage.setItem('usuarioAutenticado', email);
           alert("Login exitoso");
           this.router.navigate(['/dashboard/dashboardlanding']); 
         },
