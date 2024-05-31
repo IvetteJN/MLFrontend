@@ -3,10 +3,11 @@
   color: white;
 }
 
-.card {
-  max-width: 450px;
+.card-body {
+  justify-content: center;
 
 }
+
 
 /*version mobile*/
 @media (max-width: 560px) {
