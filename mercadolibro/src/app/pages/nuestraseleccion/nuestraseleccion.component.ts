@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { NuestraseleccionCarruselComponent } from './nuestraseleccion-carrusel/nuestraseleccion-carrusel.component';
 import { ProductoComponent } from './producto/producto.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { CarritoService } from '../../services/carrito.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { CarritoItem } from '../../models/carrito.model';
 
 
@@ -17,9 +17,10 @@ import { CarritoItem } from '../../models/carrito.model';
 })
 
 export class NuestraseleccionComponent implements OnInit {
-  constructor(private carritoService: CarritoService) {}
 
-  ngOnInit(): void {}
+  constructor(private carritoService: CarritoService) { }
+
+  ngOnInit(): void { }
 
   agregarProductoAlCarrito(event: { titulo: string; precio: number; }): void {
     const nuevoItem: Partial<CarritoItem> = {
@@ -28,6 +29,6 @@ export class NuestraseleccionComponent implements OnInit {
       precio: event.precio,
     };
 
-    this.carritoService.agregarAlCarrito(nuevoItem as CarritoItem);
+    this.carritoService.actualizarCarrito([nuevoItem as CarritoItem]);
   }
 }
