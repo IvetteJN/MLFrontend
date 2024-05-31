@@ -3,34 +3,49 @@ import { Component, Input } from '@angular/core';
 import { Libro } from "../../../services/producto"
 import { ActivatedRoute } from '@angular/router';
 import { ProductoService } from '../../../services/producto.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-descripcion',
-  standalone: true,
-  imports: [NgIf],
-  templateUrl: './descripcion.component.html',
-  styleUrls: ['./descripcion.component.css']
+    selector: 'app-descripcion',
+    standalone: true,
+    imports: [NgIf],
+    templateUrl: './descripcion.component.html',
+    styleUrls: ['./descripcion.component.css']
 })
 export class DescripcionComponent {
 
-  @Input() libro?: Libro;
+    @Input() libro?: Libro;
 
-  constructor(
-    private route: ActivatedRoute,
-    private productoService: ProductoService,
-    private location: Location) { }
+    constructor(
+        private route: ActivatedRoute,
+        private productoService: ProductoService,
+        private location: Location) { }
 
-  ngOnInit(): void {
-    this.getLibro();
-  }
+    ngOnInit(): void {
+        this.getLibro();
+    }
 
-  getLibro(): void {
-    const titulo = String(this.route.snapshot.paramMap.get('titulo'));
-    this.productoService.getLibro(titulo)
-      .subscribe(libro => this.libro = libro);
-  }
+    getLibro(): void {
+        const id = this.route.snapshot.paramMap.get('id');
+        console.log(`ID from route: ${id}`); // Log para verificar el ID
+        if (id) {
+            const libroId = Number(id);
+            if (!isNaN(libroId)) {
+                this.productoService.getLibro(libroId)
+                    .subscribe(
+                        (libro: Libro) => this.libro = libro,
+                        (error: HttpErrorResponse) => console.error(error)
+                    );
+            } else {
+                console.error('Invalid ID');
+            }
+        } else {
+            console.error('ID not found in route');
+        }
+    }
 
-  goBack(): void {
-    this.location.back();
-  }
+
+    goBack(): void {
+        this.location.back();
+    }
 }

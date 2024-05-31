@@ -23,7 +23,7 @@ export const routes: Routes = [
     { path: '', redirectTo: 'landing', pathMatch: 'full' },
     { path: 'quienes', title: 'Quienes Somos', component: QuienesComponent },
     { path: 'nuestraseleccion', title: 'Nuestra Selección', component: NuestraseleccionComponent },
-    { path: 'descripcion/:titulo', title: 'Tu próximo libro', component: DescripcionComponent },
+    { path: 'descripcion/:id', title: 'Tu próximo libro', component: DescripcionComponent },
     { path: 'contacto', title: 'Contacto', component: ContactoComponent },
     { path: 'inicio', title: 'Login', component: InicioComponent },
     {
