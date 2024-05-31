@@ -1,16 +1,16 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { Libro } from "../../../services/producto";
 import { ProductoService } from "../../../services/producto.service";
-import { DescripcionComponent } from "../descripcion/descripcion.component";
 import { RouterLink } from "@angular/router";
 import { CategoriaComponent } from "../categoria/categoria.component";
+import { DescripcionComponent } from "../descripcion/descripcion.component";
 
 @Component({
   selector: 'app-product',
   standalone: true,
   templateUrl: './producto.component.html',
   styleUrls: ['./producto.component.css'],
-  imports: [DescripcionComponent, RouterLink, CategoriaComponent]
+  imports: [RouterLink, CategoriaComponent, DescripcionComponent]
 })
 export class ProductoComponent implements OnInit {
 
@@ -25,7 +25,10 @@ export class ProductoComponent implements OnInit {
   }
 
   getLibros(): void {
-    this.productoService.getLibros().subscribe(libros => this.libros = libros);
+    this.productoService.getLibros().subscribe(libros => {
+      console.log('Libros:', libros);
+      this.libros = libros;
+    });
   }
 
   anadirAlCarrito(libro: Libro): void {
@@ -38,10 +41,6 @@ export class ProductoComponent implements OnInit {
   }
 
   buscarLibros(params: { termino: string, categoria: string }): void {
-    if (!params.termino && !params.categoria) {
-      this.getLibros();
-    } else {
-      this.productoService.searchLibros(params.termino, params.categoria).subscribe(libros => this.libros = libros);
-    }
+    this.productoService.searchLibros(params.termino, params.categoria).subscribe(libros => this.libros = libros);
   }
 }

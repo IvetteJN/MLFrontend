@@ -1,42 +1,43 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Libro } from './producto';
-import { LIBROS } from './producto-mock';
-import { Observable, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
-
-@Injectable({ providedIn: 'root' })
-
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductoService {
+  private apiUrl = 'http://127.0.0.1:8000/api/libros/';
+  private categoriaUrl = 'http://127.0.0.1:8000/api/categoria/';
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getLibros(): Observable<Libro[]> {
-    const libros = of(LIBROS);
-    return libros;
+    return this.http.get<Libro[]>(this.apiUrl);
   }
 
-  getLibro(titulo: string): Observable<Libro> {
-    const libro = LIBROS.find(h => h.titulo === titulo)!;
-    return of(libro);
-  }
-
-  getCategorias(): Observable<string[]> {
-    const categorias = [...new Set(LIBROS.map(libro => libro.categoria))];
-    return of(categorias);
+  getLibro(id_libro: number): Observable<Libro> {
+    const url = `${this.apiUrl}${id_libro}/`;
+    return this.http.get<Libro>(url);
   }
 
   searchLibros(termino: string, categoria: string): Observable<Libro[]> {
-    let libros = LIBROS;
+    let params = new HttpParams();
 
     if (termino) {
-      termino = termino.toLowerCase();
-      libros = libros.filter(libro => libro.titulo.toLowerCase().includes(termino) || libro.autor.toLowerCase().includes(termino));
+      params = params.set('termino', termino);
     }
 
     if (categoria) {
-      libros = libros.filter(libro => libro.categoria === categoria);
+      params = params.set('categoria', categoria);
     }
 
-    return of(libros);
+    return this.http.get<Libro[]>(this.apiUrl, { params });
+  }
+
+  getCategorias(): Observable<string[]> {
+    return this.http.get<any[]>(this.categoriaUrl).pipe(
+      map(response => response.map(item => item.nombre_categoria))
+    );
   }
 }
