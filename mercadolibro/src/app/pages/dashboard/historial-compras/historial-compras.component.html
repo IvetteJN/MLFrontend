@@ -1,1 +1,26 @@
-<p>historial-compras works!</p>
+<h1>HISTORIAL DE COMPRAS</h1>
+<div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Dirección de Envío</th>
+          <th>Estado</th>
+          <th>Fecha del Pedido</th>
+          <th>Título del Libro</th>
+          <th>Cantidad</th>
+          <th>Precio Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detalle of detallesPedidos">
+          <td>{{ detalle.pedido__direccion_envio__direccion }}</td>
+          <td>{{ detalle.pedido__estado_pedido }}</td>
+          <td>{{ detalle.pedido__fecha_pedido }}</td>
+          <td>{{ detalle.libro__titulo }}</td>
+          <td>{{ detalle.cantidad }}</td>
+          <td>{{ detalle.precio_total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
