@@ -44,8 +44,8 @@ export class CarritoComponent {
       if (this.carrito[index].cantidad === 0) {
         this.carrito.splice(index, 1);
       }
+      this.actualizarCarrito();
     }
-    this.actualizarCarrito();
   }
 
   calcularTotal(): void {
@@ -53,6 +53,6 @@ export class CarritoComponent {
   }
 
   private actualizarCarrito(): void {
-    this.carritoService.actualizarCarrito(this.carrito);
+    this.carritoService.actualizarCantidadProductos(this.carrito);
   }
 }
