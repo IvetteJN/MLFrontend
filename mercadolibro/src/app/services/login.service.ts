@@ -23,7 +23,6 @@ export class LoginService {
     return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).pipe(
       tap({
         next: (response) => {
-          // Guardar los datos del cliente logueado en el almacenamiento local
           localStorage.setItem('clienteLogueado', JSON.stringify(response));
         },
         error: (error) => {
@@ -34,7 +33,17 @@ export class LoginService {
   }
 
   obtenerClienteLogueado(): any {
-    const clienteLogueado = localStorage.getItem('clienteLogueado');
-    return clienteLogueado ? JSON.parse(clienteLogueado) : null;
+    return JSON.parse(localStorage.getItem('clienteLogueado') || '{}');
+  }
+
+  // actualizarDirecciones(direcciones: any[]): Observable<any> {
+  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   return this.http.post<any>(this.direccionUrl, direcciones, { headers });
+  // }
+
+  registrarDireccion(direccion: string, ciudad: string, provincia: string, codigo_postal: number): Observable<any> {
+    const url = `${this.apiUrl}/direccion/`;
+    const body = { direccion, ciudad, provincia, codigo_postal };
+    return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 }

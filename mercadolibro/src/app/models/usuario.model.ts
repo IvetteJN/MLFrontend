@@ -3,4 +3,5 @@ export interface usuario {
     nombre: string;
     email: string;
     password: string;
+    direcciones: any[];
 }

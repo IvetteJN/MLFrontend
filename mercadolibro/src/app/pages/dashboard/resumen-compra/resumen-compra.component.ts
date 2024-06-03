@@ -21,18 +21,21 @@ interface CarritoItem {
 export class ResumenCompraComponent implements OnInit {
   carrito: CarritoItem[] = [];
   total: number = 0;
+
   formasPago: string[] = [];
   formasEnvio: string[] = [];
-  formaEnvioSeleccionada: number = 0;
-  formaPagoSeleccionada: number = 0;
+  direccionesEnvio: string[] = [];
 
-  direccionEnvio: string = '';
+  formaEnvioSeleccionada: string = '';
+  formaPagoSeleccionada: string = '';
+  direccionSeleccionada: string = '';
 
   constructor(private carritoService: CarritoService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getFormaPago();
     this.getFormaEnvio();
+    this.getDireccionEnvio();
     this.carritoService.carrito.subscribe(carrito => {
       this.carrito = carrito;
       this.calcularTotal();
@@ -65,23 +68,34 @@ export class ResumenCompraComponent implements OnInit {
     );
   }
 
-  enviarPedido(): void {
-    const pedido: Pedido = {
-      usuario_cliente: 1,
-      estado_pedido: 'En camino',
-      direccion_envio: this.direccionEnvio,
-      forma_envio: this.formaEnvioSeleccionada,
-      forma_pago: this.formaPagoSeleccionada
-    };
-
-    this.http.post('http://127.0.0.1:8000/api/pedido/', pedido)
-      .subscribe(
-        response => {
-          console.log('Pedido enviado correctamente', response);
-        },
-        error => {
-          console.error('Error al enviar el pedido', error);
-        }
-      );
+  getDireccionEnvio(): void {
+    this.carritoService.getDireccionEnvio().subscribe(
+      direccionesEnvio => {
+        this.direccionesEnvio = direccionesEnvio;
+      },
+      error => {
+        console.error('Error al obtener las direcciones', error);
+      }
+    );
   }
+
+  // enviarPedido(): void {
+  //   const pedido: Pedido = {
+  //     usuario_cliente: 1, // Aquí debes poner el ID del usuario real
+  //     estado_pedido: 'En camino',
+  //     direccion_envio: this.direccionSeleccionada,
+  //     forma_envio: this.formaEnvioSeleccionada,
+  //     forma_pago: this.formaPagoSeleccionada
+  //   };
+
+  //   this.http.post('http://127.0.0.1:8000/api/pedido/', pedido)
+  //     .subscribe(
+  //       response => {
+  //         console.log('Pedido enviado correctamente', response);
+  //       },
+  //       error => {
+  //         console.error('Error al enviar el pedido', error);
+  //       }
+  //     );
+  // }
 }
