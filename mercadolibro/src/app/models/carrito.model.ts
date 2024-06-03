@@ -1,5 +1,6 @@
 export interface CarritoItem {
     titulo: string;
-    precio: number;
     cantidad: number;
+    precioUnitario: number;
+    precioTotal: number;
 }

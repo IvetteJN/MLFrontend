@@ -9,11 +9,11 @@
           <span>{{ item.titulo }}</span>
           <span class="tm">Precio: ${{ item.precio }}</span>
         </div>
-        <div class="d-flex align-items-center">
-          <button class="btn btn-link text-danger" (click)="eliminarDelCarrito(item.titulo)">-</button>
-          <span class="badge bg-light">{{ item.cantidad }}</span>
-          <button class="btn btn-link text-success" (click)="agregarAlCarrito(item)">+</button>
-        </div>
+        <!-- <div class="d-flex align-items-center">
+          <button class="btn btn-link text-danger" (click)="eliminarDelCarrito(item.titulo)">-</button>-->
+        <span class="badge bg-light">{{ item.cantidad }}</span>
+        <!-- <button class="btn btn-link text-success" (click)="agregarAlCarrito(item)">+</button>
+        </div> -->
       </li>
     </ul>
     <div class="mt-3">
