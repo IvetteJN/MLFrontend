@@ -1,45 +1,28 @@
 * {
     padding: 0;
-    margin:0;
-    
+    margin: 0;
+
 }
 
 .formulario {
-    max-height: 680px;
-    max-width: 38%;
+    max-width: 700px;
     padding: 1rem;
-    background-color: #ffffff;
+    background-color: #d4eb56;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 250px;
-    /* Centrado horizontal */
-    margin-top: 25px;
-    margin-bottom: 100px; /* Add this line */
-    
-    
-    /* Asegura que el padding no rompa el ancho máximo */
+    margin-top: 5px;
+    margin-left: 25px;
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 2rem;
     color: #333333;
 }
 
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: #555555;
-}
-
 input.form-control {
-    width:100%;
-    padding: 0.75rem;
+    width: 100%;
+    padding: 5px;
+    margin: 10px;
     border: 1px solid #dddddd;
     border-radius: 5px;
     box-sizing: border-box;
@@ -48,18 +31,15 @@ input.form-control {
 }
 
 input.form-control:focus {
-    border-color: #8ba519;
-    outline: none;
-    box-shadow: 0 0 5px rgba(139, 165, 25, 0.5);
+    box-shadow: 0 0 10px rgba(139, 165, 25, 0.5);
 }
 
 .text-danger {
     color: red;
-    margin-top: 0.5rem;
     font-size: 0.875rem;
 }
 
-button.btn.btn-primary {
+.btn.btn-primary {
     width: 100%;
     padding: 0.75rem;
     background-color: #8ba519;
@@ -68,7 +48,6 @@ button.btn.btn-primary {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    margin-top: 1rem;
     transition: background-color 0.3s ease;
 }
 
@@ -98,17 +77,12 @@ button.btn.btn-primary:hover {
 /* Media query para dispositivos más pequeños */
 @media (max-width: 560px) {
     .formulario {
-      padding: 1rem;
-      min-width: 300px;
-      /* Ancho mínimo para mantener la estética */
-      width: 45%;
-      margin-left: 50;
-      margin-top: 0;
-      max-height: 600px;
-      
+        padding: 1rem;
+        min-width: 300px;
+        width: 45%;
+        margin-left: 50;
+        margin-top: 0;
+        max-height: 600px;
+
     }
-  }
-  .form-group {
-    margin-bottom: 1.5rem;
-    max-height: 600px;
 }

@@ -7,15 +7,21 @@ import { usuario } from '../models/usuario.model';
   providedIn: 'root'
 })
 export class UsuarioService {
+  private usuariosUrl = 'http://127.0.0.1:8000/api/clientes/';
 
   constructor(private http: HttpClient) { }
 
-  getUsuarios(): Observable<usuario[]>{
-    return this.http.get<usuario[]>("http://127.0.0.1:8000/api/clientes/");
+  getUsuarios(): Observable<usuario[]> {
+    return this.http.get<usuario[]>(this.usuariosUrl);
   }
 
   getUsuarioById(id: number): Observable<usuario> {
-    const url = `http://127.0.0.1:8000/api/clientes/${id}`;
+    const url = `${this.usuariosUrl}${id}/`;
     return this.http.get<usuario>(url);
+  }
+
+  actualizarUsuario(usuario: usuario): Observable<usuario> {
+    const url = `${this.usuariosUrl}${usuario.id}/`;
+    return this.http.put<usuario>(url, usuario);
   }
 }
