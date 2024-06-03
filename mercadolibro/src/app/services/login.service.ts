@@ -38,4 +38,9 @@ export class LoginService {
   logout(): void {
     this.isAuthenticatedSubject.next(false);
   }
+
+  obtenerClienteLogueado(): any {
+    const clienteLogueado = localStorage.getItem('clienteLogueado');
+    return clienteLogueado ? JSON.parse(clienteLogueado) : null;
+  }
 }

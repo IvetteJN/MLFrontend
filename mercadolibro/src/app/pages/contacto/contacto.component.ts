@@ -44,4 +44,3 @@ export class ContactoComponent {
     console.log(this.form.value)
   }
 }
-

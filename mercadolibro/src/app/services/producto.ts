@@ -1,4 +1,5 @@
 export interface Libro {
+    id_libro: number,
     autor: string,
     pais: string,
     portada: string,

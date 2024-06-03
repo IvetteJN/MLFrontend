@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from '../../../services/carrito.service';
 import { NgFor } from '@angular/common';
+import { Routes } from '@angular/router';
 
 interface CarritoItem {
   titulo: string;

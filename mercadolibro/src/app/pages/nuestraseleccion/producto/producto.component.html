@@ -14,7 +14,7 @@
                     <p><b>Precio:</b> $ {{ libro.precio }} </p>
                     <p class="stock"><b>Stock:</b> {{ libro.stock }} </p>
                     <button class="btn btn-dark m-3" (click)="anadirAlCarrito(libro)">COMPRAR</button>
-                    <button [routerLink]="['/descripcion', libro.titulo]" class="btn btn-light">SINOPSIS</button>
+                    <button [routerLink]="['/descripcion', libro.id_libro]" class="btn btn-light">SINOPSIS</button>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
 
 @empty {
 <div class="card text-bg-secondary mb-3">
-    <div class="card-body">
+    <div class="card-body text-center">
         No se encontraron resultados. Prueba otra vez.
     </div>
 </div>
