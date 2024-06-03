@@ -13,7 +13,7 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 export class PasarelaComponent {
   pagoFormulario: FormGroup;
   mensaje: string = '';
-  mensajeTipo: string = '';
+  mensajeAlerta: string = '';
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {
     this.pagoFormulario = this.formBuilder.group({
@@ -30,7 +30,7 @@ export class PasarelaComponent {
 
       const { nombreTarjeta, numeroTarjeta, fechaExpiracion, cvv } = this.pagoFormulario.value;
 
-      const token = 'TOKEN_DE_PRUEBA'; // Deberías generar un token de prueba para simular el proceso de pago
+      const token = 'TOKENPRUEBA';
 
       this.procesarPago(token);
     } else {
@@ -39,17 +39,17 @@ export class PasarelaComponent {
   }
 
   procesarPago(token: string) {
-    // Aquí puedes enviar el token al backend de Mercado Pago o procesarlo directamente en el frontend
+ 
 
-    this.http.post('YOUR_BACKEND_ENDPOINT', { token }).subscribe(
+    this.http.post('https:8000/', { token }).subscribe(
       (response: any) => {
         this.mensaje = '¡Pago realizado exitosamente!';
-        this.mensajeTipo = 'success';
+        this.mensajeAlerta = 'success';
         console.log('Pago realizado exitosamente', response);
       },
       (error: HttpErrorResponse) => {
         this.mensaje = 'Error al realizar el pago. Por favor, inténtelo nuevamente.';
-        this.mensajeTipo = 'danger';
+        this.mensajeAlerta = 'danger';
         console.error('Error al realizar el pago', error);
       }
     );

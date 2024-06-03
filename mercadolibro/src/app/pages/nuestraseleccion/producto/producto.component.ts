@@ -1,9 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Libro } from "../../../services/producto";
 import { ProductoService } from "../../../services/producto.service";
 import { RouterLink } from "@angular/router";
 import { CategoriaComponent } from "../categoria/categoria.component";
 import { DescripcionComponent } from "../descripcion/descripcion.component";
+import { CarritoService, CarritoItem } from "../../../services/carrito.service";
 
 @Component({
   selector: 'app-product',
@@ -16,9 +17,7 @@ export class ProductoComponent implements OnInit {
 
   libros: Libro[] = [];
 
-  @Output() agregarAlCarrito = new EventEmitter<{ titulo: string, precio: number }>();
-
-  constructor(private productoService: ProductoService) { }
+  constructor(private productoService: ProductoService, private carritoService: CarritoService) { }
 
   ngOnInit(): void {
     this.getLibros();
@@ -33,7 +32,12 @@ export class ProductoComponent implements OnInit {
 
   anadirAlCarrito(libro: Libro): void {
     if (libro.stock > 0) {
-      this.agregarAlCarrito.emit({ titulo: libro.titulo, precio: libro.precio });
+      const nuevoItem: CarritoItem = {
+        titulo: libro.titulo,
+        precio: libro.precio,
+        cantidad: 1
+      };
+      this.carritoService.agregarProducto(nuevoItem);
       libro.stock--;
     } else {
       alert('El libro seleccionado no tiene stock disponible.');

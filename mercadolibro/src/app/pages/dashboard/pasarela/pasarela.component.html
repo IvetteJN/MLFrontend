@@ -1,5 +1,6 @@
 <div class="container mt-5">
-  <h1 class="text-center">Pago final</h1>
+  <h1 class="text-center">Finalizar Pago</h1>
+  
   <form class="needs-validation" id="pago" [formGroup]="pagoFormulario" (ngSubmit)="enviarDatosPago()" novalidate>
     <div class="mb-3">
       <label class="form-label">Nombre del titular</label>
@@ -34,6 +35,7 @@
     <div class="mb-3">
       <label class="form-label">CVV</label>
       <input type="text" class="form-control" formControlName="cvv" required>
+      
       <div *ngIf="pagoFormulario.get('cvv')?.errors?.['required'] && pagoFormulario.get('cvv')?.touched" class="text-danger">
         El CVV es requerido.
       </div>
@@ -42,9 +44,9 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="!pagoFormulario.valid">Pagar</button>
+    <button type="submit"  class="ov-btn-slide-left" [disabled]="!pagoFormulario.valid">Pagar</button>
 
-    <div *ngIf="mensaje" class="alert mt-3" [ngClass]="'alert-' + mensajeTipo" role="alert">
+    <div *ngIf="mensaje" class="alert mt-3" [ngClass]="'alert-' + mensajeAlerta" role="alert">
       {{ mensaje }}
     </div>
   </form>

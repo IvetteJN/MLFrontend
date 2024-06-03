@@ -18,5 +18,30 @@
             <span class="overview-value">${{ total }}</span>
         </div>
     </div>
-    <button class="btn btn-primary" routerLink="/dashboard/pasarela" >Proceder al Pago</button>
+
+    <div class="formulario">
+        <form (ngSubmit)="enviarPedido()">
+            <div class="form-group">
+                <label for="direccion_envio">Direccion:</label>
+                <input id="direccion_envio" name="direccion_envio" type="text" class="form-control" required
+                    [(ngModel)]="direccionEnvio" />
+            </div>
+
+            <div class="form-group">
+                <label for="forma_envio">Elige una forma de envío:</label>
+                <select id="forma_envio" name="forma_envio" [(ngModel)]="formaEnvioSeleccionada">
+                    <option value="">-------</option>
+                    <option *ngFor="let formasEnvio of formasEnvio" [value]="formasEnvio">{{ formasEnvio }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="forma_pago">Elige una forma de pago:</label>
+                <select id="forma_pago" name="forma_pago" [(ngModel)]="formaPagoSeleccionada">
+                    <option value="">-------</option>
+                    <option *ngFor="let formasPago of formasPago" [value]="formasPago">{{ formasPago }}</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <button type="submit" class="btn btn-dark">Proceder al Pago</button>
 </div>

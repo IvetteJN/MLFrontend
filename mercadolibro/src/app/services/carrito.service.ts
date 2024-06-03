@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
-interface CarritoItem {
+
+export interface CarritoItem {
   titulo: string;
   precio: number;
   cantidad: number;
@@ -16,15 +18,40 @@ export class CarritoService {
   carrito = this._carrito.asObservable();
   cantidadProductos = this._cantidadProductos.asObservable();
 
-  constructor() { }
+  private formaEnvioUrl = 'http://127.0.0.1:8000/api/formaEnvio/';
+  private formaPagoUrl = 'http://127.0.0.1:8000/api/formaPago/';
 
-  actualizarCarrito(carrito: CarritoItem[]): void {
-    this._carrito.next(carrito);
-    this.actualizarCantidadProductos(carrito);
+  constructor(private http: HttpClient) { }
+
+  agregarProducto(nuevoItem: CarritoItem): void {
+    const carritoActual = this._carrito.getValue();
+    const productoExistente = carritoActual.find(item => item.titulo === nuevoItem.titulo);
+
+    if (productoExistente) {
+      productoExistente.cantidad += nuevoItem.cantidad;
+    } else {
+      carritoActual.push(nuevoItem);
+    }
+
+    this._carrito.next(carritoActual);
+    this.actualizarCantidadProductos(carritoActual);
   }
 
   actualizarCantidadProductos(carrito: CarritoItem[]): void {
     const cantidad = carrito.reduce((acc, item) => acc + item.cantidad, 0);
     this._cantidadProductos.next(cantidad);
   }
+
+  getFormaEnvio(): Observable<string[]> {
+    return this.http.get<any[]>(this.formaEnvioUrl).pipe(
+      map(response => response.map(item => item.descripcion))
+    );
+  }
+
+  getFormaPago(): Observable<string[]> {
+    return this.http.get<any[]>(this.formaPagoUrl).pipe(
+      map(response => response.map(item => item.descripcion))
+    );
+  }
+
 }
