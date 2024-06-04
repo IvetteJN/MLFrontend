@@ -1,46 +1,51 @@
-import { Component } from '@angular/core';
+import { Location, NgIf } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import { Libro } from "../../../services/producto"
+import { ActivatedRoute } from '@angular/router';
+import { ProductoService } from '../../../services/producto.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-descripcion',
-  standalone: true,
-  templateUrl: './descripcion.component.html',
-  styleUrls: ['./descripcion.component.css']
+    selector: 'app-descripcion',
+    standalone: true,
+    imports: [NgIf],
+    templateUrl: './descripcion.component.html',
+    styleUrls: ['./descripcion.component.css']
 })
 export class DescripcionComponent {
-  constructor() { }
 
-  showBookDetails(book: {
-    titulo: any;
-    autor: any;
-    categoria: any;
-    descripcion: any;
-    precio: any;
-    stock: any;
-  }) {
-    const bookContainer = document.getElementById('book-container');
+    @Input() libro?: Libro;
 
-    const bookContent = `
-      <div class="mb-3" style="max-width: 760px;">
-        <div class="row g-0">
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="title">${book.titulo}</h5>
-              <p class="card-text">Autor: ${book.autor || 'Desconocido'}</p>
-              <p class="card-text">Categoría: ${book.categoria || 'Desconocida'}</p>
-              <p class="animado">Sinopsis: ${book.descripcion}</p>
-              <p class="card-text2">Precio: $ ${book.precio}</p>
-              <p class="card-text">Stock Disponible: ${book.stock} Unidades</p>
-              <a class="btn btn-dark" href="Productos.html">Volver</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
+    constructor(
+        private route: ActivatedRoute,
+        private productoService: ProductoService,
+        private location: Location) { }
 
-    if (bookContainer) {
-      bookContainer.innerHTML = bookContent;
-    } else {
-      console.error('El elemento con ID "book-container" no se encontró.');
+    ngOnInit(): void {
+        this.getLibro();
     }
-  }
+
+    getLibro(): void {
+        const id = this.route.snapshot.paramMap.get('id');
+        console.log(`ID from route: ${id}`); // Log para verificar el ID
+        if (id) {
+            const libroId = Number(id);
+            if (!isNaN(libroId)) {
+                this.productoService.getLibro(libroId)
+                    .subscribe(
+                        (libro: Libro) => this.libro = libro,
+                        (error: HttpErrorResponse) => console.error(error)
+                    );
+            } else {
+                console.error('Invalid ID');
+            }
+        } else {
+            console.error('ID not found in route');
+        }
+    }
+
+
+    goBack(): void {
+        this.location.back();
+    }
 }
