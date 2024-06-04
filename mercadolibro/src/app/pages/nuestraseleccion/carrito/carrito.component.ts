@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { CarritoService } from '../../../services/carrito.service';
+import { Router } from '@angular/router';
 
 interface CarritoItem {
   titulo: string;
@@ -19,7 +20,7 @@ export class CarritoComponent {
   carrito: CarritoItem[] = [];
   total: number = 0;
 
-  constructor(private carritoService: CarritoService) {
+  constructor(private carritoService: CarritoService,private router:Router) {
 
     this.carritoService.carrito.subscribe(carrito => {
       this.carrito = carrito;
@@ -54,5 +55,8 @@ export class CarritoComponent {
 
   private actualizarCarrito(): void {
     this.carritoService.actualizarCantidadProductos(this.carrito);
+  }
+  irADashboardresumen(): void {
+    this.router.navigate(['/dashboard/resumenCompra']);
   }
 }
