@@ -77,8 +77,10 @@ export class InicioComponent {
       const contrasenia = this.loginFormulario.value.contrasenia;
       this.loginService.autenticarUsuario(email, contrasenia).subscribe(
         response => {
+          // Después de la autenticación, guarda el email en SessionStorage
+          sessionStorage.setItem('usuarioAutenticado', email);
           alert("Login exitoso");
-          this.router.navigate(['/dashboard/dashboardlanding']);
+          this.router.navigate(['/dashboard/dashboardlanding']); 
         },
         error => {
           alert("Credenciales incorrectas");
@@ -103,7 +105,7 @@ export class InicioComponent {
         },
         error => {
           console.error("Error en el registro: ", error);
-          alert("El usuario ya está registrado");
+          alert("El usuario ya está registrado"); 
         }
       );
     } else {

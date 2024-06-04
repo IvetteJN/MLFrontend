@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class LoginService {
   private apiUrl = 'http://127.0.0.1:8000/api';
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +24,11 @@ export class LoginService {
     return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).pipe(
       tap({
         next: (response) => {
-          localStorage.setItem('clienteLogueado', JSON.stringify(response));
+          // Si la autenticación es exitosa, cambia el estado de autenticación a true
+          if (response) {
+            this.isAuthenticatedSubject.next(true);
+            localStorage.setItem('clienteLogueado', JSON.stringify(response));
+          }
         },
         error: (error) => {
           console.error('Error al autenticar usuario:', error);
@@ -32,14 +37,18 @@ export class LoginService {
     );
   }
 
+  isAuthenticated(): Observable<boolean> {
+    return this.isAuthenticatedSubject.asObservable();
+  }
+
+  logout(): void {
+    this.isAuthenticatedSubject.next(false);
+    localStorage.removeItem('clienteLogueado');
+  }
+
   obtenerClienteLogueado(): any {
     return JSON.parse(localStorage.getItem('clienteLogueado') || '{}');
   }
-
-  // actualizarDirecciones(direcciones: any[]): Observable<any> {
-  //   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  //   return this.http.post<any>(this.direccionUrl, direcciones, { headers });
-  // }
 
   registrarDireccion(direccion: string, ciudad: string, provincia: string, codigo_postal: number): Observable<any> {
     const url = `${this.apiUrl}/direccion/`;

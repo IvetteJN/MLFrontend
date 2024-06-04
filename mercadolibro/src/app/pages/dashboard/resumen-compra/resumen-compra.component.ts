@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Pedido } from '../../../models/pedido.model';
 import { HttpClient } from '@angular/common/http';
 
+
 interface CarritoItem {
   titulo: string;
   precio: number;
@@ -18,7 +19,7 @@ interface CarritoItem {
   templateUrl: './resumen-compra.component.html',
   styleUrl: './resumen-compra.component.css'
 })
-export class ResumenCompraComponent implements OnInit {
+export class ResumenCompraComponent {
   carrito: CarritoItem[] = [];
   total: number = 0;
 
