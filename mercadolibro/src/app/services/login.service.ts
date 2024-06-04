@@ -22,10 +22,16 @@ export class LoginService {
     const url = `${this.apiUrl}/login/`;
     const body = { email, contrasena: password };
     return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).pipe(
-      tap(response => {
-        // Si la autenticación es exitosa, cambia el estado de autenticación a true
-        if (response) {
-          this.isAuthenticatedSubject.next(true);
+      tap({
+        next: (response) => {
+          // Si la autenticación es exitosa, cambia el estado de autenticación a true
+          if (response) {
+            this.isAuthenticatedSubject.next(true);
+            localStorage.setItem('clienteLogueado', JSON.stringify(response));
+          }
+        },
+        error: (error) => {
+          console.error('Error al autenticar usuario:', error);
         }
       })
     );
@@ -37,10 +43,16 @@ export class LoginService {
 
   logout(): void {
     this.isAuthenticatedSubject.next(false);
+    localStorage.removeItem('clienteLogueado');
   }
 
   obtenerClienteLogueado(): any {
-    const clienteLogueado = localStorage.getItem('clienteLogueado');
-    return clienteLogueado ? JSON.parse(clienteLogueado) : null;
+    return JSON.parse(localStorage.getItem('clienteLogueado') || '{}');
+  }
+
+  registrarDireccion(direccion: string, ciudad: string, provincia: string, codigo_postal: number): Observable<any> {
+    const url = `${this.apiUrl}/direccion/`;
+    const body = { direccion, ciudad, provincia, codigo_postal };
+    return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 }

@@ -1,8 +1,8 @@
-/*import { Injectable } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { LoginService } from '../services/login.service';  // Asegúrate de que la ruta es correcta
+import { LoginService } from '../services/login.service';  
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +24,4 @@ export class AuthGuard  {
       })
     );
   }
-}*/
+}

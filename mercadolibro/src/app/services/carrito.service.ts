@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
-
+import { HttpClient } from '@angular/common/http';
 
 export interface CarritoItem {
   titulo: string;
@@ -20,6 +19,7 @@ export class CarritoService {
 
   private formaEnvioUrl = 'http://127.0.0.1:8000/api/formaEnvio/';
   private formaPagoUrl = 'http://127.0.0.1:8000/api/formaPago/';
+  private direccionUrl = 'http://127.0.0.1:8000/api/direccion/';
 
   constructor(private http: HttpClient) { }
 
@@ -54,4 +54,9 @@ export class CarritoService {
     );
   }
 
+  getDireccionEnvio(): Observable<string[]> {
+    return this.http.get<any[]>(this.direccionUrl).pipe(
+      map(response => response.map(item => item.direccion))
+    );
+  }
 }

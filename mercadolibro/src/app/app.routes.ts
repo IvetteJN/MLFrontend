@@ -16,8 +16,8 @@ import { DashboardlandingComponent } from './pages/dashboard/dashboardlanding/da
 import { StatusComponent } from './pages/dashboard/status/status.component';
 import { PromocionesComponent } from './pages/dashboard/promociones/promociones.component';
 import { ReviewsComponent } from './pages/dashboard/calificaciones2/calificaciones2.component';
-//import { ResumenCompraComponent } from './pages/dashboard/resumen-compra/resumen-compra.component';
-//import { AuthGuard } from './guard/auth.guard';
+import { ResumenCompraComponent } from './pages/dashboard/resumen-compra/resumen-compra.component';
+import { AuthGuard } from './guard/auth.guard';
 import { PasarelaComponent } from './pages/dashboard/pasarela/pasarela.component';
 
 export const routes: Routes = [
@@ -28,7 +28,7 @@ export const routes: Routes = [
     { path: 'descripcion/:id', title: 'Tu próximo libro', component: DescripcionComponent },
     { path: 'contacto', title: 'Contacto', component: ContactoComponent },
     { path: 'inicio', title: 'Login', component: InicioComponent },
-    {path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,/*canActivate:[AuthGuard],*/
+    {path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,canActivate:[AuthGuard],
         children: [
             { path: '', redirectTo: 'dashboardlanding', pathMatch: 'full' },
             { path: 'dashboardlanding', component: DashboardlandingComponent},
@@ -38,7 +38,7 @@ export const routes: Routes = [
             { path: 'calificacion', component: ReviewsComponent, title: 'Calificacion de Productos' },
             { path: 'promociones', component: PromocionesComponent, title: 'Descuentos y cupones' },
             { path: 'calificacion', component: ReviewsComponent, title: 'Calificacion de Productos' },
-            //{ path: 'resumenCompra', component: ResumenCompraComponent, title: 'Finalizar compra' },
+            { path: 'resumenCompra', component: ResumenCompraComponent, title: 'Finalizar compra' },
             {path:'pasarela',component:PasarelaComponent,title:'pasarela de pagos'}
 
         ]

@@ -1,41 +1,60 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { LoginService } from '../../../services/login.service';
+import { CommonModule, NgIf } from '@angular/common';
+import { FormBuilder, FormGroup, FormArray, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-datospersonales',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, NgIf, FormsModule, ReactiveFormsModule],
   templateUrl: './datospersonales.component.html',
   styleUrls: ['./datospersonales.component.css']
 })
 export class DatospersonalesComponent {
-  usuario: any = {
-    nombre: '',
-    email: '',
-    direccion: ''
-  };
-  successMessage: string = '';
-  errorMessage: string = '';
+  direccion: FormGroup;
 
-  handleInputChange(field: string, event: Event) {
-    const target = event.target as HTMLInputElement;
-    this.usuario[field] = target.value;
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService) {
+    this.direccion = this.formBuilder.group({
+      direccion: ['', Validators.required],
+      ciudad: ['', Validators.required],
+      provincia: ['', Validators.required],
+      codigo_postal: ['', [Validators.required]]
+    })
   }
 
-  onSubmit() {
-    if (this.isValid(this.usuario)) {
-      this.successMessage = 'Datos Guardados';
-      this.errorMessage = '';
-      console.log('Datos Guardados:', this.usuario);
+  get Direccion() {
+    return this.direccion.get('direccion');
+  }
+
+  get Ciudad() {
+    return this.direccion.get('ciudad');
+  }
+  get Provincia() {
+    return this.direccion.get('provincia');
+  }
+  get CodigoPostal() {
+    return this.direccion.get('codigo_postal');
+  }
+
+  onSubmit(event: Event) {
+    event.preventDefault();
+    if (this.direccion.valid) {
+      const direccion = this.direccion.value.direccion;
+      const ciudad = this.direccion.value.ciudad;
+      const provincia = this.direccion.value.provincia;
+      const codigo_postal = this.direccion.value.codigo_postal;
+      this.loginService.registrarDireccion(direccion, ciudad, provincia, codigo_postal).subscribe(
+        response => {
+          console.log("Respuesta del servidor:", response);
+          alert("Registro exitoso");
+        },
+        error => {
+          console.error("Error en el registro: ", error);
+          alert("El usuario ya está registrado");
+        }
+      );
     } else {
-      this.successMessage = '';
-      this.errorMessage = 'Hubo Un Problema';
-      console.error('Datos inválidos');
+      this.direccion.markAllAsTouched();
     }
-  }
-
-  isValid(usuario: any): boolean {
-    return usuario && usuario.nombre && usuario.email && usuario.direccion;
   }
 }
