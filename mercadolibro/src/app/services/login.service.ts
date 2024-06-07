@@ -10,7 +10,7 @@ import { tap } from 'rxjs/operators';
 })
 export class LoginService {
   private apiUrl = 'http://127.0.0.1:8000/api/auth';
-  private userUrl = 'http://127.0.0.1:8000/api';
+  private direccionUrl = 'http://127.0.0.1:8000/api';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
@@ -55,7 +55,7 @@ export class LoginService {
   }
 
   registrarDireccion(direccion: string, ciudad: string, provincia: string, codigo_postal: number): Observable<any> {
-    const url = `${this.apiUrl}/direccion/`;
+    const url = `${this.direccionUrl}/direcciones/`;
     const body = { direccion, ciudad, provincia, codigo_postal };
     return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }

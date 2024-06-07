@@ -17,8 +17,8 @@ interface CarritoItem {
   selector: 'app-resumen-compra',
   standalone: true,
   imports: [NgFor, FormsModule, ReactiveFormsModule, CommonModule, RouterLink],
-  templateUrl: './resumen-compra.component.html',
-  styleUrl: './resumen-compra.component.css'
+  templateUrl: './finalizar-compra.component.html',
+  styleUrl: './finalizar-compra.component.css'
 })
 export class ResumenCompraComponent {
   carrito: CarritoItem[] = [];

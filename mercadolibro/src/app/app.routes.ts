@@ -16,7 +16,7 @@ import { DashboardlandingComponent } from './pages/dashboard/dashboardlanding/da
 import { StatusComponent } from './pages/dashboard/status/status.component';
 import { PromocionesComponent } from './pages/dashboard/promociones/promociones.component';
 import { ReviewsComponent } from './pages/dashboard/reviews/reviews.component';
-import { ResumenCompraComponent } from './pages/dashboard/resumen-compra/resumen-compra.component';
+import { ResumenCompraComponent } from './pages/dashboard/finalizar-compra/finalizar-compra.component';
 import { AuthGuard } from './guard/auth.guard';
 import { PasarelaComponent } from './pages/dashboard/pasarela/pasarela.component';
 
