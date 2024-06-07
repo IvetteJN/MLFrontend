@@ -1,69 +1,44 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router'; // Importa el servicio Router
 
 @Component({
   selector: 'app-pasarela',
-  standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './pasarela.component.html',
   styleUrls: ['./pasarela.component.css']
 })
 export class PasarelaComponent {
-  pagoFormulario: FormGroup;
-  mensaje: string = '';
-  mensajeAlerta: string = '';
+  preferenceId: string | undefined;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {
-    this.pagoFormulario = this.formBuilder.group({
-      nombreTarjeta: ['', Validators.required],
-      numeroTarjeta: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
-      fechaExpiracion: ['', [Validators.required, this.fechaExpiracionValidator()]],
-      cvv: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(4)]]
-    });
-  }
-
-  enviarDatosPago() {
-    if (this.pagoFormulario.valid) {
-      console.log('Formulario de pago válido', this.pagoFormulario.value);
-
-      const { nombreTarjeta, numeroTarjeta, fechaExpiracion, cvv } = this.pagoFormulario.value;
-
-      const token = 'TOKENPRUEBA';
-
-      this.procesarPago(token);
-    } else {
-      console.log('Formulario de pago no válido');
-    }
-  }
-
-  procesarPago(token: string) {
- 
-
-    this.http.post('https:8000/', { token }).subscribe(
-      (response: any) => {
-        this.mensaje = '¡Pago realizado exitosamente!';
-        this.mensajeAlerta = 'success';
-        console.log('Pago realizado exitosamente', response);
-      },
-      (error: HttpErrorResponse) => {
-        this.mensaje = 'Error al realizar el pago. Por favor, inténtelo nuevamente.';
-        this.mensajeAlerta = 'danger';
-        console.error('Error al realizar el pago', error);
-      }
-    );
-  }
-
-  fechaExpiracionValidator() {
-    return (control: AbstractControl): { [key: string]: any } | null => {
-      const [mes, anio] = control.value.split('/');
-      const fechaActual = new Date();
-      const mesActual = fechaActual.getMonth() + 1;
-      const anioActual = fechaActual.getFullYear();
-      const esValido = (parseInt(anio, 10) > anioActual) || (parseInt(anio, 10) === anioActual && parseInt(mes, 10) >= mesActual);
-
-      return esValido ? null : { fechaInvalida: true };
+  constructor(private http: HttpClient, private router: Router) { }
+  
+  createPreferenceAndRedirect() {
+    const preferenceData = {
+      items: [
+        {
+          title: 'Producto de Prueba',
+          unit_price: 100,
+          quantity: 1,
+        }
+      ],
     };
+
+    this.http.post<any>('https://api.mercadopago.com/checkout/preferences?access_token=TEST-6771469815948587-060715-3d53e33eb7fe31e220ad7f572e68ae8f-1846522961', preferenceData)
+      .subscribe(response => {
+        this.preferenceId = response.id;
+        this.redirectToSandbox(this.preferenceId);
+      }, error => {
+        console.error('Error creating preference:', error);
+        // Redirige a la página de error en caso de error
+        this.router.navigate(['/dashboard/resumenCompra']);
+      });
+  }
+
+  redirectToSandbox(preferenceId: string | undefined) {
+    if (preferenceId) {
+      window.location.href = `https://sandbox.mercadopago.com.ar/checkout/v1/redirect?pref_id=${preferenceId}`;
+    } else {
+      console.error('No se pudo redirigir porque preferenceId no está definido.');
+    }
   }
 }

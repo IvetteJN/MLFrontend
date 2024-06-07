@@ -4,7 +4,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Pedido } from '../../../models/pedido.model';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 interface CarritoItem {
   titulo: string;
@@ -17,9 +17,9 @@ interface CarritoItem {
   standalone: true,
   imports: [NgFor, FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './resumen-compra.component.html',
-  styleUrl: './resumen-compra.component.css'
+  styleUrls: ['./resumen-compra.component.css'] // Corregido aquí
 })
-export class ResumenCompraComponent {
+export class ResumenCompraComponent implements OnInit { // Añadido OnInit aquí
   carrito: CarritoItem[] = [];
   total: number = 0;
 
@@ -31,7 +31,7 @@ export class ResumenCompraComponent {
   formaPagoSeleccionada: string = '';
   direccionSeleccionada: string = '';
 
-  constructor(private carritoService: CarritoService, private http: HttpClient) { }
+  constructor(private carritoService: CarritoService, private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.getFormaPago();
@@ -78,6 +78,10 @@ export class ResumenCompraComponent {
         console.error('Error al obtener las direcciones', error);
       }
     );
+  }
+
+  finalizarcompra(): any {
+    this.router.navigate(['/dashboard/pasarela']);
   }
 
   // enviarPedido(): void {
