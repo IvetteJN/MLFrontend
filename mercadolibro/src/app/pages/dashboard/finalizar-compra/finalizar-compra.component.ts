@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CarritoService } from '../../../services/carrito.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Pedido } from '../../../models/pedido.model';
+import { Pedido } from '../../../services/models/pedido.model';
 import { HttpClient } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 
 
 interface CarritoItem {
@@ -15,9 +16,9 @@ interface CarritoItem {
 @Component({
   selector: 'app-resumen-compra',
   standalone: true,
-  imports: [NgFor, FormsModule, ReactiveFormsModule, CommonModule],
-  templateUrl: './resumen-compra.component.html',
-  styleUrl: './resumen-compra.component.css'
+  imports: [NgFor, FormsModule, ReactiveFormsModule, CommonModule, RouterLink],
+  templateUrl: './finalizar-compra.component.html',
+  styleUrl: './finalizar-compra.component.css'
 })
 export class ResumenCompraComponent {
   carrito: CarritoItem[] = [];
@@ -79,24 +80,4 @@ export class ResumenCompraComponent {
       }
     );
   }
-
-  // enviarPedido(): void {
-  //   const pedido: Pedido = {
-  //     usuario_cliente: 1, // Aquí debes poner el ID del usuario real
-  //     estado_pedido: 'En camino',
-  //     direccion_envio: this.direccionSeleccionada,
-  //     forma_envio: this.formaEnvioSeleccionada,
-  //     forma_pago: this.formaPagoSeleccionada
-  //   };
-
-  //   this.http.post('http://127.0.0.1:8000/api/pedido/', pedido)
-  //     .subscribe(
-  //       response => {
-  //         console.log('Pedido enviado correctamente', response);
-  //       },
-  //       error => {
-  //         console.error('Error al enviar el pedido', error);
-  //       }
-  //     );
-  // }
 }

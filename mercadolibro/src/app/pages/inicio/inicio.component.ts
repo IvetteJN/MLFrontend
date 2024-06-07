@@ -2,7 +2,7 @@ import { CommonModule, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,8 +16,22 @@ export class InicioComponent {
   loginFormulario: FormGroup;
   registroFormulario: FormGroup;
 
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
+    this.loginFormulario = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
+
+    this.registroFormulario = this.formBuilder.group({
+      username: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      repetirPassword: ['', [Validators.required, Validators.minLength(8)]]
+    }, { validators: this.matchingPasswordsValidator('password', 'repetirPassword') });
+  }
+
   //corroborar que las contraseñas inseridas sean iguales.
-  matchingPasswordsValidator(password: string, confirmPassword: string): ValidatorFn {
+  matchingPasswordsValidator(password: string, confirmPassword: string) {
     return (control: AbstractControl): { [key: string]: any } | null => {
       const passwordControl = control.get(password);
       const confirmPasswordControl = control.get(confirmPassword);
@@ -31,56 +45,17 @@ export class InicioComponent {
     };
   }
 
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
-    this.loginFormulario = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      contrasenia: ['', [Validators.required, Validators.minLength(8)]]
-    });
-
-    this.registroFormulario = this.formBuilder.group({
-      nombreRegistro: ['', Validators.required],
-      emailRegistro: ['', [Validators.required, Validators.email]],
-      contraseniaRegistro: ['', [Validators.required, Validators.minLength(8)]],
-      repetirContrasenia: ['', [Validators.required, Validators.minLength(8)]]
-    }, { validators: this.matchingPasswordsValidator('contraseniaRegistro', 'repetirContrasenia') });
-  }
-
-  get Email() {
-    return this.loginFormulario.get('email');
-  }
-
-  get Contrasenia() {
-    return this.loginFormulario.get('contrasenia');
-  }
-
-  get NombreRegistro() {
-    return this.registroFormulario.get('nombreRegistro');
-  }
-
-  get EmailRegistro() {
-    return this.registroFormulario.get('emailRegistro');
-  }
-
-  get ContraseniaRegistro() {
-    return this.registroFormulario.get('contraseniaRegistro');
-  }
-
-  get RepetirContrasenia() {
-    return this.registroFormulario.get('repetirContrasenia');
-  }
-
   //Login
   onEnviar(event: Event) {
     event.preventDefault();
     if (this.loginFormulario.valid) {
       const email = this.loginFormulario.value.email;
-      const contrasenia = this.loginFormulario.value.contrasenia;
-      this.loginService.autenticarUsuario(email, contrasenia).subscribe(
+      const password = this.loginFormulario.value.password;
+      this.loginService.autenticarUsuario(email, password).subscribe(
         response => {
           // Después de la autenticación, guarda el email en SessionStorage
           sessionStorage.setItem('usuarioAutenticado', email);
-          alert("Login exitoso");
-          this.router.navigate(['/dashboard/dashboardlanding']); 
+          this.router.navigate(['/dashboard/dashboardlanding']);
         },
         error => {
           alert("Credenciales incorrectas");
@@ -95,21 +70,35 @@ export class InicioComponent {
   enviarDatosRegistro(event: Event) {
     event.preventDefault();
     if (this.registroFormulario.valid) {
-      const nombreRegistro = this.registroFormulario.value.nombreRegistro;
-      const emailRegistro = this.registroFormulario.value.emailRegistro;
-      const contraseniaRegistro = this.registroFormulario.value.contraseniaRegistro;
-      this.loginService.registrarUsuario(nombreRegistro, emailRegistro, contraseniaRegistro).subscribe(
+      const username = this.registroFormulario.value.username;
+      const email = this.registroFormulario.value.email;
+      const password = this.registroFormulario.value.password;
+      this.loginService.registrarUsuario(username, email, password).subscribe(
         response => {
-          console.log("Respuesta del servidor:", response);
           alert("Registro exitoso");
         },
         error => {
-          console.error("Error en el registro: ", error);
-          alert("El usuario ya está registrado"); 
+          alert("El usuario ya está registrado");
         }
       );
     } else {
       this.registroFormulario.markAllAsTouched();
     }
+  }
+
+  get Email() {
+    return this.loginFormulario.get('email');
+  }
+
+  get Password() {
+    return this.loginFormulario.get('password');
+  }
+
+  get Username() {
+    return this.registroFormulario.get('username');
+  }
+
+  get RepetirPassword() {
+    return this.registroFormulario.get('repetirPassword');
   }
 }
