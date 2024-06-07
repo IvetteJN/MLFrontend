@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { usuario } from '../../../models/usuario.model';
-import { UsuarioService } from '../../../services/usuario.service';
 import { LoginService } from '../../../services/login.service';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-dashboardlanding',
+  standalone: true,
+  imports: [NgIf],
   templateUrl: './dashboardlanding.component.html',
   styleUrls: ['./dashboardlanding.component.css']
 })
@@ -18,4 +18,3 @@ export class DashboardlandingComponent implements OnInit {
     this.clienteLogueado = this.loginService.obtenerClienteLogueado();
   }
 }
-

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PedidosPorClienteService } from '../../../services/pedidos-por-cliente.service.ts.service';
 import { LoginService } from '../../../services/login.service';
 import { CommonModule } from '@angular/common';
-import { ClienteService } from '../../../services/cliente.service';
+import { ClienteService } from '../../../../../fueraDeUso/cliente.service';
 
 @Component({
   selector: 'app-historial-compras',
@@ -15,7 +15,7 @@ export class HistorialComprasComponent implements OnInit {
   detallesPedidos: any[] = [];
 
   constructor(
-    private pedidosPorClienteService: PedidosPorClienteService, 
+    private pedidosPorClienteService: PedidosPorClienteService,
     private loginService: LoginService
   ) { }
 
