@@ -6,9 +6,6 @@
     justify-content: start;
     align-items: start;
     font-family: "Poppins", sans-serif;
-
-
-
   }
 
 
@@ -35,9 +32,6 @@
     flex-direction: row;
     height: 40px;
     width: 260px;
-
-
-
   }
 
 
@@ -86,8 +80,6 @@
     background-color: rgba(25, 25, 25, 0);
     z-index: 30;
     transition: 3s;
-
-
   }
 
   nav ::-webkit-scrollbar {
@@ -129,13 +121,11 @@
     border-radius: 40px 0px 0px 40px;
     z-index: -1;
     transition: all 300ms ease-in-out;
-
   }
 
   nav ul li a:hover {
     color: #000000;
     font-weight: 800;
-
   }
 
   nav ul li a:hover:before {
@@ -151,10 +141,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-
-
     width: 700px;
-
     margin-top: 20px;
   }
 
@@ -196,52 +183,43 @@
     justify-content: space-between;
     align-items: center;
     margin: 20px;
-
     width: 500px;
-
   }
-
-
-
-
 }
+
 /*
  /*================ version responsive  ======================*/
- /*============ TABLET ==================*/
- @media (min-width: 480px) and (max-width: 1023px){
-  main{
+/*============ TABLET ==================*/
+@media (min-width: 480px) and (max-width: 1023px) {
+  main {
     display: flex;
     flex-direction: column;
-    
     width: 100%;
-    height:auto;
-    
-    
+    height: auto;
   }
-  
-  .div-menu{
+
+  .div-menu {
     display: none;
   }
+
   #btn-menu {
     display: none;
   }
-  .lbl-menu{
+
+  .lbl-menu {
     display: none;
   }
+
   .nav-color {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-   
-    
-    
-
     top: 0%;
   }
-  nav{
-    
+
+  nav {
     width: 100%;
     height: 60px;
     position: relative;
@@ -250,14 +228,11 @@
     background: #2f2f2f;
     display: flex;
     justify-content: end;
-   
     z-index: 2;
     transition: all 0.5s;
     text-decoration: none;
     list-style: none;
     align-items: start;
-   
-    
   }
 
   nav ul {
@@ -272,21 +247,22 @@
     z-index: 1000;
     padding-top: 12px;
   }
-  span{
-    display: none;
 
+  span {
+    display: none;
   }
-  a{
+
+  a {
     text-decoration: none;
     color: #fff;
   }
+
   nav ul li {
     position: relative;
     list-style: none;
     width: 100%;
     height: 80px;
     z-index: 1;
-  
   }
 
   nav ul li a {
@@ -299,6 +275,7 @@
     text-align: center;
     font-weight: 200;
   }
+
   nav ul li a svg {
     position: relative;
     display: block;
@@ -308,15 +285,15 @@
     transition: 0.5s;
     color: rgba(255, 255, 255, 0.5);
   }
-  img{
+
+  img {
     display: none;
   }
+
   nav ul {
     display: flex;
     width: 100%;
   }
- 
-   
 
   h1 {
     font-size: 30px;
@@ -333,41 +310,43 @@
     flex-direction: column;
     margin: 0;
   }
-  .nav-color{
+
+  .nav-color {
     max-height: 100%;
     overflow: none;
   }
+}
 
- }
 /*========== MOBILE ==========*/
-@media (max-width: 479px )  {
-  main{
+@media (max-width: 479px) {
+  main {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    
-    
   }
-  .div-menu{
+
+  .div-menu {
     display: none;
   }
+
   #btn-menu {
     display: none;
   }
-  .lbl-menu{
+
+  .lbl-menu {
     display: none;
   }
+
   .nav-color {
     width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-
     top: 0%;
   }
-  nav{
-    
+
+  nav {
     width: 100%;
     height: 60px;
     position: relative;
@@ -376,14 +355,11 @@
     background: #2f2f2f;
     display: flex;
     justify-content: end;
-   
     z-index: 2;
     transition: all 0.5s;
     text-decoration: none;
     list-style: none;
     align-items: start;
-   
-    
   }
 
   nav ul {
@@ -398,21 +374,22 @@
     z-index: 1000;
     padding-top: 12px;
   }
-  span{
-    display: none;
 
+  span {
+    display: none;
   }
-  a{
+
+  a {
     text-decoration: none;
     color: #fff;
   }
+
   nav ul li {
     position: relative;
     list-style: none;
     width: 100%;
     height: 80px;
     z-index: 1;
-  
   }
 
   nav ul li a {
@@ -425,6 +402,7 @@
     text-align: center;
     font-weight: 200;
   }
+
   nav ul li a svg {
     position: relative;
     display: block;
@@ -434,15 +412,15 @@
     transition: 0.5s;
     color: rgba(255, 255, 255, 0.5);
   }
-  img{
+
+  img {
     display: none;
   }
+
   nav ul {
     display: flex;
     width: 100%;
   }
- 
-   
 
   h1 {
     font-size: 30px;
@@ -459,7 +437,8 @@
     flex-direction: column;
     margin: 0;
   }
-  .nav-color{
+
+  .nav-color {
     max-height: 100%;
     overflow: none;
   }

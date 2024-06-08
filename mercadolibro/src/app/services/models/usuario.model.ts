@@ -1,7 +1,5 @@
 export interface usuario {
-    id: number;
-    nombre: string;
+    username: string;
     email: string;
-    password: string;
     direcciones: any[];
 }

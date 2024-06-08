@@ -17,9 +17,9 @@ export class CarritoService {
   carrito = this._carrito.asObservable();
   cantidadProductos = this._cantidadProductos.asObservable();
 
-  private formaEnvioUrl = 'http://127.0.0.1:8000/api/formaEnvio/';
-  private formaPagoUrl = 'http://127.0.0.1:8000/api/formaPago/';
-  private direccionUrl = 'http://127.0.0.1:8000/api/direccion/';
+  private formaEnvioUrl = 'http://127.0.0.1:8000/api/formasenvio/';
+  private formaPagoUrl = 'http://127.0.0.1:8000/api/formaspago/';
+  private direccionUrl = 'http://127.0.0.1:8000/api/direcciones/';
 
   constructor(private http: HttpClient) { }
 
@@ -44,19 +44,19 @@ export class CarritoService {
 
   getFormaEnvio(): Observable<string[]> {
     return this.http.get<any[]>(this.formaEnvioUrl).pipe(
-      map(response => response.map(item => item.descripcion))
+      map(response => response.map(item => item.forma_envio))
     );
   }
 
   getFormaPago(): Observable<string[]> {
     return this.http.get<any[]>(this.formaPagoUrl).pipe(
-      map(response => response.map(item => item.descripcion))
+      map(response => response.map(item => item.forma_pago))
     );
   }
 
   getDireccionEnvio(): Observable<string[]> {
     return this.http.get<any[]>(this.direccionUrl).pipe(
-      map(response => response.map(item => item.direccion))
+      map(response => response.map(item => item.calle))
     );
   }
 }
