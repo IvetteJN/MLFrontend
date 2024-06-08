@@ -67,13 +67,13 @@
           (ngSubmit)="enviarDatosRegistro($event)" novalidate>
           <div class="modal-body">
             <div class="col">
-              <label class="form-label">Nombre</label>
+              <label class="form-label">Username</label>
               @if(Username?.errors && Username?.touched)
               {
               @if(Username?.hasError('required'))
               {
               <p class="text-danger">
-                El nombre es requerido.
+                El username es requerido.
               </p>
               }}
               <input type="text" class="form-control" id="username" formControlName="username" required>

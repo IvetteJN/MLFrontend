@@ -36,9 +36,8 @@ export const routes: Routes = [
             { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
             { path: 'historialcompras', component: HistorialComprasComponent, title: 'Mis Compras' },
             { path: 'statusC', component: StatusComponent, title: 'Estado de mi compra' },
-            { path: 'calificacion', component: ReviewsComponent, title: 'Calificacion de Productos' },
+            { path: 'calificacion', component: ReviewsComponent, title: 'Mis reseñas' },
             { path: 'promociones', component: PromocionesComponent, title: 'Descuentos y cupones' },
-            { path: 'calificacion', component: ReviewsComponent, title: 'Calificacion de Productos' },
             { path: 'resumenCompra', component: ResumenCompraComponent, title: 'Finalizar compra' },
             { path: 'pasarela', component: PasarelaComponent, title: 'pasarela de pagos' }
 
