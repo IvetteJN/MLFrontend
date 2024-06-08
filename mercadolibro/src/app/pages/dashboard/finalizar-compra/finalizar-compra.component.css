@@ -17,7 +17,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 1rem auto;
-    font-family: Arial, sans-serif;
     text-align: center;
     overflow: hidden;
 }
@@ -87,12 +86,6 @@ p {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.select-control:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
 .btn {
     display: inline-block;
     font-weight: 400;
@@ -115,17 +108,6 @@ p {
     text-decoration: none;
     background-color: #e0a800;
     border-color: #d39e00;
-}
-
-.btn-dark {
-    background-color: #343a40;
-    border-color: #343a40;
-    color: #fff;
-}
-
-.btn-dark:hover {
-    background-color: #23272b;
-    border-color: #1d2124;
 }
 
 @media (max-width: 600px) {

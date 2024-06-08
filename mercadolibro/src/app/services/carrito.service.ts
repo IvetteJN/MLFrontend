@@ -56,7 +56,7 @@ export class CarritoService {
 
   getDireccionEnvio(): Observable<string[]> {
     return this.http.get<any[]>(this.direccionUrl).pipe(
-      map(response => response.map(item => item.calle))
+      map(response => response.map(item => item.calle + ', ' + item.ciudad + ', ' + item.provincia))
     );
   }
 }
