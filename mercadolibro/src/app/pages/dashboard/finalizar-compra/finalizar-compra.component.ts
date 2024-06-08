@@ -119,7 +119,7 @@ export class ResumenCompraComponent implements OnInit {
         (error) => {
           console.error('Error creating preference:', error);
           
-          // Redirigir a otra página en caso de error específico
+          
           if (error.error && error.error.message === 'Una de las partes con la que intentás hacer el pago es de prueba.') {
             this.router.navigate(['/nuestraseleccion']); 
           } else {
