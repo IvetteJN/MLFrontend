@@ -55,6 +55,13 @@
                     <option *ngFor="let formasPago of formasPago" [value]="formasPago">{{ formasPago }}</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="cupones"> Si tenés algún <a
+                        routerLink="/dashboard/editarDatosPersonales">CUPÓN/DESCUENTO</a> agregalo
+                    acá:
+                </label>
+                <input type="text">
+            </div>
         </form>
     </div>
     <button  class="btn btn-dark"  (click)="createPreferenceAndRedirect()">Pagar</button>
