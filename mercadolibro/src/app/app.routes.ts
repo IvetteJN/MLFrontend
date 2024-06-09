@@ -18,7 +18,7 @@ import { PromocionesComponent } from './pages/dashboard/promociones/promociones.
 import { ReviewsComponent } from './pages/dashboard/reviews/reviews.component';
 import { ResumenCompraComponent } from './pages/dashboard/finalizar-compra/finalizar-compra.component';
 import { AuthGuard } from './guard/auth.guard';
-import { PasarelaComponent } from './pages/dashboard/pasarela/pasarela.component';
+
 
 export const routes: Routes = [
     { path: 'landing', title: 'Home', component: LandingComponent },
@@ -39,8 +39,6 @@ export const routes: Routes = [
             { path: 'calificacion', component: ReviewsComponent, title: 'Mis reseñas' },
             { path: 'promociones', component: PromocionesComponent, title: 'Descuentos y cupones' },
             { path: 'resumenCompra', component: ResumenCompraComponent, title: 'Finalizar compra' },
-            { path: 'pasarela', component: PasarelaComponent, title: 'pasarela de pagos' }
-
         ]
     },
     { path: '**', component: Pagina404Component }
