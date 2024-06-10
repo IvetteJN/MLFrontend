@@ -19,26 +19,25 @@ export class HistorialComprasComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        const clienteLogueado = this.loginService.obtenerClienteLogueado();
-        if (clienteLogueado && clienteLogueado.id_cliente) {
-            const clienteId = clienteLogueado.id_cliente;
-            this.pedidosPorClienteService.obtenerDetallePedido(clienteId).subscribe(
-                (data: any) => {
-                    console.log(data); // Imprime la respuesta del servicio en la consola
-                    if (data && data.detalles_pedidos && data.detalles_pedidos.length > 0) {
-                        this.detallesPedidos = data.detalles_pedidos;
-                    } else {
-                        console.log('El cliente no tiene pedidos.');
-                        // Aquí puedes manejar el caso en el que el cliente no tiene pedidos
-                        this.detallesPedidos = []; // o puedes asignar null, dependiendo de cómo quieras manejarlo
-                    }
-                },
-                (error: any) => {
-                    console.error('Error al obtener el detalle del pedido:', error);
-                }
-            );
-        } else {
-            console.error('Cliente no logueado o ID de cliente no disponible');
-        }
+        // const clienteLogueado = this.loginService.obtenerClienteLogueado();
+        // if (clienteLogueado && clienteLogueado.id_cliente) {
+        //     const clienteId = clienteLogueado.id_cliente;
+        //     this.pedidosPorClienteService.obtenerDetallePedido(clienteId).subscribe(
+        //         (data: any) => {
+        //             console.log(data); // Imprime la respuesta del servicio en la consola
+        //             if (data && data.detalles_pedidos && data.detalles_pedidos.length > 0) {
+        //                 this.detallesPedidos = data.detalles_pedidos;
+        //             } else {
+        //                 console.log('El cliente no tiene pedidos.');
+        //                 this.detallesPedidos = [];
+        //             }
+        //         },
+        //         (error: any) => {
+        //             console.error('Error al obtener el detalle del pedido:', error);
+        //         }
+        //     );
+        // } else {
+        //     console.error('Cliente no logueado o ID de cliente no disponible');
+        // }
     }
 }

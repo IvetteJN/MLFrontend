@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CarritoService } from '../../../services/carrito.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
+
 
 interface CarritoItem {
   titulo: string;
@@ -18,7 +18,7 @@ interface CarritoItem {
   standalone: true,
   templateUrl: './finalizar-compra.component.html',
   styleUrl: './finalizar-compra.component.css'
-  
+
 })
 export class ResumenCompraComponent implements OnInit {
   carrito: CarritoItem[] = [];
@@ -38,7 +38,7 @@ export class ResumenCompraComponent implements OnInit {
     private carritoService: CarritoService,
     private http: HttpClient,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getCarrito();
@@ -118,10 +118,10 @@ export class ResumenCompraComponent implements OnInit {
         },
         (error) => {
           console.error('Error creating preference:', error);
-          
-          
+
+
           if (error.error && error.error.message === 'Una de las partes con la que intentás hacer el pago es de prueba.') {
-            this.router.navigate(['/nuestraseleccion']); 
+            this.router.navigate(['/nuestraseleccion']);
           } else {
             this.router.navigate(['/dashboard/resumenCompra']);
           }
