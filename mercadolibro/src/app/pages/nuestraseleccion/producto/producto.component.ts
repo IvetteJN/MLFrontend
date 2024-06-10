@@ -20,9 +20,9 @@ export class ProductoComponent implements OnInit {
   constructor(private productoService: ProductoService, private carritoService: CarritoService) { }
 
   ngOnInit(): void {
-    this.productoService.getLibros().subscribe(data => {
-      this.libros = data;
-    });
+    // this.productoService.getLibros().subscribe(data => {
+    //   this.libros = data;
+    // });
   }
 
   anadirAlCarrito(libro: Libro): void {

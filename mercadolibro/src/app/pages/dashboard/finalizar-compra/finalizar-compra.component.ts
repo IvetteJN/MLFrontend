@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CarritoService } from '../../../services/carrito.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Pedido } from '../../../services/models/pedido.model';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 

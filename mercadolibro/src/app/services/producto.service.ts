@@ -12,9 +12,9 @@ export class ProductoService {
 
   constructor(private http: HttpClient) { }
 
-  getLibros(): Observable<Libro[]> {
-    return this.http.get<Libro[]>(this.apiUrl);
-  }
+  // getLibros(): Observable<Libro[]> {
+  //   return this.http.get<Libro[]>(this.apiUrl);
+  // }
 
   getLibro(id_libro: number): Observable<Libro> {
     const url = `${this.apiUrl}${id_libro}/`;
