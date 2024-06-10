@@ -24,6 +24,7 @@ export class CarritoService {
   constructor(private http: HttpClient) { }
 
   agregarProducto(nuevoItem: CarritoItem): void {
+    nuevoItem.precio = parseFloat(nuevoItem.precio.toString());
     const carritoActual = this._carrito.getValue();
     const productoExistente = carritoActual.find(item => item.titulo === nuevoItem.titulo);
 
