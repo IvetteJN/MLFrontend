@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { CarritoService } from '../../../services/carrito.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { RouterLink } from '@angular/router';
+import { CommonModule, NgFor } from '@angular/common';
 
 
 interface CarritoItem {
