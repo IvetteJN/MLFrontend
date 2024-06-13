@@ -36,25 +36,4 @@ export class DatospersonalesComponent {
     return this.direccion.get('codigo_postal');
   }
 
-  onSubmit(event: Event) {
-    event.preventDefault();
-    if (this.direccion.valid) {
-      const direccion = this.direccion.value.direccion;
-      const ciudad = this.direccion.value.ciudad;
-      const provincia = this.direccion.value.provincia;
-      const codigo_postal = this.direccion.value.codigo_postal;
-      this.loginService.registrarDireccion(direccion, ciudad, provincia, codigo_postal).subscribe(
-        response => {
-          console.log("Respuesta del servidor:", response);
-          alert("Registro exitoso");
-        },
-        error => {
-          console.error("Error en el registro: ", error);
-          alert("El usuario ya está registrado");
-        }
-      );
-    } else {
-      this.direccion.markAllAsTouched();
-    }
-  }
 }

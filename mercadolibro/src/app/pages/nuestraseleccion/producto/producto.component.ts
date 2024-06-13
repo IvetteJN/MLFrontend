@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Libro } from "../../../services/producto";
+import { Libro } from "../../../services/models/producto";
 import { ProductoService } from "../../../services/producto.service";
 import { RouterLink } from "@angular/router";
 import { CategoriaComponent } from "../categoria/categoria.component";
@@ -20,14 +20,9 @@ export class ProductoComponent implements OnInit {
   constructor(private productoService: ProductoService, private carritoService: CarritoService) { }
 
   ngOnInit(): void {
-    this.getLibros();
-  }
-
-  getLibros(): void {
-    this.productoService.getLibros().subscribe(libros => {
-      console.log('Libros:', libros);
-      this.libros = libros;
-    });
+    // this.productoService.getLibros().subscribe(data => {
+    //   this.libros = data;
+    // });
   }
 
   anadirAlCarrito(libro: Libro): void {

@@ -269,7 +269,7 @@
 //         categoria: "Ficcion",
 //         descripcion: "Los Cuentos de Canterbury es una colección de historias, contadas por diferentes peregrinos en su camino a la tumba de Thomas Becket durante la Edad Media. Las historias van desde piezas románticas de alto estilo hasta piezas crudas y obscenas destinadas a insultar y entretener.",
 //         precio: 6000,
-//         stock: 5
+    //         stock: 5
 //     },
 //     {
 //         autor: "Anton Chekhov",

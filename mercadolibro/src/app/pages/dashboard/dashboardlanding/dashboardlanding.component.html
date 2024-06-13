@@ -1,13 +1,11 @@
-<div class="container cliente-container">
-   
-      <div class="row">
-        <div class="col">
-          <div NgIf="clienteLogueado" class="bienvenida">
-            <h2>Bienvenido, {{ clienteLogueado.nombre }} qué leemos hoy?</h2>
-            <p class="email">Email: {{ clienteLogueado.email }}</p>
-            <p class="id_cliente">Id: {{ clienteLogueado.id_cliente }}</p>
-            
-      
-
-        </div>
-      </div>
+<div class="overview-status-card">
+  <div class="overview-field" *ngIf="clienteLogueado && clienteLogueado.username && clienteLogueado.email">
+    <span class="overview-label">
+      <h2>Bienvenido, {{ clienteLogueado.username }}, ¿qué leemos hoy?</h2>
+    </span>
+  </div>
+  <div class="overview-field">
+    <span class="overview-label">
+      <p> {{ clienteLogueado.email }} </p>
+    </span>
+  </div>

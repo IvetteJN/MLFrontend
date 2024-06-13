@@ -1,27 +1,37 @@
 <div class="overview-status-card">
     <h3>Finalizar compra</h3>
-    <div class="overview-info">
-        <div class="overview-field" *ngFor="let item of carrito">
-            <span class="overview-label">Libro:</span>
-            <span class="overview-value">{{ item.titulo }}</span>
-        </div>
-        <div class="overview-field" *ngFor="let item of carrito">
-            <span class="overview-label">Cantidad:</span>
-            <span class="overview-value">{{ item.cantidad }}</span>
-        </div>
-        <div class="overview-field" *ngFor="let item of carrito">
-            <span class="overview-label">Precio Unitario:</span>
-            <span class="overview-value">${{ item.precio }}</span>
-        </div>
-        <div class="overview-field">
-            <span class="overview-label">Precio Total:</span>
-            <span class="overview-value">${{ total }}</span>
-        </div>
-    </div>
+
+    <table class="overview-table">
+        <thead>
+            <tr>
+                <th>Libro</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of carrito">
+                <td>{{ item.titulo }}</td>
+                <td>{{ item.cantidad }}</td>
+                <td>${{ item.precio }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Precio Total:</td>
+                <td>${{ total }}</td>
+            </tr>
+        </tfoot>
+    </table>
+
 
     <div class="formulario">
         <form>
-            <!-- <form (ngSubmit)="enviarPedido()"> -->
+            <div class="form-group">
+                <p> Si aún no registraste una dirección:
+                    <a routerLink="/dashboard/editarDatosPersonales">mis direcciones</a>
+                </p>
+            </div>
             <div class="form-group">
                 <label for="direccion_envio">Elige una dirección:</label>
                 <select id="direccion_envio" name="direccion_envio" [(ngModel)]="direccionSeleccionada">
@@ -45,7 +55,15 @@
                     <option *ngFor="let formasPago of formasPago" [value]="formasPago">{{ formasPago }}</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="cupones"> Si tenés algún <a
+                        routerLink="/dashboard/editarDatosPersonales">CUPÓN/DESCUENTO</a> agregalo
+                    acá:
+                </label>
+                <input type="text">
+            </div>
         </form>
     </div>
-    <button type="submit" class="btn btn-dark">Proceder al Pago</button>
+    <button  class="btn btn-dark"  (click)="createPreferenceAndRedirect()">Pagar</button>
+
 </div>

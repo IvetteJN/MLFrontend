@@ -17,7 +17,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 1rem auto;
-    font-family: Arial, sans-serif;
     text-align: center;
     overflow: hidden;
 }
@@ -27,25 +26,33 @@ body {
     margin-bottom: 1rem;
 }
 
-.overview-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+.overview-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #ffffff;
+    border-radius: 5px;
 }
 
-.overview-field {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.overview-table th,
+.overview-table td {
+    border: 1px solid #b9d807;
+    padding: 8px;
 }
 
-.overview-label {
+.overview-table th {
+    background-color: #b9d807;
+    color: #333333;
+    text-align: left;
+}
+
+.overview-table td {
+    color: #555555;
+    text-align: left;
+}
+
+.overview-table tfoot td {
     font-weight: bold;
-    color: #555555;
-}
-
-.overview-value {
-    color: #555555;
 }
 
 .formulario {
@@ -54,37 +61,29 @@ body {
 
 .form-group {
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
-.form-group label {
+.form-group label,
+p {
     color: #555555;
-    display: block;
     font-weight: bold;
-    margin-bottom: 0.5rem;
 }
 
-.form-control {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+.form-group a {
+    color: #181515;
 }
 
+.form-control,
 .select-control {
-    width: 100%;
+    flex: 1;
     padding: 0.5rem;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.select-control:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 .btn {
@@ -111,19 +110,18 @@ body {
     border-color: #d39e00;
 }
 
-.btn-dark {
-    background-color: #343a40;
-    border-color: #343a40;
-    color: #fff;
-}
-
-.btn-dark:hover {
-    background-color: #23272b;
-    border-color: #1d2124;
-}
-
 @media (max-width: 600px) {
     .overview-status-card {
         padding: 1rem;
+    }
+
+    .overview-table th,
+    .overview-table td {
+        padding: 4px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

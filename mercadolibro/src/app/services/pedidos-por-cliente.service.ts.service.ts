@@ -11,7 +11,7 @@ export class PedidosPorClienteService {
   constructor(private http: HttpClient) { }
 
   obtenerDetallePedido(clienteId: number): Observable<any> {
-    const url = `${this.apiUrl}/cliente/${clienteId}/detalle-pedido`;
+    const url = `${this.apiUrl}/historial-pedido/?cliente_id=${clienteId}`;
     return this.http.get(url, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 }

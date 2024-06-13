@@ -3,24 +3,25 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = 'http://127.0.0.1:8000/api/auth';
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) { }
 
-  registrarUsuario(nombre: string, email: string, password: string): Observable<any> {
-    const url = `${this.apiUrl}/registro/`;
-    const body = { nombre, email, contrasena: password };
+  registrarUsuario(username: string, email: string, password: string): Observable<any> {
+    const url = `${this.apiUrl}/signup/`;
+    const body = { username, email, password };
     return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 
   autenticarUsuario(email: string, password: string): Observable<any> {
     const url = `${this.apiUrl}/login/`;
-    const body = { email, contrasena: password };
+    const body = { email, password };
     return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }).pipe(
       tap({
         next: (response) => {
@@ -47,12 +48,7 @@ export class LoginService {
   }
 
   obtenerClienteLogueado(): any {
-    return JSON.parse(localStorage.getItem('clienteLogueado') || '{}');
-  }
-
-  registrarDireccion(direccion: string, ciudad: string, provincia: string, codigo_postal: number): Observable<any> {
-    const url = `${this.apiUrl}/direccion/`;
-    const body = { direccion, ciudad, provincia, codigo_postal };
-    return this.http.post(url, body, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
+    const clienteLogueado = localStorage.getItem('clienteLogueado');
+    return clienteLogueado ? JSON.parse(clienteLogueado) : null;
   }
 }

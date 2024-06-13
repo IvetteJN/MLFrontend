@@ -15,10 +15,10 @@ import { HistorialComprasComponent } from './pages/dashboard/historial-compras/h
 import { DashboardlandingComponent } from './pages/dashboard/dashboardlanding/dashboardlanding.component';
 import { StatusComponent } from './pages/dashboard/status/status.component';
 import { PromocionesComponent } from './pages/dashboard/promociones/promociones.component';
-import { ReviewsComponent } from './pages/dashboard/calificaciones2/calificaciones2.component';
-import { ResumenCompraComponent } from './pages/dashboard/resumen-compra/resumen-compra.component';
+import { ReviewsComponent } from './pages/dashboard/reviews/reviews.component';
+import { ResumenCompraComponent } from './pages/dashboard/finalizar-compra/finalizar-compra.component';
 import { AuthGuard } from './guard/auth.guard';
-import { PasarelaComponent } from './pages/dashboard/pasarela/pasarela.component';
+
 
 export const routes: Routes = [
     { path: 'landing', title: 'Home', component: LandingComponent },
@@ -28,19 +28,17 @@ export const routes: Routes = [
     { path: 'descripcion/:id', title: 'Tu próximo libro', component: DescripcionComponent },
     { path: 'contacto', title: 'Contacto', component: ContactoComponent },
     { path: 'inicio', title: 'Login', component: InicioComponent },
-    {path: 'dashboard', title: 'Mi perfil', component: DashboardComponent,canActivate:[AuthGuard],
+    {
+        path: 'dashboard', title: 'Mi perfil', component: DashboardComponent, canActivate: [AuthGuard],
         children: [
             { path: '', redirectTo: 'dashboardlanding', pathMatch: 'full' },
-            { path: 'dashboardlanding', component: DashboardlandingComponent},
+            { path: 'dashboardlanding', component: DashboardlandingComponent },
             { path: 'editarDatosPersonales', component: DatospersonalesComponent, title: 'Editar datos personales' },
             { path: 'historialcompras', component: HistorialComprasComponent, title: 'Mis Compras' },
             { path: 'statusC', component: StatusComponent, title: 'Estado de mi compra' },
-            { path: 'calificacion', component: ReviewsComponent, title: 'Calificacion de Productos' },
+            { path: 'calificacion', component: ReviewsComponent, title: 'Mis reseñas' },
             { path: 'promociones', component: PromocionesComponent, title: 'Descuentos y cupones' },
-            { path: 'calificacion', component: ReviewsComponent, title: 'Calificacion de Productos' },
             { path: 'resumenCompra', component: ResumenCompraComponent, title: 'Finalizar compra' },
-            {path:'pasarela',component:PasarelaComponent,title:'pasarela de pagos'}
-
         ]
     },
     { path: '**', component: Pagina404Component }
