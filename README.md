@@ -46,12 +46,8 @@ Funcionalidad 3: desde el backend, el usuario administrador puede modificar la b
 * Bootstrap
 
 # 👷‍♀️👷‍♂️ Contributors
-* Gonzalez Miguel Angel	-- de baja
 * Ñañez Nahir Nicolás
-* Pellicer Palcios Analia Anahí	-- de baja
-* Orellana Franco Rafael	-- de baja
 * Luna Dalla Lasta Marcelo Javier
-* Falconi Virginia Soledad	-- de baja
 * Plaza Leonardo	
 * Nobiltá Ivette Jael
 
