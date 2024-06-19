@@ -1,16 +1,9 @@
-
-main p {
-    color: brown;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  }
-
-.databindingSpan{
-  color: brown;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+main {
+  color: rgb(39, 39, 39);
+  font-family: sans-serif;
 }
 
 section h2 {
-    color: crimson;
-    font-family:Cambira, "Times New Roman", Times, serif;
-    font-weight: bold;
-  }
+  color: rgb(59, 59, 59);
+  font-weight: bold;
+}

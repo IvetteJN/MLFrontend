@@ -67,7 +67,7 @@
                 }
             </div>
             <div class="form-floating">
-                <input type=" email" formControlName="email" placeholder="Email" class="campo">
+                <input type="email" formControlName="email" placeholder="Email" class="campo">
                 @if (Mail?.errors && Mail?.touched) {
                 @if (Mail?.hasError('required'))
                 {
@@ -84,7 +84,7 @@
                 }
             </div>
             <div class="form-floating">
-                <textarea type="text" formControlName="mensaje" placeholder="Dejanos tu Mensaje..."></textarea>
+                <textarea formControlName="mensaje" placeholder="Dejanos tu Mensaje..."></textarea>
                 @if (Mensaje?.errors && Mensaje?.touched) {
                 @if (Mensaje?.hasError('required'))
                 {

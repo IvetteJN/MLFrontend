@@ -1,6 +1,6 @@
 * {
     font-family: sans-serif;
-    color: #746b6b;
+    color: rgb(59, 59, 59);
 }
 
 .container-form {
@@ -76,7 +76,6 @@ main {
     .container-form textarea {
         padding: 10px 6px;
         font-size: 10px;
-        box-sizing: border-box;
     }
 
     .container-form textarea {

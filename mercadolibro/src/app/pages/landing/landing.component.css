@@ -10,12 +10,19 @@ a.active {
   border-radius: 3px;
 }
 
-.contenedor-index {
-  margin-bottom: 20px;
+main {
+  margin-bottom: 15px;
 }
 
 @media (min-width: 769px) {
   a {
     font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  main {
+    min-height: 55vh;
   }
 }
